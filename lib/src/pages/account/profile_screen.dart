@@ -9,6 +9,7 @@ import 'package:splithawk/src/core/cubit/localization_cubit.dart';
 import 'package:splithawk/src/core/enums/request_status.dart';
 import 'package:splithawk/src/core/localization/l10n/app_localizations.dart';
 import 'package:splithawk/src/core/theme/cubit/theme_cubit.dart';
+import 'package:splithawk/src/core/theme/shimmer/shimmer_box_decoration.dart';
 import 'package:splithawk/src/pages/account/dialog_qrcode.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';

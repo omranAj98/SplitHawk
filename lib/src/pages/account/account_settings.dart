@@ -13,24 +13,34 @@ class AccountSettings extends StatelessWidget {
       // shrinkWrap: true,
       children: [
         const SizedBox(height: 32),
-        Shimmer.fromColors(
-          // enabled: false,
-          baseColor: Colors.grey[300]!,
-          highlightColor: Colors.grey[100]!,
-          child: SizedBox(
-            height: 200,
-            width: 200,
-            // decoration: BoxDecoration(shape: BoxShape.circle),
-            child: GestureDetector(
-              onTap: () {
-                dialogQRCode(context);
-              },
-              child: Image.asset(
-                "assets/images/qr-code.png",
-                fit: BoxFit.contain,
-              ),
-            ),
-          ),
+        BlocBuilder<UserCubit, UserState>(
+          builder: (context, state) {
+            return state.requestStatus == RequestStatus.loading
+                ? Shimmer.fromColors(
+                  // enabled: false,
+                  baseColor: Colors.grey[300]!,
+                  highlightColor: Colors.grey[100]!,
+                  child: Container(
+                    height: 20,
+                    width: double.minPositive,
+                    decoration: shimmerBoxDecoration(colorScheme),
+                  ),
+                )
+                : SizedBox(
+                  height: 200,
+                  width: 200,
+                  // decoration: BoxDecoration(shape: BoxShape.circle),
+                  child: GestureDetector(
+                    onTap: () {
+                      dialogQRCode(context);
+                    },
+                    child: Image.asset(
+                      "assets/images/qr-code.png",
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                );
+          },
         ),
         TextButton.icon(
           onPressed: () {},
@@ -49,7 +59,9 @@ class AccountSettings extends StatelessWidget {
                 BlocConsumer<UserCubit, UserState>(
                   listener: (context, state) {
                     if (state.requestStatus == RequestStatus.error) {
-                      state.error.showErrorDialog(context);
+                      state.error!.showErrorDialog(context);
+                    } else if (state.requestStatus == RequestStatus.error) {
+                      state.error!.showErrorDialog(context);
                     }
                   },
                   builder: (context, state) {
@@ -65,43 +77,51 @@ class AccountSettings extends StatelessWidget {
                                 child: Container(
                                   height: 20,
                                   // width: double.minPositive,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(6.0),
-                                    color: colorScheme.primary.withValues(
-                                      alpha: 0.2,
-                                    ),
-                                  ),
+                                  decoration: shimmerBoxDecoration(colorScheme),
                                 ),
                               )
                               : Text(
                                 // context.watch<UserCubit>().state.user!.fullName,
                                 state.user!.fullName,
                               ),
-                      subtitle: BlocConsumer<AuthBloc, AuthState>(
+                      subtitle: BlocConsumer<UserCubit, UserState>(
                         listener: (context, state) {
-                          if (state.user!.emailVerified == false) {
+                          if (state.user!.isEmailVerified == false) {
                             context.read<AuthBloc>().add(
                               AuthReloadVerificationEvent(),
                             );
                           }
                         },
-
                         builder: (context, state) {
                           return Column(
                             children: [
-                              Row(
-                                children: [
-                                  Text(state.user!.email!),
-                                  state.user!.emailVerified
-                                      ? Icon(
-                                        Icons.verified,
-                                        color: colorScheme.primary,
-                                        size: 16,
-                                      )
-                                      : SizedBox(),
-                                ],
-                              ),
-                              state.user!.emailVerified
+                              state.requestStatus == RequestStatus.loading
+                                  ? Shimmer.fromColors(
+                                    baseColor: Colors.grey[300]!,
+                                    highlightColor: Colors.grey[100]!,
+                                    child: Container(
+                                      height: 20,
+                                      // width: double.minPositive,
+                                      decoration: shimmerBoxDecoration(
+                                        colorScheme,
+                                      ),
+                                    ),
+                                  )
+                                  : Row(
+                                    children: [
+                                      Text(state.user!.email!),
+                                      state.user!.isEmailVerified!
+                                          ? Icon(
+                                            Icons.verified,
+                                            color: colorScheme.primary,
+                                            size: 16,
+                                          )
+                                          : SizedBox(),
+                                    ],
+                                  ),
+                              state.requestStatus == RequestStatus.loading
+                                  ? const SizedBox()
+                                  : state.user!.isEmailVerified!
                                   ? SizedBox()
                                   : TextButton(
                                     onPressed: () {
@@ -208,10 +228,21 @@ class AccountSettings extends StatelessWidget {
                         leading: Icon(Icons.email),
                         title: Text(AppLocalizations.of(context)!.email),
                         onTap: () async {
-                          await launchUrlString(
-                            'mailto:contact@splithawk.com?subject=App Contact',
-                            mode: LaunchMode.externalApplication,
-                          );
+                          try {
+                            final Uri emailUri = Uri(
+                              scheme: 'mailto',
+                              path: 'contact@splithawk.com',
+                              query: 'subject=App%20Contact',
+                            );
+                            await launchUrl(
+                              emailUri,
+                              mode: LaunchMode.externalApplication,
+                            );
+                          } catch (e, stackTrace) {
+                            // Print the error and stack trace for debugging
+                            print('Error launching email: $e');
+                            print('Stack trace: $stackTrace');
+                          }
                         },
                       ),
                       ListTile(

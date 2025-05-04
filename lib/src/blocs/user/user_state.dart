@@ -4,7 +4,7 @@ part of 'user_cubit.dart';
 
 class UserState extends Equatable {
   final RequestStatus requestStatus;
-  final CustomError error;
+  final CustomError? error;
   final UserModel? user;
   const UserState({
     required this.requestStatus,
@@ -20,7 +20,7 @@ class UserState extends Equatable {
   }
 
   @override
-  List<Object> get props => [requestStatus, error, user ?? ''];
+  List<Object> get props => [requestStatus, error ?? CustomError(), user ?? ''];
 
   @override
   bool get stringify => true;

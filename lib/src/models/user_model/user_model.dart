@@ -112,10 +112,10 @@ class UserModel extends Equatable {
       'totalTransactions': totalTransactions,
       'totalFriends': totalFriends,
       'totalBalance': totalBalance,
-      'createdAt': createdAt,
-      'updatedAt': updatedAt,
-      'lastActivity': lastActivity,
-      'recentLogin': recentLogin,
+      'createdAt': createdAt!.toIso8601String(),
+      'updatedAt': updatedAt!.toIso8601String(),
+      'lastActivity': lastActivity!.toIso8601String(), // Convert DateTime to String
+      'recentLogin': recentLogin!.toIso8601String(), // Convert DateTime to String
     };
   }
 
@@ -177,9 +177,6 @@ class UserModel extends Equatable {
               : null,
     );
   }
-
-  factory UserModel.fromJson(String source) =>
-      UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   bool get stringify => true;

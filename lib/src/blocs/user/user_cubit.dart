@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:splithawk/src/core/enums/request_status.dart';
 import 'package:splithawk/src/core/error/custom_error.dart';
 import 'package:splithawk/src/models/user_model/user_model.dart';
@@ -7,7 +8,7 @@ import 'package:splithawk/src/repositories/user_repository.dart';
 
 part 'user_state.dart';
 
-class UserCubit extends Cubit<UserState> {
+class UserCubit extends HydratedCubit<UserState> {
   UserRepository userRepository;
   UserCubit({required this.userRepository}) : super(UserState.initial());
 
@@ -45,6 +46,30 @@ class UserCubit extends Cubit<UserState> {
       );
     }
   }
+  @override
+UserState? fromJson(Map<String, dynamic> json) {
+  try {
+    return UserState(
+      user: json['user'] != null ? UserModel.fromMap(json['user']) : null,
+      requestStatus: RequestStatus.values[json['requestStatus'] as int],
+      error: null,
+    );
+  } catch (_) {
+    return null; // Return null if deserialization fails
+  }
+}
+
+@override
+Map<String, dynamic>? toJson(UserState state) {
+  try {
+    return {
+      'user': state.user?.toMap(),
+      'requestStatus': state.requestStatus.index,
+    };
+  } catch (_) {
+    return null; // Return null if serialization fails
+  }
+}
 
   // void getUser(String userId) async {
   //   emit(state.copyWith(requestStatus: RequestStatus.loading));
