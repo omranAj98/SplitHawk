@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/flutter_localization.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		trZtN9Oxpojq8DS24it6n6rGoU4=
+		ClRKRx21twIghfsQU/bL+LZ4BBE=
 		</data>
 		<key>Modules/flutter_localization.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Modules/flutter_localization.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		r4DraOK8pKKHPmhK0NdIiPfqoYg=
+		pue2ajqTJzL2ZJ7eSW3uX73XnVM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -112,7 +112,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			2UDN+x0VC0SkbGQ1G0+dthP0hKwgT0bqA8XVg5VYDtc=
+			0Vaqy3YStDRhak7TbTfjoh+fE5OkAWb8luCKN/zCEis=
 			</data>
 		</dict>
 		<key>Modules/flutter_localization.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -133,7 +133,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			3PZiSZhEK6/C+CYGWDbME3xe+niQY2FUY1fY6y6J7w0=
+			BuG5bMdMvvka5cFIRQElye3+tqkkr7/KttEKJaRi/PI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

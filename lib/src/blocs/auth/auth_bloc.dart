@@ -29,7 +29,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         print("user has been changed");
         bool isVerified = event.user!.emailVerified ?? false;
         if (isVerified) userRepository.verifyEmail(event.user!.email!);
-        print("user verified:  ${isVerified}");
+        print("user verified:  $isVerified");
 
         emit(
           state.copyWith(

@@ -21,6 +21,10 @@
 	<dict>
 		<key>xcprivacy.bundle/Info.plist</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			7SaXcg8G3gXgX5Nja2KTd4RKd/c=
+			</data>
 			<key>hash2</key>
 			<data>
 			hHBm8/P1mFUZUTWnlXu55GEmLN6D0pUnArFeJUwCEAk=
@@ -28,6 +32,10 @@
 		</dict>
 		<key>xcprivacy.bundle/PrivacyInfo.xcprivacy</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			1GKSpq20OoFIxAuJBtHAw+vMZO8=
+			</data>
 			<key>hash2</key>
 			<data>
 			8jIheunt8qtqVBoo7/UM/gUwPCtHVv/5XMpy7MvDuJg=

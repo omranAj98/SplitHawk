@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:splithawk/src/core/cubit/menu_cubit.dart';
 import 'package:splithawk/src/core/enums/menus.dart';
-import 'package:splithawk/src/core/widgets/app_safe_area.dart';
 import 'package:splithawk/src/core/widgets/nav_bar/wd_bottom_navigation_bar.dart';
 import 'package:splithawk/src/pages/add_expense_model.dart';
 

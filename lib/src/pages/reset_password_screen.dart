@@ -16,14 +16,14 @@ class ResetPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
-    String? _email = initEmail;
+    String? email = initEmail;
 
     void submit() {
       final form = formKey.currentState;
       if (form!.validate()) {
         form.save();
 
-        context.read<AuthBloc>().add(AuthResetPasswordEvent(email: _email!));
+        context.read<AuthBloc>().add(AuthResetPasswordEvent(email: email!));
       }
     }
 
@@ -44,7 +44,7 @@ class ResetPasswordScreen extends StatelessWidget {
                 );
                 context.goNamed(
                   AppRoutesName.signin,
-                  queryParameters: {'email': _email},
+                  queryParameters: {'email': email},
                 );
                 break;
               case AuthStatus.error:
@@ -63,7 +63,7 @@ class ResetPasswordScreen extends StatelessWidget {
                   TextFormField(
                     readOnly: state.authStatus == AuthStatus.loading,
                     // onSaved: (value) => email = value,
-                    onChanged: (value) => _email = value,
+                    onChanged: (value) => email = value,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       labelText: AppLocalizations.of(context)!.email,
