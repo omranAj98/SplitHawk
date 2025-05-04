@@ -1,0 +1,415 @@
+{
+  "@@locale": "ar",
+  "appName": "صقر القسمة",
+  "@appName": {
+    "description": "Name of the app"
+  },
+  "appDescription": "أفضل تطبيق لتقسيم المصاريف",
+  "@appDescription": {
+    "description": "App purpose"
+  },
+  "welcomeTo": "مرحبًا بك في ",
+  "@welcomeTo": {
+    "description": "Welcome prefix"
+  },
+  "search": "بحث",
+  "@search": {
+    "description": "Search text"
+  },
+  "email": "البريد الإلكتروني",
+  "@email": {
+    "description": "User email"
+  },
+  "password": "كلمة المرور",
+  "@password": {
+    "description": "User password"
+  },
+  "confirmPassword": "تأكيد كلمة المرور",
+  "@confirmPassword": {
+    "description": "Confirm password"
+  },
+  "signIn": "تسجيل الدخول",
+  "@signIn": {
+    "description": "Sign in button"
+  },
+  "signUp": "إنشاء حساب",
+  "@signUp": {
+    "description": "Sign up button"
+  },
+  "forgotPassword": "هل نسيت كلمة المرور؟",
+  "@forgotPassword": {
+    "description": "Forgot password prompt"
+  },
+  "resetPassword": "إعادة تعيين كلمة المرور",
+  "@resetPassword": {
+    "description": "Reset password"
+  },
+  "resetLinkSent": "تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني",
+  "@resetLinkSent": {
+    "description": "Reset confirmation"
+  },
+  "signInWithGoogle": "تسجيل الدخول باستخدام جوجل",
+  "@signInWithGoogle": {
+    "description": "Google sign-in"
+  },
+  "signInWithApple": "تسجيل الدخول باستخدام أبل",
+  "@signInWithApple": {
+    "description": "Apple sign-in"
+  },
+  "home": "الرئيسية",
+  "@home": {
+    "description": "Home screen"
+  },
+  "error": "خطأ",
+  "@error": {
+    "description": "Error"
+  },
+  "favorite": "المفضلة",
+  "@favorite": {
+    "description": "Favorites"
+  },
+  "ok": "حسنا",
+  "@ok": {
+    "description": "OK button"
+  },
+  "cancel": "إلغاء",
+  "@cancel": {
+    "description": "Cancel button"
+  },
+  "addGroup": "إضافة مجموعة",
+  "@addGroup": {
+    "description": "Add group button"
+  },
+  "addGroupTitle": "Ajouter un titre de groupe",
+  "@addGroupTitle": {
+    "description": "Add group title"
+  },
+  "account": "الحساب",
+  "@account": {
+    "description": "Account"
+  },
+  "checkNow": "افحص الآن",
+  "@checkNow": {
+    "description": "Check prompt"
+  },
+  "accountInfo": "معلومات الحساب",
+  "@accountInfo": {
+    "description": "Account info section"
+  },
+  "settings": "الإعدادات",
+  "@settings": {
+    "description": "Settings menu"
+  },
+  "darkTheme": "الوضع الداكن",
+  "@darkTheme": {
+    "description": "Theme switch"
+  },
+  "language": "اللغة",
+  "@language": {
+    "description": "Language option"
+  },
+  "description": "الوصف",
+  "@description": {
+    "description": "Description text"
+  },
+  "total": "الإجمالي",
+  "@total": {
+    "description": "Total amount"
+  },
+  "success": "نجاح",
+  "@success": {
+    "description": "Success message"
+  },
+  "yes": "نعم",
+  "@yes": {
+    "description": "Yes option"
+  },
+  "no": "لا",
+  "@no": {
+    "description": "No option"
+  },
+  "signOut": "تسجيل الخروج",
+  "@signOut": {
+    "description": "Sign out button"
+  },
+  "anotherMthods": "طرق أخرى",
+  "@anotherMthods": {
+    "description": "Alternative methods"
+  },
+  "addExpense": "اضف مصاريف",
+  "@addExpense": {
+    "description": "Add expense button"
+  },
+  "addExpenseTitle": "عنوان المصاريف",
+  "@addExpenseTitle": {
+    "description": "Add expense title"
+  },
+  "addExpenseAmount": "مبلغ المصاريف",
+  "@addExpenseAmount": {
+    "description": "Add expense amount"
+  },
+  "addExpenseDescription": "وصف المصاريف",
+  "@addExpenseDescription": {
+    "description": "Add expense description"
+  },
+  "expenseDate": "تاريخ المصاريف",
+  "@expenseDate": {
+    "description": "Add expense date"
+  },
+  "expenseCategory": "فئة المصاريف",
+  "@expenseCategory": {
+    "description": "Add expense category"
+  },
+  "addExpenseSplit": "تقسيم المصاريف",
+  "@addExpenseSplit": {
+    "description": "Add expense split"
+  },
+  "loading": "جار التحميل...",
+  "@loading": {
+    "description": "Loading message"
+  },
+  "addExpenseSuccess": "تمت إضافة المصاريف بنجاح",
+  "@addExpenseSuccess": {
+    "description": "Expense success message"
+  },
+  "addExpenseError": "خطأ في إضافة المصاريف",
+  "@addExpenseError": {
+    "description": "Expense error message"
+  },
+  "additionalLoginMethods": "طرق تسجيل الدخول الإضافية",
+  "@additionalLoginMethods": {
+    "description": "Additional login methods"
+  },
+  "invalidEmail": "عنوان البريد الإلكتروني غير صالح",
+  "@invalidEmail": {
+    "description": "Invalid email message"
+  },
+  "invalidPassword": "كلمة مرور غير صالحة",
+  "@invalidPassword": {
+    "description": "Invalid password message"
+  },
+  "invalidConfirmPassword": "Mؤكد كلمة المرور غير صالح",
+  "@invalidConfirmPassword": {
+    "description": "Invalid confirm password message"
+  },
+  "enterYourPhoneNumber": "يرجى إدخال رقم هاتفك",
+  "@enterYourPhoneNumber": {
+    "description": "Phone number prompt"
+  },
+  "passwordLength": "يجب أن يتكون كلمة المرور من ٧ أحرف على الأقل",
+  "@passwordLength": {
+    "description": "Password length message"
+  },
+  "invalidPhoneNumber": "رقم الهاتف غير صالح",
+  "@invalidPhoneNumber": {
+    "description": "Invalid phone number message"
+  },
+  "invalidName": "اسم غير صالح",
+  "@invalidName": {
+    "description": "Invalid name message"
+  },
+  "invalidGroupName": "اسم المجموعة غير صالح",
+  "@invalidGroupName": {
+    "description": "Invalid group name message"
+  },
+  "enterYourPassword": "يرجى إدخال كلمة المرور الخاصة بك",
+  "@enterYourPassword": {
+    "description": "Password prompt"
+  },
+  "cantBeEmpty": "لا يمكن أن يكون هذا الحقل فارغًا",
+  "@cantBeEmpty": {
+    "description": "Empty field message"
+  },
+  "enterYourEmail": "يرجى إدخال بريدك الإلكتروني",
+  "@enterYourEmail": {
+    "description": "Email prompt"
+  },
+  "enterYourName": "يرجى إدخال اسمك",
+  "@enterYourName": {
+    "description": "Name prompt"
+  },
+  "fullNameLength": "Nص كامل يجب أن يتكون من 3 أحرف على الأقل",
+  "@fullNameLength": {
+    "description": "Full name length message"
+  },
+  "fullName": "الاسم الكامل",
+  "@fullName": {
+    "description": "Full name"
+  },
+  "activities": "أنشطة",
+  "@activities": {
+    "description": "Activities"
+  },
+  "groups": "المجموعات",
+  "@groups": {
+    "description": "Groups"
+  },
+  "reloadPage": "إعادة تحميل الصفحة",
+  "@reloadPage": {
+    "description": "Reload page"
+  },
+  "createAccount": "إنشاء حساب",
+  "@createAccount": {
+    "description": "Create account"
+  },
+  "phoneNumber": "رقم الهاتف",
+  "@phoneNumber": {
+    "description": "Phone number"
+  },
+  "emailAlreadyInUse": "البريد الإلكتروني مستخدم بالفعل حاول تسجيل الدخول أو إعادة تعيين كلمة المرور الخاصة بك",
+  "@emailAlreadyInUse": {
+    "description": "Email in use message"
+  },
+  "emailNotFound": "البريد الإلكتروني غير موجود",
+  "@emailNotFound": {
+    "description": "Email not found message"
+  },
+  "weakPassword": "كلمة مرور ضعيفة",
+  "@weakPassword": {
+    "description": "Weak password message"
+  },
+  "passwordMismatch": "كلمات المرور غير متطابقة",
+  "@passwordMismatch": {
+    "description": "Password mismatch message"
+  },
+  "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+  "@invalidCredentials": {
+    "description": "Invalid credentials message"
+  },
+  "errorOccurred": "حدث خطأ",
+  "@errorOccurred": {
+    "description": "Error occurred message"
+  },
+  "mustContainUppercase": "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل",
+  "@mustContainUppercase": {
+    "description": "Uppercase letter message"
+  },
+  "mustContainLowercase": "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل",
+  "@mustContainLowercase": {
+    "description": "Lowercase letter message"
+  },
+  "mustContainNumber": "يجب أن تحتوي كلمة المرور على رقم واحد على الأقل",
+  "@mustContainNumber": {
+    "description": "Number message"
+  },
+  "mustContainSpecialChar": "يجب أن تحتوي كلمة المرور على حرف خاص واحد على الأقل",
+  "@mustContainSpecialChar": {
+    "description": "Special character message"
+  },
+  "defaultErrorMessage": "حدث خطأ. يرجى المحاولة مرة أخرى",
+  "@defaultErrorMessage": {
+    "description": "Default error message"
+  },
+  "userNotFound": "لم يتم العثور على حسابك",
+  "@userNotFound": {
+    "description": "User not found message"
+  },
+  "networkError": "خطأ في الشبكة",
+  "@networkError": {
+    "description": "Network error message"
+  },
+  "tooManyRequests": "تكررت الطلبات. يرجى المحاولة مرة أخرى لاحقًا",
+  "@tooManyRequests": {
+    "description": "Too many requests message"
+  },
+  "notFound": "السجل غير موجود",
+  "@notFound": {
+    "description": "Record not found message"
+  },
+  "permissionDenied": "تم رفض الإذن",
+  "@permissionDenied": {
+    "description": "Permission denied message"
+  },
+  "serviceUnavailable": "الخدمة غير متاحة",
+  "@serviceUnavailable": {
+    "description": "Service unavailable message"
+  },
+  "darkMode": "الوضع الليلي",
+  "@darkMode": {
+    "description": "Dark mode"
+  },
+  "accountSettings": "إعدادات الحساب",
+  "@accountSettings": {
+    "description": "Account settings"
+  },
+  "notifications": "الإشعارات",
+  "@notifications": {
+    "description": "Notifications"
+  },
+  "notificationSettings": "إعدادات الإشعارات",
+  "@notificationSettings": {
+    "description": "Notification settings"
+  },
+  "changePassword": "تغيير كلمة المرور",
+  "@changePassword": {
+    "description": "Change password"
+  },
+  "manageBlockList": "قائمة الحظر",
+  "@manageBlockList": {
+    "description": "Manage block list"
+  },
+  "contactUs": "اتصل بنا",
+  "@contactUs": {
+    "description": "Contact us"
+  },
+  "scanYourFriendQrCode": "امسح رمز الاستجابة السريعة لصديقك",
+  "@scanYourFriendQrCode": {
+    "description": "Scan QR code"
+  },
+  "shareQrCode": "شارك رمز الاستجابة السريعة الخاص بك",
+  "@shareQrCode": {
+    "description": "Share QR code"
+  },
+  "close": "اغلاق",
+  "@close": {
+    "description": "Close button"
+  },
+  "yourQrCode": "رمز الاستجابة السريعة الخاص بك",
+  "@yourQrCode": {
+    "description": "Your QR code"
+  },
+  "qrCode": "رمز الاستجابة السريعة",
+  "@qrCode": {
+    "description": "QR code"
+  },
+  "visitSplitHawkWebsite": "زيارة موقع SplitHawk",
+  "@visitSplitHawkWebsite": {
+    "description": "Visit website"
+  },
+  "sendFeedback": "إرسال ملاحظات",
+  "@sendFeedback": {
+    "description": "Send feedback"
+  },
+  "rateUs": "تقييم ودعم",
+  "@rateUs": {
+    "description": "Kindly rate and support us"
+  },
+  "shareApp": "مشاركة التطبيق",
+  "@shareApp": {
+    "description": "Share app"
+  },
+  "signInCanceled": "تسجيل الدخول التغى",
+  "@signInCanceled": {
+    "description": "Sign in canceled"
+  },
+  "signInFailed": "فشل تسجيل الدخول",
+  "@signInFailed": {
+    "description": "Sign in failed"
+  },
+  "emailSentSuccessfully": "تم إرسال البريد الإلكتروني بنجاح",
+  "@emailSentSuccessfully": {
+    "description": "Email sent successfully"
+  },
+  "sendVerficationEmail": "إرسال بريد إلكتروني للتحقق",
+  "@sendVerficationEmail": {
+    "description": "Send verification email"
+  },
+  "emailVerificationSent": "تم إرسال بريد التحقق",
+  "@emailVerificationSent": {
+    "description": "Email verification sent"
+  },
+  "emailVerified": "تم التحقق من البريد الإلكتروني",
+  "@emailVerified": {
+    "description": "Email verified"
+  }
+}

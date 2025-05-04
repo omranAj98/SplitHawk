@@ -1,0 +1,106 @@
+key/description/en/fr/ar
+appName/Name of the app/SplitHawk/FauconPartage/صقر القسمة
+appDescription/App purpose/Your ultimate expense sharing app/Votre application ultime de partage de dépenses/أفضل تطبيق لتقسيم المصاريف
+welcomeTo/Welcome prefix/Welcome to /Bienvenue à /مرحبًا بك في 
+search/Search text/Search/Rechercher/بحث
+email/User email/Email/E-mail/البريد الإلكتروني
+password/User password/Password/Mot de passe/كلمة المرور
+confirmPassword/Confirm password/Confirm Password/Confirmer le mot de passe/تأكيد كلمة المرور
+signIn/Sign in button/Sign In/Se connecter/تسجيل الدخول
+signUp/Sign up button/Sign Up/S'inscrire/إنشاء حساب
+forgotPassword/Forgot password prompt/Forgot Password?/Mot de passe oublié ?/هل نسيت كلمة المرور؟
+resetPassword/Reset password/Reset Password/Réinitialiser le mot de passe/إعادة تعيين كلمة المرور
+resetLinkSent/Reset confirmation/A reset password link has been sent to your email/Un lien de réinitialisation a été envoyé à votre e-mail/تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني
+signInWithGoogle/Google sign-in/Sign In with Google/Se connecter avec Google/تسجيل الدخول باستخدام جوجل
+signInWithApple/Apple sign-in/Sign In with Apple/Se connecter avec Apple/تسجيل الدخول باستخدام أبل
+home/Home screen/Home/Accueil/الرئيسية
+error/Error/Error/Erreur/خطأ
+favorite/Favorites/Favorite/Favori/المفضلة
+ok/OK button/OK/OK/حسنا
+cancel/Cancel button/Cancel/Annuler/إلغاء
+addGroup/Add group button/Add Group/Ajouter un groupe/إضافة مجموعة
+addGroupTitle/Add group title/Add Group Title/Titre du groupe/Ajouter un titre de groupe
+account/Account/Account/Compte/الحساب
+checkNow/Check prompt/Check Now/Vérifier maintenant/افحص الآن
+accountInfo/Account info section/Account Information/Informations du compte/معلومات الحساب
+settings/Settings menu/Settings/Paramètres/الإعدادات
+darkTheme/Theme switch/Dark Theme/Thème sombre/الوضع الداكن
+language/Language option/Language/La langue/اللغة
+description/Description text/Description/La description/الوصف
+total/Total amount/Total/Total/الإجمالي
+success/Success message/Success/Réussi/نجاح
+yes/Yes option/Yes/Oui/نعم
+no/No option/No/Non/لا
+signOut/Sign out button/Sign Out/Se déconnecter/تسجيل الخروج
+anotherMthods/Alternative methods/Other methods/Autres méthodes/طرق أخرى
+addExpense/Add expense button/Add Expense/Ajouter une dépense/اضف مصاريف
+addExpenseTitle/Add expense title/Expense Title/Titre de la dépense/عنوان المصاريف
+addExpenseAmount/Add expense amount/Expense Amount/Montant de la dépense/مبلغ المصاريف
+addExpenseDescription/Add expense description/Expense Description/Description de la dépense/وصف المصاريف
+expenseDate/Add expense date/Expense Date/Date de la dépense/تاريخ المصاريف
+expenseCategory/Add expense category/Expense Category/Catégorie de dépense/فئة المصاريف
+addExpenseSplit/Add expense split/Expense Split/Partage de la dépense/تقسيم المصاريف
+loading/Loading message/Loading.../Chargement.../جار التحميل...
+addExpenseSuccess/Expense success message/Expense added successfully/Dépense ajoutée avec succès/تمت إضافة المصاريف بنجاح
+addExpenseError/Expense error message/Error adding expense/Erreur lors de l'ajout de la dépense/خطأ في إضافة المصاريف
+additionalLoginMethods/Additional login methods/Additional login methods/Méthodes de connexion supplémentaires/طرق تسجيل الدخول الإضافية
+invalidEmail/Invalid email message/Invalid email address/Adresse e-mail invalide/عنوان البريد الإلكتروني غير صالح
+invalidPassword/Invalid password message/Invalid password/Mot de passe invalide/كلمة مرور غير صالحة
+invalidConfirmPassword/Invalid confirm password message/Invalid confirm password/Mot de passe de confirmation invalide/Mؤكد كلمة المرور غير صالح
+enterYourPhoneNumber/Phone number prompt/please enter your phone number/veuillez entrer votre numéro de téléphone/يرجى إدخال رقم هاتفك
+passwordLength/Password length message/Password must be at least 7 characters/Mot de passe doit comporter au moins 7 caractères/يجب أن يتكون كلمة المرور من ٧ أحرف على الأقل
+invalidPhoneNumber/Invalid phone number message/Invalid phone number/Numéro de téléphone invalide/رقم الهاتف غير صالح
+invalidName/Invalid name message/Invalid name/Nom invalide/اسم غير صالح
+invalidGroupName/Invalid group name message/Invalid group name/Nom de groupe invalide/اسم المجموعة غير صالح
+enterYourPassword/Password prompt/Please enter your password/Veuillez entrer votre mot de passe/يرجى إدخال كلمة المرور الخاصة بك
+cantBeEmpty/Empty field message/This field can't be empty/Ce champ ne peut pas être vide/لا يمكن أن يكون هذا الحقل فارغًا
+enterYourEmail/Email prompt/Please enter your email/Veuillez entrer votre e-mail/يرجى إدخال بريدك الإلكتروني
+enterYourName/Name prompt/Please enter your name/Veuillez entrer votre nom/يرجى إدخال اسمك
+fullNameLength/Full name length message/Full name must be at least 3 characters/Nom complet doit comporter au moins 3 caractères/Nص كامل يجب أن يتكون من 3 أحرف على الأقل
+fullName/Full name/Full Name/Nom complet/الاسم الكامل
+activities/Activities/Activities/Activités/أنشطة
+groups/Groups/Groups/Groupe/المجموعات
+reloadPage/Reload page/Reload Page/Actualiser la page/إعادة تحميل الصفحة
+createAccount/Create account/Create Account/Créer un compte/إنشاء حساب
+phoneNumber/Phone number/Phone Number/Numéro de téléphone/رقم الهاتف
+emailAlreadyInUse/Email in use message/Email already in use/E-mail déjà utilisé/البريد الإلكتروني مستخدم بالفعل
+emailNotFound/Email not found message/Email not found/E-mail non trouvé/البريد الإلكتروني غير موجود
+weakPassword/Weak password message/Weak password/Mot de passe faible/كلمة مرور ضعيفة
+passwordMismatch/Password mismatch message/Passwords do not match/Mots de passe ne correspondent pas/كلمات المرور غير متطابقة
+invalidCredentials/Invalid credentials message/Invalid email or password/E-mail ou mot de passe invalide/البريد الإلكتروني أو كلمة المرور غير صحيحة
+errorOccurred/Error occurred message/Error occurred/Une erreur s'est produite/حدث خطأ
+mustContainUppercase/Uppercase letter message/Password must contain at least one uppercase letter/Mot de passe doit contenir au moins une lettre majuscule/يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل
+mustContainLowercase/Lowercase letter message/Password must contain at least one lowercase letter/Mot de passe doit contenir au moins une lettre minuscule/يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل
+mustContainNumber/Number message/Password must contain at least one number/Mot de passe doit contenir au moins un chiffre/يجب أن تحتوي كلمة المرور على رقم واحد على الأقل
+mustContainSpecialChar/Special character message/Password must contain at least one special character/Mot de passe doit contenir au moins un caractère spécial/يجب أن تحتوي كلمة المرور على حرف خاص واحد على الأقل
+defaultErrorMessage/Default error message/An error occurred. Please try again/Une erreur s'est produite. Veuillez réessayer/حدث خطأ. يرجى المحاولة مرة أخرى
+emailAlreadyInUse/Email in use message/Email already in use try to login or reset your password/E-mail déjà utilisé essayez de vous connecter ou de réinitialiser votre mot de passe/البريد الإلكتروني مستخدم بالفعل حاول تسجيل الدخول أو إعادة تعيين كلمة المرور الخاصة بك
+userNotFound/User not found message/User not found/Votre compte n'existe pas/لم يتم العثور على حسابك
+networkError/Network error message/Network error/Erreur réseau/خطأ في الشبكة
+tooManyRequests/Too many requests message/Too many requests. Please try again later/Trop de demandes. Veuillez réessayer plus tard/تكررت الطلبات. يرجى المحاولة مرة أخرى لاحقًا
+notFound/Record not found message/Record not found/Enregistrement non trouvé/السجل غير موجود
+permissionDenied/Permission denied message/Permission denied/Autorisation refusée/تم رفض الإذن
+serviceUnavailable/Service unavailable message/Service unavailable/Service indisponible/الخدمة غير متاحة
+accountInfo/Account info section/Account Information/Informations du compte/معلومات الحساب
+darkMode/Dark mode/Dark Mode/Mode sombre/الوضع الليلي
+accountSettings/Account settings/Account Settings/Paramètres du compte/إعدادات الحساب
+notifications/Notifications/Notifications/Notifications/الإشعارات
+notificationSettings/Notification settings/Notification Settings/Paramètres de notification/إعدادات الإشعارات
+changePassword/Change password/Change Password/Changer le mot de passe/تغيير كلمة المرور
+manageBlockList/Manage block list/Manage Block List/Gérer la liste de blocage/قائمة الحظر
+contactUs/Contact us/Contact Us/Contactez-nous/اتصل بنا
+scanYourFriendQrCode/Scan QR code/Scan your friend's QR code/Scannez le code QR de votre ami/امسح رمز الاستجابة السريعة لصديقك
+shareQrCode/Share QR code/Share your QR code/Partagez votre code QR/شارك رمز الاستجابة السريعة الخاص بك
+close/Close button/Close/Fermer/اغلاق
+yourQrCode/Your QR code/Your QR Code/Votre code QR/رمز الاستجابة السريعة الخاص بك
+qrCode/QR code/QR Code/Code QR/رمز الاستجابة السريعة
+visitSplitHawkWebsite/Visit website/Visit SplitHawk website/Visitez le site Web de SplitHawk/زيارة موقع SplitHawk
+sendFeedback/Send feedback/Send Feedback/Envoyer des commentaires/إرسال ملاحظات
+rateUs/Kindly rate and support us/Kindly rate and support us/Avis et soutien/تقييم ودعم
+shareApp/Share app/Share the app/Partager l'application/مشاركة التطبيق
+signInCanceled/Sign in canceled/Sign In Canceled/Connexion annulée/تسجيل الدخول التغى
+signInFailed/Sign in failed/Sign In Failed/Échec de la connexion/فشل تسجيل الدخول
+emailSentSuccessfully/Email sent successfully/Email Sent Successfully/Email envoyé avec succès/تم إرسال البريد الإلكتروني بنجاح
+sendVerficationEmail/Send verification email/Send Verification Email/Envoyer un e-mail de vérification/إرسال بريد إلكتروني للتحقق
+emailVerificationSent/Email verification sent/Email Verification Sent/Email de vérification envoyé/تم إرسال بريد التحقق
+emailVerified/Email verified/Email Verified/Email vérifié/تم التحقق من البريد الإلكتروني

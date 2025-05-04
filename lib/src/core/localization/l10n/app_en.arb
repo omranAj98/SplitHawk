@@ -1,0 +1,415 @@
+{
+  "@@locale": "en",
+  "appName": "SplitHawk",
+  "@appName": {
+    "description": "Name of the app"
+  },
+  "appDescription": "Your ultimate expense sharing app",
+  "@appDescription": {
+    "description": "App purpose"
+  },
+  "welcomeTo": "Welcome to ",
+  "@welcomeTo": {
+    "description": "Welcome prefix"
+  },
+  "search": "Search",
+  "@search": {
+    "description": "Search text"
+  },
+  "email": "Email",
+  "@email": {
+    "description": "User email"
+  },
+  "password": "Password",
+  "@password": {
+    "description": "User password"
+  },
+  "confirmPassword": "Confirm Password",
+  "@confirmPassword": {
+    "description": "Confirm password"
+  },
+  "signIn": "Sign In",
+  "@signIn": {
+    "description": "Sign in button"
+  },
+  "signUp": "Sign Up",
+  "@signUp": {
+    "description": "Sign up button"
+  },
+  "forgotPassword": "Forgot Password?",
+  "@forgotPassword": {
+    "description": "Forgot password prompt"
+  },
+  "resetPassword": "Reset Password",
+  "@resetPassword": {
+    "description": "Reset password"
+  },
+  "resetLinkSent": "A reset password link has been sent to your email",
+  "@resetLinkSent": {
+    "description": "Reset confirmation"
+  },
+  "signInWithGoogle": "Sign In with Google",
+  "@signInWithGoogle": {
+    "description": "Google sign-in"
+  },
+  "signInWithApple": "Sign In with Apple",
+  "@signInWithApple": {
+    "description": "Apple sign-in"
+  },
+  "home": "Home",
+  "@home": {
+    "description": "Home screen"
+  },
+  "error": "Error",
+  "@error": {
+    "description": "Error"
+  },
+  "favorite": "Favorite",
+  "@favorite": {
+    "description": "Favorites"
+  },
+  "ok": "OK",
+  "@ok": {
+    "description": "OK button"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button"
+  },
+  "addGroup": "Add Group",
+  "@addGroup": {
+    "description": "Add group button"
+  },
+  "addGroupTitle": "Add Group Title",
+  "@addGroupTitle": {
+    "description": "Add group title"
+  },
+  "account": "Account",
+  "@account": {
+    "description": "Account"
+  },
+  "checkNow": "Check Now",
+  "@checkNow": {
+    "description": "Check prompt"
+  },
+  "accountInfo": "Account Information",
+  "@accountInfo": {
+    "description": "Account info section"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Settings menu"
+  },
+  "darkTheme": "Dark Theme",
+  "@darkTheme": {
+    "description": "Theme switch"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Language option"
+  },
+  "description": "Description",
+  "@description": {
+    "description": "Description text"
+  },
+  "total": "Total",
+  "@total": {
+    "description": "Total amount"
+  },
+  "success": "Success",
+  "@success": {
+    "description": "Success message"
+  },
+  "yes": "Yes",
+  "@yes": {
+    "description": "Yes option"
+  },
+  "no": "No",
+  "@no": {
+    "description": "No option"
+  },
+  "signOut": "Sign Out",
+  "@signOut": {
+    "description": "Sign out button"
+  },
+  "anotherMthods": "Other methods",
+  "@anotherMthods": {
+    "description": "Alternative methods"
+  },
+  "addExpense": "Add Expense",
+  "@addExpense": {
+    "description": "Add expense button"
+  },
+  "addExpenseTitle": "Expense Title",
+  "@addExpenseTitle": {
+    "description": "Add expense title"
+  },
+  "addExpenseAmount": "Expense Amount",
+  "@addExpenseAmount": {
+    "description": "Add expense amount"
+  },
+  "addExpenseDescription": "Expense Description",
+  "@addExpenseDescription": {
+    "description": "Add expense description"
+  },
+  "expenseDate": "Expense Date",
+  "@expenseDate": {
+    "description": "Add expense date"
+  },
+  "expenseCategory": "Expense Category",
+  "@expenseCategory": {
+    "description": "Add expense category"
+  },
+  "addExpenseSplit": "Expense Split",
+  "@addExpenseSplit": {
+    "description": "Add expense split"
+  },
+  "loading": "Loading...",
+  "@loading": {
+    "description": "Loading message"
+  },
+  "addExpenseSuccess": "Expense added successfully",
+  "@addExpenseSuccess": {
+    "description": "Expense success message"
+  },
+  "addExpenseError": "Error adding expense",
+  "@addExpenseError": {
+    "description": "Expense error message"
+  },
+  "additionalLoginMethods": "Additional login methods",
+  "@additionalLoginMethods": {
+    "description": "Additional login methods"
+  },
+  "invalidEmail": "Invalid email address",
+  "@invalidEmail": {
+    "description": "Invalid email message"
+  },
+  "invalidPassword": "Invalid password",
+  "@invalidPassword": {
+    "description": "Invalid password message"
+  },
+  "invalidConfirmPassword": "Invalid confirm password",
+  "@invalidConfirmPassword": {
+    "description": "Invalid confirm password message"
+  },
+  "enterYourPhoneNumber": "please enter your phone number",
+  "@enterYourPhoneNumber": {
+    "description": "Phone number prompt"
+  },
+  "passwordLength": "Password must be at least 7 characters",
+  "@passwordLength": {
+    "description": "Password length message"
+  },
+  "invalidPhoneNumber": "Invalid phone number",
+  "@invalidPhoneNumber": {
+    "description": "Invalid phone number message"
+  },
+  "invalidName": "Invalid name",
+  "@invalidName": {
+    "description": "Invalid name message"
+  },
+  "invalidGroupName": "Invalid group name",
+  "@invalidGroupName": {
+    "description": "Invalid group name message"
+  },
+  "enterYourPassword": "Please enter your password",
+  "@enterYourPassword": {
+    "description": "Password prompt"
+  },
+  "cantBeEmpty": "This field can't be empty",
+  "@cantBeEmpty": {
+    "description": "Empty field message"
+  },
+  "enterYourEmail": "Please enter your email",
+  "@enterYourEmail": {
+    "description": "Email prompt"
+  },
+  "enterYourName": "Please enter your name",
+  "@enterYourName": {
+    "description": "Name prompt"
+  },
+  "fullNameLength": "Full name must be at least 3 characters",
+  "@fullNameLength": {
+    "description": "Full name length message"
+  },
+  "fullName": "Full Name",
+  "@fullName": {
+    "description": "Full name"
+  },
+  "activities": "Activities",
+  "@activities": {
+    "description": "Activities"
+  },
+  "groups": "Groups",
+  "@groups": {
+    "description": "Groups"
+  },
+  "reloadPage": "Reload Page",
+  "@reloadPage": {
+    "description": "Reload page"
+  },
+  "createAccount": "Create Account",
+  "@createAccount": {
+    "description": "Create account"
+  },
+  "phoneNumber": "Phone Number",
+  "@phoneNumber": {
+    "description": "Phone number"
+  },
+  "emailAlreadyInUse": "Email already in use try to login or reset your password",
+  "@emailAlreadyInUse": {
+    "description": "Email in use message"
+  },
+  "emailNotFound": "Email not found",
+  "@emailNotFound": {
+    "description": "Email not found message"
+  },
+  "weakPassword": "Weak password",
+  "@weakPassword": {
+    "description": "Weak password message"
+  },
+  "passwordMismatch": "Passwords do not match",
+  "@passwordMismatch": {
+    "description": "Password mismatch message"
+  },
+  "invalidCredentials": "Invalid email or password",
+  "@invalidCredentials": {
+    "description": "Invalid credentials message"
+  },
+  "errorOccurred": "Error occurred",
+  "@errorOccurred": {
+    "description": "Error occurred message"
+  },
+  "mustContainUppercase": "Password must contain at least one uppercase letter",
+  "@mustContainUppercase": {
+    "description": "Uppercase letter message"
+  },
+  "mustContainLowercase": "Password must contain at least one lowercase letter",
+  "@mustContainLowercase": {
+    "description": "Lowercase letter message"
+  },
+  "mustContainNumber": "Password must contain at least one number",
+  "@mustContainNumber": {
+    "description": "Number message"
+  },
+  "mustContainSpecialChar": "Password must contain at least one special character",
+  "@mustContainSpecialChar": {
+    "description": "Special character message"
+  },
+  "defaultErrorMessage": "An error occurred. Please try again",
+  "@defaultErrorMessage": {
+    "description": "Default error message"
+  },
+  "userNotFound": "User not found",
+  "@userNotFound": {
+    "description": "User not found message"
+  },
+  "networkError": "Network error",
+  "@networkError": {
+    "description": "Network error message"
+  },
+  "tooManyRequests": "Too many requests. Please try again later",
+  "@tooManyRequests": {
+    "description": "Too many requests message"
+  },
+  "notFound": "Record not found",
+  "@notFound": {
+    "description": "Record not found message"
+  },
+  "permissionDenied": "Permission denied",
+  "@permissionDenied": {
+    "description": "Permission denied message"
+  },
+  "serviceUnavailable": "Service unavailable",
+  "@serviceUnavailable": {
+    "description": "Service unavailable message"
+  },
+  "darkMode": "Dark Mode",
+  "@darkMode": {
+    "description": "Dark mode"
+  },
+  "accountSettings": "Account Settings",
+  "@accountSettings": {
+    "description": "Account settings"
+  },
+  "notifications": "Notifications",
+  "@notifications": {
+    "description": "Notifications"
+  },
+  "notificationSettings": "Notification Settings",
+  "@notificationSettings": {
+    "description": "Notification settings"
+  },
+  "changePassword": "Change Password",
+  "@changePassword": {
+    "description": "Change password"
+  },
+  "manageBlockList": "Manage Block List",
+  "@manageBlockList": {
+    "description": "Manage block list"
+  },
+  "contactUs": "Contact Us",
+  "@contactUs": {
+    "description": "Contact us"
+  },
+  "scanYourFriendQrCode": "Scan your friend's QR code",
+  "@scanYourFriendQrCode": {
+    "description": "Scan QR code"
+  },
+  "shareQrCode": "Share your QR code",
+  "@shareQrCode": {
+    "description": "Share QR code"
+  },
+  "close": "Close",
+  "@close": {
+    "description": "Close button"
+  },
+  "yourQrCode": "Your QR Code",
+  "@yourQrCode": {
+    "description": "Your QR code"
+  },
+  "qrCode": "QR Code",
+  "@qrCode": {
+    "description": "QR code"
+  },
+  "visitSplitHawkWebsite": "Visit SplitHawk website",
+  "@visitSplitHawkWebsite": {
+    "description": "Visit website"
+  },
+  "sendFeedback": "Send Feedback",
+  "@sendFeedback": {
+    "description": "Send feedback"
+  },
+  "rateUs": "Kindly rate and support us",
+  "@rateUs": {
+    "description": "Kindly rate and support us"
+  },
+  "shareApp": "Share the app",
+  "@shareApp": {
+    "description": "Share app"
+  },
+  "signInCanceled": "Sign In Canceled",
+  "@signInCanceled": {
+    "description": "Sign in canceled"
+  },
+  "signInFailed": "Sign In Failed",
+  "@signInFailed": {
+    "description": "Sign in failed"
+  },
+  "emailSentSuccessfully": "Email Sent Successfully",
+  "@emailSentSuccessfully": {
+    "description": "Email sent successfully"
+  },
+  "sendVerficationEmail": "Send Verification Email",
+  "@sendVerficationEmail": {
+    "description": "Send verification email"
+  },
+  "emailVerificationSent": "Email Verification Sent",
+  "@emailVerificationSent": {
+    "description": "Email verification sent"
+  },
+  "emailVerified": "Email Verified",
+  "@emailVerified": {
+    "description": "Email verified"
+  }
+}

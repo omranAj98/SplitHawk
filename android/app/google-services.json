@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "890392750705",
+    "project_id": "split-hawk",
+    "storage_bucket": "split-hawk.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890392750705:android:119e3650a69273381c89d0",
+        "android_client_info": {
+          "package_name": "com.example.splithawk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "890392750705-buu0jeo5euqjk217k9p15hi647e12k5v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.splithawk",
+            "certificate_hash": "3909775e34a51edd180ea0a4fc7fa1f4f627532a"
+          }
+        },
+        {
+          "client_id": "890392750705-hoeaqd8bgkh8bpbckpmkad67lf2a91ad.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdKGEw-9cbF9leIT1MkOdDACTTf-NKHNY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "890392750705-hoeaqd8bgkh8bpbckpmkad67lf2a91ad.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "890392750705-taiitb9vgd8sv2qf1nisfbihetul21u0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.splithawk"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
