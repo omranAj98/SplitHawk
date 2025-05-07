@@ -246,6 +246,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get notFound => 'السجل غير موجود';
 
   @override
+  String get contactsPermissionDenied => 'تم رفض إذن جهات الاتصال';
+
+  @override
   String get permissionDenied => 'تم رفض الإذن';
 
   @override
@@ -309,11 +312,50 @@ class AppLocalizationsAr extends AppLocalizations {
   String get emailSentSuccessfully => 'تم إرسال البريد الإلكتروني بنجاح';
 
   @override
-  String get sendVerficationEmail => 'إرسال بريد إلكتروني للتحقق';
+  String get verifyNow => 'تحقق الآن';
 
   @override
   String get emailVerificationSent => 'تم إرسال بريد التحقق';
 
   @override
   String get emailVerified => 'تم التحقق من البريد الإلكتروني';
+
+  @override
+  String get addFriend => 'إضافة صديق';
+
+  @override
+  String get done => 'تم';
+
+  @override
+  String get openSettings => 'فتح الإعدادات';
+
+  @override
+  String get grantPermission => 'منح الإذن';
+
+  @override
+  String get verifyContacts => 'التحقق من جهات الاتصال';
+
+  @override
+  String get confirmAddContact => 'تأكيد إضافة جهة الاتصال';
+
+  @override
+  String get checkNumberBeforeConfirmation => 'تحقق من الرقم قبل التأكيد';
+
+  @override
+  String get finish => 'إنهاء';
+
+  @override
+  String get edit => 'تعديل';
+
+  @override
+  String get next => 'التالي';
+
+  @override
+  String get confirm => 'تأكيد';
+
+  @override
+  String get editContact => 'تعديل جهة الاتصال';
+
+  @override
+  String get accountLinking => 'ربط الحساب';
 }

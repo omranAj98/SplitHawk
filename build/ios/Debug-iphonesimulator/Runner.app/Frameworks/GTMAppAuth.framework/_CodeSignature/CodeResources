@@ -21,10 +21,6 @@
 	<dict>
 		<key>GTMAppAuth_Privacy.bundle/Info.plist</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			MTlU3hVSehIt2prAY+CXA8+/dbU=
-			</data>
 			<key>hash2</key>
 			<data>
 			XsXeRE88XbEVU7UANvsM7mO3drjuQL1up+8MSO/k2oI=
@@ -32,10 +28,6 @@
 		</dict>
 		<key>GTMAppAuth_Privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			AL1dh5ctObXBjoBiabSJ86M3HQs=
-			</data>
 			<key>hash2</key>
 			<data>
 			WpuPwM3bECAbtHzCgEs/AExyUUdmItJb/E61TtRuEIQ=

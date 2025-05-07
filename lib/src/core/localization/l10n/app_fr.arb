@@ -316,6 +316,10 @@
   "@notFound": {
     "description": "Record not found message"
   },
+  "contactsPermissionDenied": "Autorisation des contacts refusée",
+  "@contactsPermissionDenied": {
+    "description": "Permission denied message"
+  },
   "permissionDenied": "Autorisation refusée",
   "@permissionDenied": {
     "description": "Permission denied message"
@@ -400,9 +404,9 @@
   "@emailSentSuccessfully": {
     "description": "Email sent successfully"
   },
-  "sendVerficationEmail": "Envoyer un e-mail de vérification",
-  "@sendVerficationEmail": {
-    "description": "Send verification email"
+  "verifyNow": "Vérifier maintenant",
+  "@verifyNow": {
+    "description": "Verify now"
   },
   "emailVerificationSent": "Email de vérification envoyé",
   "@emailVerificationSent": {
@@ -411,5 +415,57 @@
   "emailVerified": "Email vérifié",
   "@emailVerified": {
     "description": "Email verified"
+  },
+  "addFriend": "Ajouter un ami",
+  "@addFriend": {
+    "description": "Add friend"
+  },
+  "done": "Fait",
+  "@done": {
+    "description": "Done button"
+  },
+  "openSettings": "Ouvrir les paramètres",
+  "@openSettings": {
+    "description": "Open settings"
+  },
+  "grantPermission": "Accorder la permission",
+  "@grantPermission": {
+    "description": "Grant permission"
+  },
+  "verifyContacts": "Vérifier les contacts",
+  "@verifyContacts": {
+    "description": "Verify contacts"
+  },
+  "confirmAddContact": "Confirmer l'ajout de contact",
+  "@confirmAddContact": {
+    "description": "Confirm add contact"
+  },
+  "checkNumberBeforeConfirmation": "Vérifier le numéro avant la confirmation",
+  "@checkNumberBeforeConfirmation": {
+    "description": "Check number before confirmation"
+  },
+  "finish": "Terminer",
+  "@finish": {
+    "description": "Finish button"
+  },
+  "edit": "Éditer",
+  "@edit": {
+    "description": "Edit button"
+  },
+  "next": "Suivant",
+  "@next": {
+    "description": "Next button"
+  },
+  "confirm": "Confirmer",
+  "@confirm": {
+    "description": "Confirm button"
+  },
+  "editContact": "Éditer le contact",
+  "@editContact": {
+    "description": "Edit contact info"
+  },
+  "accountLinking": "Liaison de compte",
+  "@accountLinking": {
+    "description": "Account linking"
   }
 }

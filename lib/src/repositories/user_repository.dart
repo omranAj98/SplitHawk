@@ -1,9 +1,8 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as fbAuth;
 
 import 'package:splithawk/src/core/error/custom_error.dart';
-import 'package:splithawk/src/models/user_model/user_model.dart';
+import 'package:splithawk/src/models/user_model.dart';
 
 class UserRepository {
   final FirebaseFirestore firebaseFirestore;
@@ -87,20 +86,16 @@ class UserRepository {
   }
 
   Future<void> updateUser({
-    required fbAuth.UserCredential userCredential,
+    required UserModel userModel,
+    required UserModel updatedUserModel,
   }) async {
     try {
-      if (userCredential.user != null) {
+      if (userModel != null && updatedUserModel != null) {
         await firebaseFirestore
             .collection('users')
-            .doc(userCredential.user!.uid)
-            .update({
-              'name': userCredential.user!.displayName,
-              'photoUrl': userCredential.user!.photoURL!,
-              'email': userCredential.user!.email!,
-              'phoneNumber': userCredential.user!.phoneNumber!,
-              'updatedAt': DateTime.now(),
-            });
+            .doc(userModel.id)
+            .update(updatedUserModel.toMap());
+        print('User updated successfully');
       } else {
         throw CustomError(
           message: 'User credential is null',
@@ -113,6 +108,12 @@ class UserRepository {
         message: e.message ?? 'An error occurred during updating user',
         code: e.code,
         plugin: e.plugin,
+      );
+    } on Exception catch (e) {
+      throw CustomError(
+        message: e.toString(),
+        code: 'user_repository_exception',
+        plugin: 'updateUser',
       );
     }
   }

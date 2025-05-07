@@ -8,20 +8,32 @@ enum AuthStatus {
   authenticated,
   unauthenticated,
   error,
+  linkingSuccess,
+  linkingFailed,
+  unlinkingSuccess,
+  unlinkingFailed,
+  accountConflict,
 }
 
 class AuthState extends Equatable {
   final AuthStatus authStatus;
   final CustomError? error;
   final fbAuth.User? user;
-  const AuthState({required this.authStatus, this.error, this.user});
+  final List<String> signInMethods;
+
+  const AuthState({
+    required this.authStatus,
+    this.error,
+    this.user,
+    this.signInMethods = const [],
+  });
 
   factory AuthState.initial() {
-    return AuthState(authStatus: AuthStatus.initial);
+    return const AuthState(authStatus: AuthStatus.initial);
   }
 
   @override
-  List<Object?> get props => [authStatus, user, error];
+  List<Object?> get props => [authStatus, user, error, signInMethods];
 
   @override
   bool get stringify => true;
@@ -30,11 +42,13 @@ class AuthState extends Equatable {
     AuthStatus? authStatus,
     fbAuth.User? user,
     CustomError? error,
+    List<String>? signInMethods,
   }) {
     return AuthState(
       authStatus: authStatus ?? this.authStatus,
       user: user ?? this.user,
       error: error ?? this.error,
+      signInMethods: signInMethods ?? this.signInMethods,
     );
   }
 }

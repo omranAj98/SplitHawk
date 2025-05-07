@@ -79,6 +79,7 @@ userNotFound/User not found message/User not found/Votre compte n'existe pas/ل�
 networkError/Network error message/Network error/Erreur réseau/خطأ في الشبكة
 tooManyRequests/Too many requests message/Too many requests. Please try again later/Trop de demandes. Veuillez réessayer plus tard/تكررت الطلبات. يرجى المحاولة مرة أخرى لاحقًا
 notFound/Record not found message/Record not found/Enregistrement non trouvé/السجل غير موجود
+contactsPermissionDenied/Permission denied message/Contacts permission denied/Autorisation des contacts refusée/تم رفض إذن جهات الاتصال
 permissionDenied/Permission denied message/Permission denied/Autorisation refusée/تم رفض الإذن
 serviceUnavailable/Service unavailable message/Service unavailable/Service indisponible/الخدمة غير متاحة
 accountInfo/Account info section/Account Information/Informations du compte/معلومات الحساب
@@ -101,6 +102,19 @@ shareApp/Share app/Share the app/Partager l'application/مشاركة التطب�
 signInCanceled/Sign in canceled/Sign In Canceled/Connexion annulée/تسجيل الدخول التغى
 signInFailed/Sign in failed/Sign In Failed/Échec de la connexion/فشل تسجيل الدخول
 emailSentSuccessfully/Email sent successfully/Email Sent Successfully/Email envoyé avec succès/تم إرسال البريد الإلكتروني بنجاح
-sendVerficationEmail/Send verification email/Send Verification Email/Envoyer un e-mail de vérification/إرسال بريد إلكتروني للتحقق
+verifyNow/Verify now/Verify Now/Vérifier maintenant/تحقق الآن
 emailVerificationSent/Email verification sent/Email Verification Sent/Email de vérification envoyé/تم إرسال بريد التحقق
 emailVerified/Email verified/Email Verified/Email vérifié/تم التحقق من البريد الإلكتروني
+addFriend/Add friend/Add Friend/Ajouter un ami/إضافة صديق
+done/Done button/Done/Fait/تم
+openSettings/Open settings/Open Settings/Ouvrir les paramètres/فتح الإعدادات
+grantPermission/Grant permission/Grant Permission/Accorder la permission/منح الإذن
+verifyContacts/Verify contacts/Verify Contacts/Vérifier les contacts/التحقق من جهات الاتصال
+confirmAddContact/Confirm add contact/Confirm Add Contact/Confirmer l'ajout de contact/تأكيد إضافة جهة الاتصال
+checkNumberBeforeConfirmation/Check number before confirmation/Check number before confirmation/Vérifier le numéro avant la confirmation/تحقق من الرقم قبل التأكيد
+finish/Finish button/Finish/Terminer/إنهاء
+edit/Edit button/Edit/Éditer/تعديل
+next/Next button/Next/Suivant/التالي
+confirm/Confirm button/Confirm/Confirmer/تأكيد
+editContact/Edit contact info/Edit Contact/Éditer le contact/تعديل جهة الاتصال
+accountLinking/Account linking/Account Linking/Liaison de compte/ربط الحساب

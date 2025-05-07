@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart' as fbAuth;
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:splithawk/src/core/error/custom_error.dart';
-import 'package:splithawk/src/models/user_model/user_model.dart';
+import 'package:splithawk/src/models/user_model.dart';
 import 'package:splithawk/src/repositories/auth_repository.dart';
 import 'package:splithawk/src/repositories/user_repository.dart';
 
@@ -27,17 +27,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     on<AuthChangeEvent>((event, emit) {
       if (event.user != null) {
-        print("user has been changed");
-        bool isVerified = event.user!.emailVerified ?? false;
-        if (isVerified) userRepository.verifyEmail(event.user!.email!);
-        print("user verified:  $isVerified");
+        if (event.user != state.user) {
+          print("user has been changed");
+          bool isVerified = event.user!.emailVerified ? true : false;
+          if (isVerified) userRepository.verifyEmail(event.user!.email!);
+          print("user verified:  $isVerified");
 
-        emit(
-          state.copyWith(
-            authStatus: AuthStatus.authenticated,
-            user: event.user,
-          ),
-        );
+          emit(
+            state.copyWith(
+              authStatus: AuthStatus.authenticated,
+              user: event.user,
+            ),
+          );
+        }
       } else {
         emit(
           state.copyWith(authStatus: AuthStatus.unauthenticated, user: null),
@@ -64,7 +66,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
               email: event.email,
               phoneNo: '',
               signupMethod: 'email and password',
-              photoUrl: null,
+              photoUrl: '',
               isActive: true,
               isDeleted: false,
               isBlocked: false,
@@ -73,7 +75,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
               isEmailVerified: false,
               createdAt: DateTime.now(),
               updatedAt: DateTime.now(),
-              lastActivity: null,
+              lastActivity: DateTime(1970, 1, 1),
               recentLogin: DateTime.now(),
               totalTransactions: 0,
               totalFriends: 0,
@@ -138,7 +140,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             fullName: user.displayName ?? user.email!,
             phoneNo: user.phoneNumber ?? '',
             signupMethod: 'google',
-            photoUrl: user.photoURL,
+            photoUrl: user.photoURL.toString(),
             isActive: true,
             isDeleted: false,
             isBlocked: false,
@@ -147,7 +149,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             isEmailVerified: true,
             createdAt: DateTime.now(),
             updatedAt: DateTime.now(),
-            lastActivity: null,
+            lastActivity: DateTime(1970, 1, 1),
             recentLogin: DateTime.now(),
             totalTransactions: 0,
             totalFriends: 0,
@@ -198,6 +200,236 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       } on CustomError catch (e) {
         emit(
           state.copyWith(authStatus: AuthStatus.error, user: null, error: e),
+        );
+      }
+    });
+
+    // Account linking event handlers
+    on<AuthLinkWithGoogleEvent>((event, emit) async {
+      emit(state.copyWith(authStatus: AuthStatus.loading));
+      try {
+        // Check if user is authenticated
+        if (state.user == null) {
+          throw CustomError(
+            message: 'You must be logged in to link accounts',
+            code: 'not-authenticated',
+            plugin: 'auth_bloc',
+          );
+        }
+
+        // Check if Google is already linked
+        final providers = authRepository.getLinkedProviders();
+        if (providers.contains('google.com')) {
+          emit(
+            state.copyWith(
+              authStatus: AuthStatus.linkingFailed,
+              error: CustomError(
+                message: 'Google account is already linked',
+                code: 'already-linked',
+                plugin: 'auth_bloc',
+              ),
+            ),
+          );
+          return;
+        }
+
+        // Link with Google
+        final userCredential = await authRepository.linkWithGoogle();
+
+        // Update user model if needed
+        if (userCredential.user != null) {
+          // Update user in Firestore if needed
+          final userModel = await userRepository.getSelfUser();
+          final updatedUserModel = userModel!.copyWith(
+            signupMethod: 'google,email and password',
+          );
+          await userRepository.updateUser(
+            updatedUserModel: updatedUserModel,
+            userModel: userModel,
+          );
+        }
+
+        emit(
+          state.copyWith(
+            authStatus: AuthStatus.linkingSuccess,
+            user: userCredential.user,
+          ),
+        );
+      } on CustomError catch (e) {
+        // Special handling for account conflicts
+        if (e.code == 'credential-already-in-use' ||
+            e.code == 'email-already-in-use') {
+          emit(
+            state.copyWith(authStatus: AuthStatus.accountConflict, error: e),
+          );
+        } else {
+          emit(state.copyWith(authStatus: AuthStatus.linkingFailed, error: e));
+        }
+      } catch (e) {
+        emit(
+          state.copyWith(
+            authStatus: AuthStatus.linkingFailed,
+            error: CustomError(
+              message: 'An unexpected error occurred: ${e.toString()}',
+              code: 'unknown',
+              plugin: 'auth_bloc',
+            ),
+          ),
+        );
+      }
+    });
+
+    on<AuthLinkWithEmailEvent>((event, emit) async {
+      emit(state.copyWith(authStatus: AuthStatus.loading));
+      try {
+        if (state.user == null) {
+          emit(
+            state.copyWith(
+              authStatus: AuthStatus.linkingFailed,
+              error: CustomError(
+                message: 'You must be logged in to link accounts',
+                code: 'not-authenticated',
+                plugin: 'auth_bloc',
+              ),
+            ),
+          );
+        }
+
+        // Check if email/password is already linked
+        final providers = authRepository.getLinkedProviders();
+        if (providers.contains('password')) {
+          emit(
+            state.copyWith(
+              authStatus: AuthStatus.linkingFailed,
+              error: CustomError(
+                message: 'Email/password is already linked',
+                code: 'already-linked',
+                plugin: 'auth_bloc',
+              ),
+            ),
+          );
+          return;
+        }
+
+        // Link with email/password
+        final userCredential = await authRepository.linkWithEmailAndPassword(
+          email: state.user!.email ?? '',
+          password: event.password,
+        );
+
+        // Update user model if needed
+        if (userCredential.user != null) {
+          // Update user in Firestore if needed
+          final userModel = await userRepository.getSelfUser();
+          final updatedUserModel = userModel!.copyWith(
+            signupMethod: 'google,email and password',
+          );
+          await userRepository.updateUser(
+            updatedUserModel: updatedUserModel,
+            userModel: userModel,
+          );
+        }
+
+        emit(
+          state.copyWith(
+            authStatus: AuthStatus.linkingSuccess,
+            user: userCredential.user,
+          ),
+        );
+      } on CustomError catch (e) {
+        // Special handling for account conflicts
+        if (e.code == 'credential-already-in-use' ||
+            e.code == 'email-already-in-use') {
+          emit(
+            state.copyWith(authStatus: AuthStatus.accountConflict, error: e),
+          );
+        } else {
+          emit(state.copyWith(authStatus: AuthStatus.linkingFailed, error: e));
+        }
+      } catch (e) {
+        emit(
+          state.copyWith(
+            authStatus: AuthStatus.linkingFailed,
+            error: CustomError(
+              message: 'An unexpected error occurred: ${e.toString()}',
+              code: 'unknown',
+              plugin: 'auth_bloc',
+            ),
+          ),
+        );
+      }
+    });
+
+    on<AuthUnlinkProviderEvent>((event, emit) async {
+      emit(state.copyWith(authStatus: AuthStatus.loading));
+      try {
+        // Check if user is authenticated
+        if (state.user == null) {
+          throw CustomError(
+            message: 'You must be logged in to unlink accounts',
+            code: 'not-authenticated',
+            plugin: 'auth_bloc',
+          );
+        }
+
+        // Check available providers
+        final providers = authRepository.getLinkedProviders();
+        if (providers.length <= 1) {
+          emit(
+            state.copyWith(
+              authStatus: AuthStatus.unlinkingFailed,
+              error: CustomError(
+                message: 'Cannot remove the only authentication method',
+                code: 'single-provider',
+                plugin: 'auth_bloc',
+              ),
+            ),
+          );
+          return;
+        }
+
+        // Unlink provider
+        final user = await authRepository.unlinkProvider(event.providerId);
+
+        // Update user model if needed
+        if (user != null) {
+          final remainingProviders = authRepository.getLinkedProviders();
+          String signupMethod = 'multiple';
+
+          // If only one provider remains, update the signup method accordingly
+          if (remainingProviders.length == 1) {
+            if (remainingProviders.contains('google.com')) {
+              signupMethod = 'google';
+            } else if (remainingProviders.contains('password')) {
+              signupMethod = 'email and password';
+            }
+          }
+
+          final userModel = await userRepository.getSelfUser();
+          final updatedUserModel = userModel!.copyWith(
+            signupMethod: signupMethod,
+          );
+          await userRepository.updateUser(
+            updatedUserModel: updatedUserModel,
+            userModel: userModel,
+          );
+        }
+
+        emit(
+          state.copyWith(authStatus: AuthStatus.unlinkingSuccess, user: user),
+        );
+      } on CustomError catch (e) {
+        emit(state.copyWith(authStatus: AuthStatus.unlinkingFailed, error: e));
+      } catch (e) {
+        emit(
+          state.copyWith(
+            authStatus: AuthStatus.unlinkingFailed,
+            error: CustomError(
+              message: 'An unexpected error occurred: ${e.toString()}',
+              code: 'unknown',
+              plugin: 'auth_bloc',
+            ),
+          ),
         );
       }
     });

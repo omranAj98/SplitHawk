@@ -246,6 +246,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get notFound => 'Enregistrement non trouvé';
 
   @override
+  String get contactsPermissionDenied => 'Autorisation des contacts refusée';
+
+  @override
   String get permissionDenied => 'Autorisation refusée';
 
   @override
@@ -309,11 +312,50 @@ class AppLocalizationsFr extends AppLocalizations {
   String get emailSentSuccessfully => 'Email envoyé avec succès';
 
   @override
-  String get sendVerficationEmail => 'Envoyer un e-mail de vérification';
+  String get verifyNow => 'Vérifier maintenant';
 
   @override
   String get emailVerificationSent => 'Email de vérification envoyé';
 
   @override
   String get emailVerified => 'Email vérifié';
+
+  @override
+  String get addFriend => 'Ajouter un ami';
+
+  @override
+  String get done => 'Fait';
+
+  @override
+  String get openSettings => 'Ouvrir les paramètres';
+
+  @override
+  String get grantPermission => 'Accorder la permission';
+
+  @override
+  String get verifyContacts => 'Vérifier les contacts';
+
+  @override
+  String get confirmAddContact => 'Confirmer l\'ajout de contact';
+
+  @override
+  String get checkNumberBeforeConfirmation => 'Vérifier le numéro avant la confirmation';
+
+  @override
+  String get finish => 'Terminer';
+
+  @override
+  String get edit => 'Éditer';
+
+  @override
+  String get next => 'Suivant';
+
+  @override
+  String get confirm => 'Confirmer';
+
+  @override
+  String get editContact => 'Éditer le contact';
+
+  @override
+  String get accountLinking => 'Liaison de compte';
 }

@@ -574,6 +574,12 @@ abstract class AppLocalizations {
   /// Permission denied message
   ///
   /// In en, this message translates to:
+  /// **'Contacts permission denied'**
+  String get contactsPermissionDenied;
+
+  /// Permission denied message
+  ///
+  /// In en, this message translates to:
   /// **'Permission denied'**
   String get permissionDenied;
 
@@ -697,11 +703,11 @@ abstract class AppLocalizations {
   /// **'Email Sent Successfully'**
   String get emailSentSuccessfully;
 
-  /// Send verification email
+  /// Verify now
   ///
   /// In en, this message translates to:
-  /// **'Send Verification Email'**
-  String get sendVerficationEmail;
+  /// **'Verify Now'**
+  String get verifyNow;
 
   /// Email verification sent
   ///
@@ -714,6 +720,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Email Verified'**
   String get emailVerified;
+
+  /// Add friend
+  ///
+  /// In en, this message translates to:
+  /// **'Add Friend'**
+  String get addFriend;
+
+  /// Done button
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get done;
+
+  /// Open settings
+  ///
+  /// In en, this message translates to:
+  /// **'Open Settings'**
+  String get openSettings;
+
+  /// Grant permission
+  ///
+  /// In en, this message translates to:
+  /// **'Grant Permission'**
+  String get grantPermission;
+
+  /// Verify contacts
+  ///
+  /// In en, this message translates to:
+  /// **'Verify Contacts'**
+  String get verifyContacts;
+
+  /// Confirm add contact
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Add Contact'**
+  String get confirmAddContact;
+
+  /// Check number before confirmation
+  ///
+  /// In en, this message translates to:
+  /// **'Check number before confirmation'**
+  String get checkNumberBeforeConfirmation;
+
+  /// Finish button
+  ///
+  /// In en, this message translates to:
+  /// **'Finish'**
+  String get finish;
+
+  /// Edit button
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
+  /// Next button
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// Confirm button
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// Edit contact info
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Contact'**
+  String get editContact;
+
+  /// Account linking
+  ///
+  /// In en, this message translates to:
+  /// **'Account Linking'**
+  String get accountLinking;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

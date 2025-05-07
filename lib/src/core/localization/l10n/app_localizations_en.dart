@@ -246,6 +246,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notFound => 'Record not found';
 
   @override
+  String get contactsPermissionDenied => 'Contacts permission denied';
+
+  @override
   String get permissionDenied => 'Permission denied';
 
   @override
@@ -309,11 +312,50 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emailSentSuccessfully => 'Email Sent Successfully';
 
   @override
-  String get sendVerficationEmail => 'Send Verification Email';
+  String get verifyNow => 'Verify Now';
 
   @override
   String get emailVerificationSent => 'Email Verification Sent';
 
   @override
   String get emailVerified => 'Email Verified';
+
+  @override
+  String get addFriend => 'Add Friend';
+
+  @override
+  String get done => 'Done';
+
+  @override
+  String get openSettings => 'Open Settings';
+
+  @override
+  String get grantPermission => 'Grant Permission';
+
+  @override
+  String get verifyContacts => 'Verify Contacts';
+
+  @override
+  String get confirmAddContact => 'Confirm Add Contact';
+
+  @override
+  String get checkNumberBeforeConfirmation => 'Check number before confirmation';
+
+  @override
+  String get finish => 'Finish';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get next => 'Next';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get editContact => 'Edit Contact';
+
+  @override
+  String get accountLinking => 'Account Linking';
 }

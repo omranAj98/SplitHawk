@@ -54,6 +54,28 @@ class AuthReloadVerificationEvent extends AuthEvent {
   List<Object?> get props => [];
 }
 
+// Account linking events
+class AuthLinkWithGoogleEvent extends AuthEvent {
+  const AuthLinkWithGoogleEvent();
+  @override
+  List<Object?> get props => [];
+}
+
+class AuthLinkWithEmailEvent extends AuthEvent {
+  final String email;
+  final String password;
+  const AuthLinkWithEmailEvent({required this.email, required this.password});
+  @override
+  List<Object?> get props => [email, password];
+}
+
+class AuthUnlinkProviderEvent extends AuthEvent {
+  final String providerId;
+  const AuthUnlinkProviderEvent({required this.providerId});
+  @override
+  List<Object?> get props => [providerId];
+}
+
 // class AuthSignInWithPhoneEvent extends AuthEvent {
 //   final String phoneNumber;
 //   final fbAuth.RecaptchaVerifier recaptchaVerifier;

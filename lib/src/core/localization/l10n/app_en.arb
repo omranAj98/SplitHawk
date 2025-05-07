@@ -316,6 +316,10 @@
   "@notFound": {
     "description": "Record not found message"
   },
+  "contactsPermissionDenied": "Contacts permission denied",
+  "@contactsPermissionDenied": {
+    "description": "Permission denied message"
+  },
   "permissionDenied": "Permission denied",
   "@permissionDenied": {
     "description": "Permission denied message"
@@ -400,9 +404,9 @@
   "@emailSentSuccessfully": {
     "description": "Email sent successfully"
   },
-  "sendVerficationEmail": "Send Verification Email",
-  "@sendVerficationEmail": {
-    "description": "Send verification email"
+  "verifyNow": "Verify Now",
+  "@verifyNow": {
+    "description": "Verify now"
   },
   "emailVerificationSent": "Email Verification Sent",
   "@emailVerificationSent": {
@@ -411,5 +415,57 @@
   "emailVerified": "Email Verified",
   "@emailVerified": {
     "description": "Email verified"
+  },
+  "addFriend": "Add Friend",
+  "@addFriend": {
+    "description": "Add friend"
+  },
+  "done": "Done",
+  "@done": {
+    "description": "Done button"
+  },
+  "openSettings": "Open Settings",
+  "@openSettings": {
+    "description": "Open settings"
+  },
+  "grantPermission": "Grant Permission",
+  "@grantPermission": {
+    "description": "Grant permission"
+  },
+  "verifyContacts": "Verify Contacts",
+  "@verifyContacts": {
+    "description": "Verify contacts"
+  },
+  "confirmAddContact": "Confirm Add Contact",
+  "@confirmAddContact": {
+    "description": "Confirm add contact"
+  },
+  "checkNumberBeforeConfirmation": "Check number before confirmation",
+  "@checkNumberBeforeConfirmation": {
+    "description": "Check number before confirmation"
+  },
+  "finish": "Finish",
+  "@finish": {
+    "description": "Finish button"
+  },
+  "edit": "Edit",
+  "@edit": {
+    "description": "Edit button"
+  },
+  "next": "Next",
+  "@next": {
+    "description": "Next button"
+  },
+  "confirm": "Confirm",
+  "@confirm": {
+    "description": "Confirm button"
+  },
+  "editContact": "Edit Contact",
+  "@editContact": {
+    "description": "Edit contact info"
+  },
+  "accountLinking": "Account Linking",
+  "@accountLinking": {
+    "description": "Account linking"
   }
 }

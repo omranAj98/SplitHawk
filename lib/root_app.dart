@@ -34,14 +34,11 @@ class RootApp extends StatelessWidget {
                       (context) =>
                           LocalizationCubit(systemLocale: systemLocale),
                 ),
-                BlocProvider<AuthBloc>(
-                  create:
-                      (context) => AuthBloc(
-                        authRepository: locator<AuthRepository>(),
-                        userRepository: locator<UserRepository>(),
-                      ),
+                BlocProvider<AuthBloc>.value(
+                  value: locator<AuthBloc>(),
                 ),
               ],
+              
               child: BlocListener<LocalizationCubit, Locale>(
                 listener: (context, state) {
                   updateFirebaseAuthLanguage(
@@ -51,6 +48,9 @@ class RootApp extends StatelessWidget {
                 
                 child: BlocBuilder<ThemeCubit, ThemeState>(
                   builder: (context, state) {
+                    updateFirebaseAuthLanguage(
+                    context.read<LocalizationCubit>().state.languageCode,
+                  );
                     return MaterialApp.router(
                       localizationsDelegates: [
                         AppLocalizations.delegate,

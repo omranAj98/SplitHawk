@@ -1,27 +1,22 @@
 library;
 
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:splithawk/firebase_options.dart';
-import 'package:splithawk/src/core/services/service_locator.dart';
 
 class DependencyInjection {
   static Future<void> init() async {
     WidgetsFlutterBinding.ensureInitialized();
     HydratedBloc.storage = await HydratedStorage.build(
-      storageDirectory:
-          kIsWeb
-              ? HydratedStorageDirectory.web
-              : HydratedStorageDirectory(
-                (await getApplicationDocumentsDirectory()).path,
-              ),
+      storageDirectory: HydratedStorageDirectory(
+        (await getApplicationDocumentsDirectory()).path,
+      ),
     );
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-    setupLocator();
+    
   }
 }

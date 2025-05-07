@@ -26,11 +26,11 @@
 		</data>
 		<key>Modules/GTMAppAuth.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		HtT960hHLe/SDz+DPWcysLkYIuY=
+		SrTxQ9p/r9bolMpfdyO3FkcyzV4=
 		</data>
 		<key>Modules/GTMAppAuth.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		HSmK7TYHm/yt04fE5aQH/nMbw70=
+		h5EilT4lq8TL5LoTnc84KDTIyIU=
 		</data>
 		<key>Modules/GTMAppAuth.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -42,7 +42,7 @@
 		</data>
 		<key>Modules/GTMAppAuth.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		PvFn4Tsd86QhHP0nN6dA/dYnLd8=
+		1APcHIFWdymlnAs9y9keietjMO0=
 		</data>
 		<key>Modules/GTMAppAuth.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Modules/GTMAppAuth.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		QMZGz4gb0+BztOgGujqpNimagcM=
+		KNsYwugeL+Uv4+dIiloK2z4CAN4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -111,22 +111,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			HtT960hHLe/SDz+DPWcysLkYIuY=
+			SrTxQ9p/r9bolMpfdyO3FkcyzV4=
 			</data>
 			<key>hash2</key>
 			<data>
-			0+yQtOQlfcDQfu44/rxBq4iB5IT35HYyLlwFTGQNnE0=
+			m/faAa7MvS2KgA1iZIkOyp9ylp1l/ERTTWao4LrbZPY=
 			</data>
 		</dict>
 		<key>Modules/GTMAppAuth.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			HSmK7TYHm/yt04fE5aQH/nMbw70=
+			h5EilT4lq8TL5LoTnc84KDTIyIU=
 			</data>
 			<key>hash2</key>
 			<data>
-			nsIKTYPsWTCKjL0J1q5T4gG5v/IwFvcZMZmfxX/+Kz4=
+			zziXPw70xR7oi/V2yU52vzYLs7ZdliIsipcIgXhNb7M=
 			</data>
 		</dict>
 		<key>Modules/GTMAppAuth.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -155,11 +155,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			PvFn4Tsd86QhHP0nN6dA/dYnLd8=
+			1APcHIFWdymlnAs9y9keietjMO0=
 			</data>
 			<key>hash2</key>
 			<data>
-			oYxNTzLJ13ZNkc+WwtA3GblgD9fEMKc0BaWAAL2F/N8=
+			cct/+rs7nV/H5BLdlEIgGNIypeuCMibLad1SE/V/yhY=
 			</data>
 		</dict>
 		<key>Modules/GTMAppAuth.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -188,11 +188,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			QMZGz4gb0+BztOgGujqpNimagcM=
+			KNsYwugeL+Uv4+dIiloK2z4CAN4=
 			</data>
 			<key>hash2</key>
 			<data>
-			51nvNGtlaH6VFEkNGcsYXOfskdcBltH6Vb2nL4pDnx0=
+			GiUwUAATKR12b6r0imaxPISB90wC0qKcsWD30w9pni8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

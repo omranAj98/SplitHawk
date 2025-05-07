@@ -316,6 +316,10 @@
   "@notFound": {
     "description": "Record not found message"
   },
+  "contactsPermissionDenied": "تم رفض إذن جهات الاتصال",
+  "@contactsPermissionDenied": {
+    "description": "Permission denied message"
+  },
   "permissionDenied": "تم رفض الإذن",
   "@permissionDenied": {
     "description": "Permission denied message"
@@ -400,9 +404,9 @@
   "@emailSentSuccessfully": {
     "description": "Email sent successfully"
   },
-  "sendVerficationEmail": "إرسال بريد إلكتروني للتحقق",
-  "@sendVerficationEmail": {
-    "description": "Send verification email"
+  "verifyNow": "تحقق الآن",
+  "@verifyNow": {
+    "description": "Verify now"
   },
   "emailVerificationSent": "تم إرسال بريد التحقق",
   "@emailVerificationSent": {
@@ -411,5 +415,57 @@
   "emailVerified": "تم التحقق من البريد الإلكتروني",
   "@emailVerified": {
     "description": "Email verified"
+  },
+  "addFriend": "إضافة صديق",
+  "@addFriend": {
+    "description": "Add friend"
+  },
+  "done": "تم",
+  "@done": {
+    "description": "Done button"
+  },
+  "openSettings": "فتح الإعدادات",
+  "@openSettings": {
+    "description": "Open settings"
+  },
+  "grantPermission": "منح الإذن",
+  "@grantPermission": {
+    "description": "Grant permission"
+  },
+  "verifyContacts": "التحقق من جهات الاتصال",
+  "@verifyContacts": {
+    "description": "Verify contacts"
+  },
+  "confirmAddContact": "تأكيد إضافة جهة الاتصال",
+  "@confirmAddContact": {
+    "description": "Confirm add contact"
+  },
+  "checkNumberBeforeConfirmation": "تحقق من الرقم قبل التأكيد",
+  "@checkNumberBeforeConfirmation": {
+    "description": "Check number before confirmation"
+  },
+  "finish": "إنهاء",
+  "@finish": {
+    "description": "Finish button"
+  },
+  "edit": "تعديل",
+  "@edit": {
+    "description": "Edit button"
+  },
+  "next": "التالي",
+  "@next": {
+    "description": "Next button"
+  },
+  "confirm": "تأكيد",
+  "@confirm": {
+    "description": "Confirm button"
+  },
+  "editContact": "تعديل جهة الاتصال",
+  "@editContact": {
+    "description": "Edit contact info"
+  },
+  "accountLinking": "ربط الحساب",
+  "@accountLinking": {
+    "description": "Account linking"
   }
 }

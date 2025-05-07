@@ -47,27 +47,31 @@
 	<true/>
 	<key>NSContactsUsageDescription</key>
 	<string>To add contacts as friend by phone number</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>This app requires access to the local network for debugging and development purposes.</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_dartobservatory._tcp</string>
+	</array>
 	<key>GIDClientID</key>
 	<string>890392750705-taiitb9vgd8sv2qf1nisfbihetul21u0.apps.googleusercontent.com</string>
 	<key>CFBundleURLTypes</key>
 	<array>
-	<dict>
-		<key>CFBundleTypeRole</key>
-		<string>Editor</string>
-		<key>CFBundleURLSchemes</key>
-		<array>
-			<!-- TODO Replace this value: -->
-			<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
-			<string>com.googleusercontent.apps.890392750705-taiitb9vgd8sv2qf1nisfbihetul21u0</string>
-		</array>
-	</dict>
-</array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.890392750705-taiitb9vgd8sv2qf1nisfbihetul21u0</string>
+			</array>
+		</dict>
+	</array>
 	<key>LSApplicationQueriesSchemes</key>
-<array>
-  <string>mailto</string>
-  <string>http</string>
-</array>
+	<array>
+		<string>mailto</string>
+		<string>http</string>
+	</array>
 </dict>
 </plist>
