@@ -13,14 +13,14 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
-    bool _hasNavigated = false; // Flag to prevent redundant navigation
+    bool hasNavigated = false; // Flag to prevent redundant navigation
 
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) async {
         debugPrint("Splash screen Listener called");
         Future.delayed(const Duration(seconds: 2), () {
-          if (_hasNavigated == false) {
-            _hasNavigated = true;
+          if (hasNavigated == false) {
+            hasNavigated = true;
 
             if (state.authStatus == AuthStatus.authenticated) {
               debugPrint("Navigating to the home screen from splash screen");

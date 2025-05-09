@@ -1,6 +1,5 @@
 library;
 
-import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -16,7 +15,6 @@ import 'package:splithawk/src/views/reset_password_screen.dart';
 import 'package:splithawk/src/views/signin_page.dart';
 import 'package:splithawk/src/views/signup/signup_screen.dart';
 import 'package:splithawk/src/views/splash_page.dart';
-import 'package:splithawk/src/repositories/contacts_repository.dart';
 import 'package:splithawk/src/views/account/account_linking/account_linking_screen.dart';
 import 'routes.dart';
 

@@ -51,10 +51,10 @@
 	<string>This app requires access to the local network for debugging and development purposes.</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
-	<key>NSBonjourServices</key>
+	<!-- <key>NSBonjourServices</key>
 	<array>
 		<string>_dartobservatory._tcp</string>
-	</array>
+	</array> -->
 	<key>GIDClientID</key>
 	<string>890392750705-taiitb9vgd8sv2qf1nisfbihetul21u0.apps.googleusercontent.com</string>
 	<key>CFBundleURLTypes</key>

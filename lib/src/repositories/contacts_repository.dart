@@ -45,12 +45,12 @@ class ContactsRepository {
                 contact.emails?.map((item) => item.value ?? '').toList() ??
                 [], // Handle null values
             avatar: contact.avatar, // Avatar can remain nullable
-            initials: contact.initials() ?? '', // Provide a fallback if null
+            chosenPhone: contact.phones?.first.value ?? '', // Provide a fallback
           ),
         );
       }
       return contactModelList;
-    } catch (e) {
+    } on Exception catch (e) {
       throw CustomError(
         message: e.toString(),
         code: 'fetchContacts_error',

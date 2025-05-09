@@ -5,8 +5,6 @@ import 'package:splithawk/src/core/localization/l10n/app_localizations.dart';
 import 'package:splithawk/src/core/services/service_locator.dart';
 import 'package:splithawk/src/core/theme/app_theme.dart';
 import 'package:splithawk/src/core/theme/cubit/theme_cubit.dart';
-import 'package:splithawk/src/repositories/auth_repository.dart';
-import 'package:splithawk/src/repositories/user_repository.dart';
 
 import 'src/core/config/config.dart';
 import 'package:flutter/material.dart';
@@ -29,28 +27,26 @@ class RootApp extends StatelessWidget {
             child: MultiBlocProvider(
               providers: [
                 BlocProvider(create: (context) => ThemeCubit()),
-                BlocProvider(
+                BlocProvider<LocalizationCubit>(
                   create:
                       (context) =>
                           LocalizationCubit(systemLocale: systemLocale),
                 ),
-                BlocProvider<AuthBloc>.value(
-                  value: locator<AuthBloc>(),
-                ),
+                BlocProvider<AuthBloc>.value(value: locator<AuthBloc>()),
               ],
-              
+
               child: BlocListener<LocalizationCubit, Locale>(
                 listener: (context, state) {
                   updateFirebaseAuthLanguage(
                     context.read<LocalizationCubit>().state.languageCode,
                   );
                 },
-                
+
                 child: BlocBuilder<ThemeCubit, ThemeState>(
                   builder: (context, state) {
                     updateFirebaseAuthLanguage(
-                    context.read<LocalizationCubit>().state.languageCode,
-                  );
+                      context.read<LocalizationCubit>().state.languageCode,
+                    );
                     return MaterialApp.router(
                       localizationsDelegates: [
                         AppLocalizations.delegate,

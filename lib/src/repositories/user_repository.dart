@@ -90,7 +90,7 @@ class UserRepository {
     required UserModel updatedUserModel,
   }) async {
     try {
-      if (userModel != null && updatedUserModel != null) {
+      if (updatedUserModel != null) {
         await firebaseFirestore
             .collection('users')
             .doc(userModel.id)

@@ -189,34 +189,68 @@ class AddFriendScreen extends StatelessWidget {
                                   },
                                 ),
                                 // AddNewContact(),
-                                BlocBuilder<ContactCubit, ContactState>(
-                                  builder: (context, state) {
-                                    return ContactList(
-                                      contactsList:
-                                          searchText.text.isNotEmpty
-                                              ? state.filteredContacts
-                                              : state.contactsList,
-                                    );
-                                  },
+                                Expanded(
+                                  child:
+                                      BlocBuilder<ContactCubit, ContactState>(
+                                        builder: (context, state) {
+                                          return ContactList(
+                                            contactsList:
+                                                searchText.text.isNotEmpty
+                                                    ? state.filteredContacts
+                                                    : state.contactsList,
+                                          );
+                                        },
+                                      ),
                                 ),
                               ],
                             )
-                            : Shimmer.fromColors(
+                            : state.requestStatus == RequestStatus.loading
+                            ? Shimmer.fromColors(
                               baseColor: Colors.grey[300]!,
                               highlightColor: Colors.grey[100]!,
-
-                              child: Column(
-                                children: [
-                                  Container(
-                                    height: screenHeight * 0.1,
-                                    width: screenWidth * 0.85,
-                                    decoration: shimmerBoxDecoration(
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: screenWidth * 0.05,
+                                  vertical: screenHeight * 0.01,
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    _buildShimmerItem(
+                                      screenWidth,
+                                      screenHeight,
                                       colorScheme,
                                     ),
-                                  ),
-                                ],
+                                    SizedBox(height: screenHeight * 0.02),
+                                    _buildShimmerItem(
+                                      screenWidth,
+                                      screenHeight,
+                                      colorScheme,
+                                    ),
+                                    SizedBox(height: screenHeight * 0.02),
+                                    _buildShimmerItem(
+                                      screenWidth,
+                                      screenHeight,
+                                      colorScheme,
+                                    ),
+                                    SizedBox(height: screenHeight * 0.02),
+                                    _buildShimmerItem(
+                                      screenWidth,
+                                      screenHeight,
+                                      colorScheme,
+                                    ),
+                                    SizedBox(height: screenHeight * 0.02),
+                                    _buildShimmerItem(
+                                      screenWidth,
+                                      screenHeight,
+                                      colorScheme,
+                                    ),
+                                  ],
+                                ),
                               ),
-                            );
+                            )
+                            : SizedBox.shrink();
                       },
                     );
                   }
@@ -230,6 +264,18 @@ class AddFriendScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildShimmerItem(
+    double screenWidth,
+    double screenHeight,
+    ColorScheme colorScheme,
+  ) {
+    return Container(
+      width: screenWidth * 0.9,
+      height: screenHeight * 0.05,
+      decoration: shimmerBoxDecoration(colorScheme),
     );
   }
 }

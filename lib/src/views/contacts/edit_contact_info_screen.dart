@@ -8,18 +8,36 @@ import 'package:splithawk/src/core/localization/l10n/app_localizations.dart';
 import 'package:splithawk/src/core/routes/routes.dart';
 import 'package:splithawk/src/models/contact_model.dart';
 
-class EditContactInfoScreen extends StatelessWidget {
+class EditContactInfoScreen extends StatefulWidget {
   final ContactModel contact;
   EditContactInfoScreen({super.key, required this.contact});
+
+  @override
+  State<EditContactInfoScreen> createState() => _EditContactInfoScreenState();
+}
+
+class _EditContactInfoScreenState extends State<EditContactInfoScreen> {
+  int selectedIndexPhoneNumber = 0;
+  String selectedPhoneNumber = "";
+  late ContactModel editedContact = widget.contact;
+  bool _loaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    editedContact = widget.contact;
+    // Initialize selectedPhoneNumber with the first phone number if available
+    if (widget.contact.phones != null && widget.contact.phones!.isNotEmpty) {
+      selectedPhoneNumber = context.read<ContactCubit>().extractPhoneNumber(
+        widget.contact.phones![0]!,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
-
-    int selectedIndexPhoneNumber = 0;
-    String selectedPhoneNumber = "";
-    ContactModel editedContact = contact;
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
@@ -32,14 +50,12 @@ class EditContactInfoScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
-
                   children: [
                     TextButton(
                       onPressed: () => context.pop(),
                       child: Icon(Icons.arrow_back_ios_new_rounded),
                     ),
                     SizedBox(
-                      // width: 200,
                       child: Text(
                         AppLocalizations.of(context)!.editContact,
                         style: TextStyle(fontSize: 16.sp),
@@ -47,12 +63,14 @@ class EditContactInfoScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      // width: 120,
                       child: TextButton(
                         onPressed: () {
-                          context.read<ContactCubit>().editContact(
-                            contact: contact,
-                            editedContact: editedContact,
+                          ContactModel newdEditedContact = editedContact
+                              .copyWith(chosenPhone: selectedPhoneNumber);
+
+                          context.read<ContactCubit>().editSelectedContact(
+                            contact: widget.contact,
+                            newEditedContact: newdEditedContact,
                           );
                           context.goNamed(AppRoutesName.verifyFriendInfo);
                         },
@@ -75,15 +93,14 @@ class EditContactInfoScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFormField(
-              initialValue: contact.displayName,
+              initialValue: widget.contact.displayName,
               decoration: InputDecoration(
                 border: UnderlineInputBorder(),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    // color: AppMaterialColors.primaryMaterial.shade200,
-                  ), // Change the color to your desired color
-                ),
+                focusedBorder: UnderlineInputBorder(borderSide: BorderSide()),
               ),
+              onChanged: (value) {
+                editedContact = editedContact.copyWith(displayName: value);
+              },
             ),
             SizedBox(height: AppSize.paddingSizeL2),
             Text(AppLocalizations.of(context)!.phoneNumber),
@@ -93,12 +110,17 @@ class EditContactInfoScreen extends StatelessWidget {
               builder: (context, state) {
                 return Expanded(
                   child: ListView.builder(
-                    itemCount: contact.phones!.length,
+                    itemCount: widget.contact.phones!.length,
                     itemBuilder: (BuildContext context, int index) {
-                      String phoneNumber = contact.phones![index]!;
-                      String phoneNumberExtracted = context
+                      // Extract phone number for each list item independently
+                      final String phoneNumberForThisItem = context
                           .read<ContactCubit>()
-                          .extractPhoneNumber(phoneNumber);
+                          .extractPhoneNumber(widget.contact.phones![index]!);
+
+                      // If this is the selected index, update the selected phone number
+                      if (index == selectedIndexPhoneNumber && !_loaded) {
+                        selectedPhoneNumber = phoneNumberForThisItem;
+                      }
 
                       return Container(
                         padding: EdgeInsets.only(bottom: AppSize.paddingSizeL1),
@@ -112,18 +134,45 @@ class EditContactInfoScreen extends StatelessWidget {
                                         ? Icon(Icons.circle_rounded)
                                         : Icon(Icons.circle_outlined),
                                 onTap: () {
-                                  selectedIndexPhoneNumber = index;
-                                  selectedPhoneNumber = phoneNumberExtracted;
+                                  setState(() {
+                                    selectedIndexPhoneNumber = index;
+                                    selectedPhoneNumber =
+                                        phoneNumberForThisItem;
+                                    editedContact = editedContact.copyWith(
+                                      chosenPhone: phoneNumberForThisItem,
+                                    );
+                                  });
                                 },
                               ),
                             ),
                             Expanded(
-                              child: Container(
+                              child: SizedBox(
                                 height: AppSize.textFormHeight,
                                 child: TextFormField(
-                                  onChanged:
-                                      (value) => selectedPhoneNumber = value,
-                                  initialValue: phoneNumberExtracted,
+                                  onChanged: (value) {
+                                    // Update the selected phone number when edited
+                                    if (selectedIndexPhoneNumber == index) {
+                                      selectedPhoneNumber = value;
+
+                                      // Create a copy of the phones list
+                                      List<String>? updatedPhones =
+                                          List<String>.from(
+                                            widget.contact.phones ?? [],
+                                          );
+
+                                      // Update the specific index with the new value
+                                      if (index < updatedPhones.length) {
+                                        updatedPhones[index] = value;
+                                      }
+
+                                      // Update the contact with the modified phones list
+                                      editedContact = editedContact.copyWith(
+                                        chosenPhone: value,
+                                        phones: updatedPhones,
+                                      );
+                                    }
+                                  },
+                                  initialValue: phoneNumberForThisItem,
                                   enabled: selectedIndexPhoneNumber == index,
                                 ),
                               ),

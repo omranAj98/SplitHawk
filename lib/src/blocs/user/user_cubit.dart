@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:encrypt/encrypt.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -55,8 +56,11 @@ class UserCubit extends HydratedCubit<UserState> {
     try {
       // Decrypt the encrypted data
       final encryptedData = json['data'] as String;
-      final decrypted = EncryptionSetup.encrypter.decrypt64(
+      final encryptedObject = Encrypted.fromBase64(
         encryptedData,
+      ); // Convert to Encrypted object
+      final decrypted = EncryptionSetup.encrypter.decrypt(
+        encryptedObject,
         iv: EncryptionSetup.iv,
       );
 
@@ -71,10 +75,10 @@ class UserCubit extends HydratedCubit<UserState> {
         error: null, // Handle error if needed
       );
 
-      debugPrint('Restored State: $state');
+      debugPrint('Restored State from user_cubit: $state');
       return state;
     } catch (e) {
-      debugPrint('Error in fromJson: $e');
+      debugPrint('Error in fromJson in user_cubit: $e');
       return null;
     }
   }
@@ -97,7 +101,7 @@ class UserCubit extends HydratedCubit<UserState> {
       // Return the encrypted data
       return {'data': encrypted.base64};
     } catch (e) {
-      debugPrint('Error in toJson: $e');
+      debugPrint('Error in toJson in user_cubit: $e');
       return null;
     }
   }

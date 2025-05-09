@@ -25,14 +25,14 @@ class ContactCubit extends Cubit<ContactState> {
     _searchController.add(searchText);
   }
 
-  void editContact({
+  void editSelectedContact({
     required ContactModel contact,
-    required ContactModel editedContact,
+    required ContactModel newEditedContact,
   }) async {
     final selectedContacts = List<ContactModel>.from(state.selectedContacts);
     if (selectedContacts.contains(contact)) selectedContacts.remove(contact);
 
-    selectedContacts.add(editedContact);
+    selectedContacts.add(newEditedContact);
     emit(
       state.copyWith(
         selectedContacts: selectedContacts,
@@ -57,7 +57,7 @@ class ContactCubit extends Cubit<ContactState> {
         return parts[1];
       }
     }
-    return "$phoneNumber"; // Return the original phoneNumber if no match or only one part after splitting
+    return phoneNumber; // Return the original phoneNumber if no match or only one part after splitting
   }
 
   // String extractCountryCode(String phoneNumber) {
@@ -68,7 +68,6 @@ class ContactCubit extends Cubit<ContactState> {
   //   }
   //   return "";
   // }
-
 
   void fetchContacts() {
     emit(state.copyWith(requestStatus: RequestStatus.loading));
@@ -119,13 +118,18 @@ class ContactCubit extends Cubit<ContactState> {
     );
   }
 
+  // Add a method to completely reset the state
+  void resetState() {
+    emit(ContactState.initial());
+  }
+
   void searchContacts(String name) {
     List<ContactModel> filteredContacts = [];
     if (name.isNotEmpty) {
       filteredContacts =
           state.contactsList
               .where(
-                (contact) => contact.displayName!.toLowerCase().contains(
+                (contact) => contact.displayName.toLowerCase().contains(
                   name.toLowerCase(),
                 ),
               )

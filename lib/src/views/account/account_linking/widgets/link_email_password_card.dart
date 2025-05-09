@@ -6,11 +6,11 @@ class LinkEmailPasswordCard extends StatefulWidget {
   final Function(String email, String password) onLinkEmail;
 
   const LinkEmailPasswordCard({
-    Key? key,
+    super.key,
     required this.isLoading,
     required this.userEmail,
     required this.onLinkEmail,
-  }) : super(key: key);
+  });
 
   @override
   State<LinkEmailPasswordCard> createState() => _LinkEmailPasswordCardState();

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:splithawk/src/blocs/contact/contact_cubit.dart';
+import 'package:splithawk/src/core/constants/app_icons.dart';
 import 'package:splithawk/src/models/contact_model.dart';
 
 class SelectedContactList extends StatelessWidget {
@@ -20,7 +21,7 @@ class SelectedContactList extends StatelessWidget {
             itemCount: selectedContacts!.length,
             itemBuilder: (context, index) {
               final contact = selectedContacts![index];
-              return Container(
+              return SizedBox(
                 // height: screenHeight * 20 / 100,
                 width: 80,
                 //margin: EdgeInsets.all(),
@@ -37,8 +38,8 @@ class SelectedContactList extends StatelessWidget {
                               radius: 30, // Adjust the radius as needed
                             )
                             : CircleAvatar(
-                              child: Text(contact.initials.toString()),
-                              radius: 25.sp, // Adjust the radius as needed
+                              radius: 25.sp,
+                              child: Icon(AppIcons.contactIcon)
                             ),
                         Positioned(
                           top: 0,
@@ -61,8 +62,7 @@ class SelectedContactList extends StatelessWidget {
                     Text(
                       (contact.displayName.toString().length <= 11)
                           ? contact.displayName.toString()
-                          : contact.displayName.toString().substring(0, 11) +
-                              '...',
+                          : '${contact.displayName.toString().substring(0, 11)}...',
                       style: TextStyle(fontSize: 9.sp),
                       textAlign: TextAlign.center,
                     ),

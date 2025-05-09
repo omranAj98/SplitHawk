@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:splithawk/src/blocs/contact/contact_cubit.dart';
+import 'package:splithawk/src/core/constants/app_icons.dart';
 import 'package:splithawk/src/core/localization/l10n/app_localizations.dart';
 import 'package:splithawk/src/core/routes/names.dart';
 import 'package:splithawk/src/models/contact_model.dart';
@@ -80,7 +81,11 @@ class VerifyContactInfoScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         if (contact.phones!.isNotEmpty)
-                          Text(contact.phones!.first!.toString() ?? ''),
+                          Text(
+                            contact.chosenPhone ??
+                                contact.phones!.first!.toString() ??
+                                '',
+                          ),
                         //Show Email
                         // if (contact.emails!.isNotEmpty)
                         //   Text(contact.emails!.first.value!),
@@ -91,7 +96,7 @@ class VerifyContactInfoScreen extends StatelessWidget {
                             ? CircleAvatar(
                               backgroundImage: MemoryImage(contact.avatar!),
                             )
-                            : CircleAvatar(child: Text(contact.initials!)),
+                            : CircleAvatar(child: Icon(AppIcons.contactIcon)),
                     trailing: GestureDetector(
                       onTap: () {
                         context.pushNamed(

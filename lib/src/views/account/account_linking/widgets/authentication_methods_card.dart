@@ -7,12 +7,12 @@ class AuthenticationMethodsCard extends StatelessWidget {
   final Function(BuildContext, String) onUnlink;
 
   const AuthenticationMethodsCard({
-    Key? key,
+    super.key,
     required this.linkedProviders,
     required this.hasEmailProvider,
     required this.hasGoogleProvider,
     required this.onUnlink,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

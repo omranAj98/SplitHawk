@@ -14,7 +14,9 @@ class SigninPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
 
-    String? email, password;
+    // Initialize email with initEmail if available
+    String? email = initEmail;
+    String? password;
 
     void submit() {
       final form = formKey.currentState;
@@ -86,8 +88,10 @@ class SigninPage extends StatelessWidget {
                               TextFormField(
                                 readOnly:
                                     state.authStatus == AuthStatus.loading,
-                                // onSaved: (value) => email = value,
+                                // Use both onSaved and onChanged
+                                onSaved: (value) => email = value,
                                 onChanged: (value) => email = value,
+
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
                                   labelText:
@@ -96,6 +100,7 @@ class SigninPage extends StatelessWidget {
                                   prefixIcon: Icon(Icons.email),
                                 ),
                                 initialValue: initEmail,
+
                                 autocorrect: false,
                                 validator:
                                     (value) => AppTextValidators.validateEmail(

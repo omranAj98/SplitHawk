@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class AppIcons {
   static const String home = "assets/icons/svg/home.svg";
   static const String favorite = "assets/icons/svg/star.svg";
@@ -8,4 +10,5 @@ class AppIcons {
   static const String shoes = "assets/icons/svg/shoes.svg";
   static const String splashImage = "assets/images/splash_image.png";
   static const String welcomeImage = "assets/images/about-img.svg";
+  static const IconData contactIcon = Icons.person_2_outlined;
 }

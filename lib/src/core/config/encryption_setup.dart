@@ -1,5 +1,6 @@
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:encrypt/encrypt.dart' as encrypt;
+import 'package:flutter/cupertino.dart';
 
 class EncryptionSetup {
   static late encrypt.Key key;
@@ -11,13 +12,13 @@ class EncryptionSetup {
 
     try {
       await remoteConfig.fetchAndActivate();
-      // print("Remote config fetched and activated.");
+      // debugPrint("Remote config fetched and activated.");
     } catch (e) {
-      print("Error fetching remote config: $e");
+      debugPrint("Error fetching remote config: $e");
     }
 
     final encryptionKey = remoteConfig.getString('encryption_key');
-    // print("Encryption key: $encryptionKey");
+    debugPrint("Encryption key: $encryptionKey");
     if (encryptionKey.length != 32) {
       throw Exception('Encryption key must be 32 characters long.');
     }

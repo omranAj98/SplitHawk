@@ -6,7 +6,7 @@ import 'package:splithawk/src/views/account/account_linking/widgets/link_email_p
 import 'package:splithawk/src/views/account/account_linking/widgets/link_google_card.dart';
 
 class AccountLinkingScreen extends StatefulWidget {
-  const AccountLinkingScreen({Key? key}) : super(key: key);
+  const AccountLinkingScreen({super.key});
 
   @override
   State<AccountLinkingScreen> createState() => _AccountLinkingScreenState();

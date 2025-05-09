@@ -9,20 +9,21 @@ class ContactModel extends Equatable {
   final String displayName;
   final List<String?>? emails;
   final List<String?>? phones;
+  final String? chosenPhone;
   final Uint8List? avatar;
-  final String? initials;
+
   const ContactModel({
     required this.id,
     required this.displayName,
     this.emails,
     this.phones,
+    this.chosenPhone,
     this.avatar,
-    this.initials,
   });
 
   @override
   List<Object?> get props {
-    return [id, displayName, emails, phones, avatar, initials];
+    return [id, displayName, emails, phones, chosenPhone, avatar];
   }
 
   ContactModel copyWith({
@@ -30,16 +31,16 @@ class ContactModel extends Equatable {
     String? displayName,
     List<String>? emails,
     List<String>? phones,
+    String? chosenPhone,
     Uint8List? avatar,
-    String? initials,
   }) {
     return ContactModel(
       id: id ?? this.id,
       displayName: displayName ?? this.displayName,
       emails: emails ?? this.emails,
       phones: phones ?? this.phones,
+      chosenPhone: chosenPhone ?? this.chosenPhone,
       avatar: avatar ?? this.avatar,
-      initials: initials ?? this.initials,
     );
   }
 
@@ -52,8 +53,9 @@ class ContactModel extends Equatable {
       'displayName': displayName,
       'emails': emails,
       'phones': phones,
-      'avatar': avatar?.toList(),
-      'initials': initials,
+      'chosenPhone': chosenPhone,
+      // Convert Uint8List to base64 string to ensure proper JSON serialization
+      'avatar': avatar != null ? base64Encode(avatar!) : null,
     };
   }
 
@@ -69,11 +71,10 @@ class ContactModel extends Equatable {
           map['phones'] != null
               ? List<String>.from(map['phones'] as List)
               : null,
+      chosenPhone: map['chosenPhone'] as String?,
+
       avatar:
-          map['avatar'] != null
-              ? Uint8List.fromList(map['avatar'] as List<int>)
-              : null,
-      initials: map['initials'] != null ? map['initials'] as String : null,
+          map['avatar'] != null ? base64Decode(map['avatar'] as String) : null,
     );
   }
 
@@ -82,22 +83,16 @@ class ContactModel extends Equatable {
     required String displayName,
     List<String>? emails,
     required List<String>? phones,
+    String? chosenPhone,
     Uint8List? avatar,
-    String? initials,
-    List<String>? countryPhoneCode,
   }) {
     return ContactModel(
       id: id,
       displayName: displayName,
       emails: emails,
       phones: phones,
+      chosenPhone: chosenPhone,
       avatar: avatar,
-      initials: initials,
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory ContactModel.fromJson(String source) =>
-      ContactModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

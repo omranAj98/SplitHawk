@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
@@ -11,7 +10,6 @@ import 'package:splithawk/src/core/cubit/menu_cubit.dart';
 import 'package:splithawk/src/repositories/auth_repository.dart';
 import 'package:splithawk/src/repositories/contacts_repository.dart';
 import 'package:splithawk/src/repositories/user_repository.dart';
-import 'package:firebase_auth/firebase_auth.dart' as fbAuth;
 
 final GetIt locator = GetIt.instance;
 

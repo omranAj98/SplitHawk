@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:splithawk/src/blocs/contact/contact_cubit.dart';
+import 'package:splithawk/src/core/constants/app_icons.dart';
 import 'package:splithawk/src/models/contact_model.dart';
 
 class ContactList extends StatelessWidget {
@@ -12,7 +13,7 @@ class ContactList extends StatelessWidget {
     return BlocBuilder<ContactCubit, ContactState>(
       builder: (context, state) {
         return ListView.builder(
-          shrinkWrap: true,
+          physics: const AlwaysScrollableScrollPhysics(),
           itemCount: contactsList.length,
           itemBuilder: (context, index) {
             final contact = contactsList[index];
@@ -55,13 +56,12 @@ class ContactList extends StatelessWidget {
                         ? Icon(Icons.circle)
                         : Icon(Icons.circle_outlined),
               ),
-
               leading:
-                  (contact.avatar != null && contact.avatar!.isNotEmpty)
+                  (contact.avatar != null && contact.avatar!.isNotEmpty )
                       ? CircleAvatar(
                         backgroundImage: MemoryImage(contact.avatar!),
                       )
-                      : CircleAvatar(child: Text(contact.initials!)),
+                      : CircleAvatar(child: Icon(AppIcons.contactIcon)),
             );
           },
         );

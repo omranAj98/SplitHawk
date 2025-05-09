@@ -5,10 +5,10 @@ class LinkGoogleCard extends StatelessWidget {
   final VoidCallback onLinkGoogle;
 
   const LinkGoogleCard({
-    Key? key,
+    super.key,
     required this.isLoading,
     required this.onLinkGoogle,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
