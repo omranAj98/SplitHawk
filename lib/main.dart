@@ -10,6 +10,7 @@ Future<void> main() async {
   await DependencyInjection.init();
   setupLocator();
   await EncryptionSetup.initialize();
+  // Bloc.observer = const AppBlocObserver();
 
   
   //  This is the main app

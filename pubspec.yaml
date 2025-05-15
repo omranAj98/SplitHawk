@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   auto_validate: ^3.0.6
+  # bloc: ^9.0.0
   cloud_firestore: ^5.6.5
   contacts_service: ^0.6.3
   cupertino_icons: ^1.0.8
@@ -39,7 +40,7 @@ dependencies:
   firebase_remote_config: ^5.4.3
   flutter:
     sdk: flutter
-  flutter_bloc: ^9.1.0
+  flutter_bloc: ^9.1.1
   flutter_localization: ^0.3.2
   flutter_localizations:
     sdk: flutter

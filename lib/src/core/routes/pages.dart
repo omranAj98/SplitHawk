@@ -1,5 +1,6 @@
 library;
 
+import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -7,6 +8,7 @@ import 'package:splithawk/src/blocs/contact/contact_cubit.dart';
 import 'package:splithawk/src/core/services/service_locator.dart';
 import 'package:splithawk/src/core/widgets/not_found_page.dart';
 import 'package:splithawk/src/models/contact_model.dart';
+import 'package:splithawk/src/repositories/contacts_repository.dart';
 import 'package:splithawk/src/views/contacts/add_friend_screen.dart';
 import 'package:splithawk/src/views/contacts/edit_contact_info_screen.dart';
 import 'package:splithawk/src/views/contacts/verify_contact_info_screen.dart';
@@ -35,6 +37,7 @@ final GoRouter appRouter = GoRouter(
 
           builder: (context, state) {
             final email = state.uri.queryParameters['email'];
+            // locator.reset;
             return PopScope(
               canPop: false,
               child: SigninPage(initEmail: email ?? ''),
@@ -48,42 +51,38 @@ final GoRouter appRouter = GoRouter(
             return PopScope(canPop: false, child: MainPage());
           },
           routes: [
-            GoRoute(
-              path: 'add_friend',
-              name: AppRoutesName.addFriend,
-              builder: (context, state) {
-                return BlocProvider<ContactCubit>.value(
-                  value: locator<ContactCubit>(),
-                  child: AddFriendScreen(),
+            ShellRoute(
+              builder: (context, state, child) {
+                return BlocProvider<ContactCubit>(
+                  create:
+                      (_) => locator<ContactCubit>(),
+                  child: child,
                 );
               },
               routes: [
                 GoRoute(
-                  path: 'verify_friend_info',
-                  name: AppRoutesName.verifyFriendInfo,
+                  path: 'add_friend',
+                  name: AppRoutesName.addFriend,
                   builder: (context, state) {
-                    return BlocProvider.value(
-                      value: locator<ContactCubit>(),
-                      child: BlocBuilder<ContactCubit, ContactState>(
-                        builder: (context, state) {
-                          return VerifyContactInfoScreen(
-                            selectedContacts: state.selectedContacts,
-                          );
-                        },
-                      ),
-                    );
+                    return AddFriendScreen();
                   },
                   routes: [
                     GoRoute(
-                      path: "edit_contact_info",
-                      name: AppRoutesName.editContactInfo,
+                      path: 'verify_friend_info',
+                      name: AppRoutesName.verifyFriendInfo,
                       builder: (context, state) {
-                        final contact = state.extra as ContactModel;
-                        return BlocProvider<ContactCubit>.value(
-                          value: locator<ContactCubit>(),
-                          child: EditContactInfoScreen(contact: contact),
-                        );
+                        return VerifyContactInfoScreen();
                       },
+                      routes: [
+                        GoRoute(
+                          path: "edit_contact_info",
+                          name: AppRoutesName.editContactInfo,
+                          builder: (context, state) {
+                            final contact = state.extra as ContactModel;
+                            return EditContactInfoScreen(contact: contact);
+                          },
+                        ),
+                      ],
                     ),
                   ],
                 ),

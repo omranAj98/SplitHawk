@@ -6,11 +6,9 @@ import 'package:splithawk/src/blocs/contact/contact_cubit.dart';
 import 'package:splithawk/src/core/constants/app_icons.dart';
 import 'package:splithawk/src/core/localization/l10n/app_localizations.dart';
 import 'package:splithawk/src/core/routes/names.dart';
-import 'package:splithawk/src/models/contact_model.dart';
 
 class VerifyContactInfoScreen extends StatelessWidget {
-  List<ContactModel> selectedContacts = [];
-  VerifyContactInfoScreen({super.key, required this.selectedContacts});
+  VerifyContactInfoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +39,7 @@ class VerifyContactInfoScreen extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () async {
-                        for (var contact in selectedContacts) {
+                          context.goNamed(AppRoutesName.home);
                           // bool? confirm = await showDialog(
                           //   context: context,
                           //   builder: (BuildContext context) {
@@ -54,7 +52,7 @@ class VerifyContactInfoScreen extends StatelessWidget {
                           // } else {
                           //   print('${contact.displayName} canceled');
                           // }
-                        }
+                        
                       },
                       child: Text(AppLocalizations.of(context)!.finish),
                     ),

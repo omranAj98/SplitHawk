@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:splithawk/firebase_options.dart';
+import 'package:splithawk/src/core/observers/global_observer.dart';
 
 class DependencyInjection {
   static Future<void> init() async {
@@ -17,6 +18,7 @@ class DependencyInjection {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-    
+
+    Bloc.observer = GlobalObserver();
   }
 }

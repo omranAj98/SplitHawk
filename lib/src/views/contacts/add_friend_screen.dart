@@ -12,8 +12,29 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:splithawk/src/views/contacts/widgets/contact_list.dart';
 import 'package:splithawk/src/views/contacts/widgets/selected_contact_list.dart';
 
-class AddFriendScreen extends StatelessWidget {
+class AddFriendScreen extends StatefulWidget {
   const AddFriendScreen({super.key});
+
+  @override
+  State<AddFriendScreen> createState() => _AddFriendScreenState();
+}
+
+class _AddFriendScreenState extends State<AddFriendScreen> {
+  bool initialLoad = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // Fetch contacts only once when the widget is initialized
+    fetchContacts();
+  }
+
+  Future<void> fetchContacts() async {
+    if (!initialLoad) {
+      context.read<ContactCubit>().fetchContacts();
+      initialLoad = true; // Mark as loaded
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +43,6 @@ class AddFriendScreen extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     TextEditingController searchText = TextEditingController(text: '');
 
-    fetchContacts() async {
-      context.read<ContactCubit>().fetchContacts();
-    }
-
     return RefreshIndicator(
       onRefresh: () => fetchContacts(),
       child: Scaffold(
@@ -33,11 +50,9 @@ class AddFriendScreen extends StatelessWidget {
           preferredSize: Size.fromHeight(screenWidth * 0.25),
           child: SafeArea(
             child: Container(
-              // height: screenHeight * 0.05,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
-
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,7 +88,6 @@ class AddFriendScreen extends StatelessWidget {
                   SizedBox(
                     height: screenHeight * 0.05,
                     width: screenWidth * 0.85,
-
                     child: TextFormField(
                       autocorrect: false,
                       onChanged:
@@ -81,7 +95,6 @@ class AddFriendScreen extends StatelessWidget {
                               .read<ContactCubit>()
                               .updateSearchText(value),
                       controller: searchText,
-
                       decoration: InputDecoration(
                         prefixIcon: Icon(
                           Icons.search,
@@ -170,7 +183,6 @@ class AddFriendScreen extends StatelessWidget {
                       ],
                     );
                   } else {
-                    fetchContacts();
                     return BlocConsumer<ContactCubit, ContactState>(
                       listener: (context, state) {
                         if (state.requestStatus == RequestStatus.error) {
@@ -188,7 +200,6 @@ class AddFriendScreen extends StatelessWidget {
                                     );
                                   },
                                 ),
-                                // AddNewContact(),
                                 Expanded(
                                   child:
                                       BlocBuilder<ContactCubit, ContactState>(

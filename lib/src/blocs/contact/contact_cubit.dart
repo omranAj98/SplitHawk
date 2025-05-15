@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:splithawk/src/core/enums/request_status.dart';
 import 'package:splithawk/src/core/error/custom_error.dart';
 import 'package:splithawk/src/models/contact_model.dart';
@@ -12,7 +13,7 @@ part 'contact_state.dart';
 class ContactCubit extends Cubit<ContactState> {
   final ContactsRepository contactsRepository;
   final StreamController<String> _searchController =
-      StreamController<String>.broadcast();
+      StreamController<String>. broadcast();
 
   ContactCubit({required this.contactsRepository})
     : super(ContactState.initial()) {
@@ -20,6 +21,16 @@ class ContactCubit extends Cubit<ContactState> {
       searchContacts(searchText);
     });
   }
+  
+   @override
+  Future<void> close() {
+    // Any additional cleanup
+    _searchController.close();
+    // ContactState.initial();
+    // debugPrint('ContactCubit closed');
+    return super.close();
+  }
+
 
   void updateSearchText(String searchText) {
     _searchController.add(searchText);
@@ -140,9 +151,4 @@ class ContactCubit extends Cubit<ContactState> {
     emit(state.copyWith(filteredContacts: filteredContacts));
   }
 
-  @override
-  Future<void> close() {
-    _searchController.close();
-    return super.close();
-  }
 }

@@ -90,20 +90,12 @@ class UserRepository {
     required UserModel updatedUserModel,
   }) async {
     try {
-      if (updatedUserModel != null) {
-        await firebaseFirestore
-            .collection('users')
-            .doc(userModel.id)
-            .update(updatedUserModel.toMap());
-        print('User updated successfully');
-      } else {
-        throw CustomError(
-          message: 'User credential is null',
-          code: 'user_credential_null',
-          plugin: 'firebase_auth',
-        );
-      }
-    } on FirebaseException catch (e) {
+      await firebaseFirestore
+          .collection('users')
+          .doc(userModel.id)
+          .update(updatedUserModel.toMap());
+      print('User updated successfully');
+        } on FirebaseException catch (e) {
       throw CustomError(
         message: e.message ?? 'An error occurred during updating user',
         code: e.code,

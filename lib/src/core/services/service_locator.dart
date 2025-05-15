@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,7 +20,7 @@ void setupLocator() {
     final firebaseAuth = FirebaseAuth.instance;
     firebaseAuth.setSettings(
       appVerificationDisabledForTesting:
-          isTesting, // Disable app verification for testing
+          isTesting,
     );
     return firebaseAuth;
   });
@@ -51,7 +50,7 @@ void setupLocator() {
   locator.registerLazySingleton<MenuCubit>(() => MenuCubit());
 
   locator.registerLazySingleton<ContactsRepository>(() => ContactsRepository());
-  locator.registerLazySingleton<ContactCubit>(
+  locator.registerFactory<ContactCubit>(
     () => ContactCubit(contactsRepository: locator<ContactsRepository>()),
   );
 }

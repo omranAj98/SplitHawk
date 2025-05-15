@@ -10,7 +10,7 @@ import 'package:splithawk/src/models/contact_model.dart';
 
 class EditContactInfoScreen extends StatefulWidget {
   final ContactModel contact;
-  EditContactInfoScreen({super.key, required this.contact});
+  const EditContactInfoScreen({super.key, required this.contact});
 
   @override
   State<EditContactInfoScreen> createState() => _EditContactInfoScreenState();
@@ -20,7 +20,7 @@ class _EditContactInfoScreenState extends State<EditContactInfoScreen> {
   int selectedIndexPhoneNumber = 0;
   String selectedPhoneNumber = "";
   late ContactModel editedContact = widget.contact;
-  bool _loaded = false;
+  final bool _loaded = false;
 
   @override
   void initState() {
@@ -72,7 +72,7 @@ class _EditContactInfoScreenState extends State<EditContactInfoScreen> {
                             contact: widget.contact,
                             newEditedContact: newdEditedContact,
                           );
-                          context.goNamed(AppRoutesName.verifyFriendInfo);
+                          context.pop();
                         },
                         child: Text(AppLocalizations.of(context)!.confirm),
                       ),
