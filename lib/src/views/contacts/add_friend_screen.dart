@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:splithawk/src/blocs/contact/contact_cubit.dart';
+import 'package:splithawk/src/core/constants/app_size.dart';
 import 'package:splithawk/src/core/enums/request_status.dart';
 import 'package:splithawk/src/core/localization/l10n/app_localizations.dart';
 import 'package:splithawk/src/core/routes/names.dart';
@@ -39,93 +40,130 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
+    // double screenHeight = MediaQuery.of(context).size.height;
     final colorScheme = Theme.of(context).colorScheme;
     TextEditingController searchText = TextEditingController(text: '');
 
-    return RefreshIndicator(
-      onRefresh: () => fetchContacts(),
-      child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(screenWidth * 0.25),
-          child: SafeArea(
-            child: Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(160),
+        child: SafeArea(
+          bottom: false,
+          child: Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(left: 8),
+                      child: TextButton(
+                        onPressed: () => context.pop(),
+                        child: Text(AppLocalizations.of(context)!.cancel),
+                      ),
+                    ),
+                    Text(
+                      AppLocalizations.of(context)!.addFriend,
+                      style: TextStyle(fontSize: 16.sp),
+                    ),
+                    BlocBuilder<ContactCubit, ContactState>(
+                      builder: (context, state) {
+                        return TextButton(
+                          onPressed:
+                              state.selectedContacts.isNotEmpty
+                                  ? () {
+                                    context.pushNamed(
+                                      AppRoutesName.verifyFriendInfo,
+                                    );
+                                  }
+                                  : null, // Disable the button if selectedContacts is empty
+                          child: Text(AppLocalizations.of(context)!.next),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: screenWidth * 0.05,
+                    right: screenWidth * 0.05,
+                  ),
+                  child: ListView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
                     children: [
-                      Container(
-                        padding: EdgeInsets.only(left: 8),
-                        child: TextButton(
-                          onPressed: () => context.pop(),
-                          child: Text(AppLocalizations.of(context)!.cancel),
+                      ListTile(
+                        contentPadding: EdgeInsets.only(
+                          left: screenWidth * 0.05,
+                          right: screenWidth * 0.05,
+                        ),
+                        title: Text(
+                          AppLocalizations.of(context)!.addNewFriend,
+                          style: TextStyle(color: colorScheme.primary),
+                        ),
+                        leading: Icon(Icons.person_add_alt_rounded),
+                        onTap:
+                            () => context.pushNamed(AppRoutesName.addNewFriend),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          size: AppSize.iconSize,
+                        ),
+                        tileColor: colorScheme.onSurface.withValues(
+                          alpha: 0.04,
                         ),
                       ),
-                      Text(
-                        AppLocalizations.of(context)!.addFriend,
-                        style: TextStyle(fontSize: 16.sp),
-                      ),
-                      BlocBuilder<ContactCubit, ContactState>(
-                        builder: (context, state) {
-                          return TextButton(
-                            onPressed:
-                                state.selectedContacts.isNotEmpty
-                                    ? () {
-                                      context.pushNamed(
-                                        AppRoutesName.verifyFriendInfo,
-                                      );
-                                    }
-                                    : null, // Disable the button if selectedContacts is empty
-                            child: Text(AppLocalizations.of(context)!.next),
-                          );
-                        },
+                      TextFormField(
+                        autocorrect: false,
+                        autofocus: true,
+                        onChanged:
+                            (value) => context
+                                .read<ContactCubit>()
+                                .updateSearchText(value),
+                        controller: searchText,
+                        decoration: InputDecoration(
+                          hintText:
+                              AppLocalizations.of(context)!.searchContacts,
+                          prefixIcon: Icon(
+                            Icons.search,
+                            size: AppSize.defaultSize,
+                          ),
+                          suffixIcon: BlocBuilder<ContactCubit, ContactState>(
+                            builder: (context, state) {
+                              return IconButton(
+                                highlightColor: Colors.transparent,
+                                icon: Icon(
+                                  Icons.cancel_outlined,
+                                  size: AppSize.iconSize,
+                                ),
+                                onPressed: () {
+                                  context.read<ContactCubit>().updateSearchText(
+                                    '',
+                                  );
+                                  searchText.text = '';
+                                },
+                              );
+                            },
+                          ),
+                        ),
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: screenHeight * 0.05,
-                    width: screenWidth * 0.85,
-                    child: TextFormField(
-                      autocorrect: false,
-                      onChanged:
-                          (value) => context
-                              .read<ContactCubit>()
-                              .updateSearchText(value),
-                      controller: searchText,
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(
-                          Icons.search,
-                          size: screenHeight * 0.03,
-                        ),
-                        suffixIcon: BlocBuilder<ContactCubit, ContactState>(
-                          builder: (context, state) {
-                            return IconButton(
-                              highlightColor: Colors.transparent,
-                              icon: Icon(
-                                Icons.cancel_outlined,
-                                size: screenHeight * 0.02,
-                              ),
-                              onPressed: () {
-                                context.read<ContactCubit>().updateSearchText(
-                                  '',
-                                );
-                                searchText.text = '';
-                              },
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
-        body: SafeArea(
+      ),
+      body: RefreshIndicator(
+        onRefresh: () => fetchContacts(),
+        child: SafeArea(
+          minimum: EdgeInsets.only(
+            // left: screenWidth * 0.05,
+            // right: screenWidth * 0.05,
+            top: AppSize.paddingSizeL1,
+          ),
           child: FutureBuilder(
             future: Permission.contacts.status,
             builder: (context, snapshot) {
@@ -222,7 +260,7 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
                               child: Padding(
                                 padding: EdgeInsets.symmetric(
                                   horizontal: screenWidth * 0.05,
-                                  vertical: screenHeight * 0.01,
+                                  vertical: AppSize.paddingSizeL1,
                                 ),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -230,31 +268,31 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
                                   children: [
                                     _buildShimmerItem(
                                       screenWidth,
-                                      screenHeight,
+                                      AppSize.contactItemHeight,
                                       colorScheme,
                                     ),
-                                    SizedBox(height: screenHeight * 0.02),
+                                    SizedBox(height: AppSize.paddingSizeL2),
                                     _buildShimmerItem(
                                       screenWidth,
-                                      screenHeight,
+                                      AppSize.contactItemHeight,
                                       colorScheme,
                                     ),
-                                    SizedBox(height: screenHeight * 0.02),
+                                    SizedBox(height: AppSize.paddingSizeL2),
                                     _buildShimmerItem(
                                       screenWidth,
-                                      screenHeight,
+                                      AppSize.contactItemHeight,
                                       colorScheme,
                                     ),
-                                    SizedBox(height: screenHeight * 0.02),
+                                    SizedBox(height: AppSize.paddingSizeL2),
                                     _buildShimmerItem(
                                       screenWidth,
-                                      screenHeight,
+                                      AppSize.contactItemHeight,
                                       colorScheme,
                                     ),
-                                    SizedBox(height: screenHeight * 0.02),
+                                    SizedBox(height: AppSize.paddingSizeL2),
                                     _buildShimmerItem(
                                       screenWidth,
-                                      screenHeight,
+                                      AppSize.contactItemHeight,
                                       colorScheme,
                                     ),
                                   ],
@@ -280,12 +318,12 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
 
   Widget _buildShimmerItem(
     double screenWidth,
-    double screenHeight,
+    double height,
     ColorScheme colorScheme,
   ) {
     return Container(
       width: screenWidth * 0.9,
-      height: screenHeight * 0.05,
+      height: height,
       decoration: shimmerBoxDecoration(colorScheme),
     );
   }

@@ -52,7 +52,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         final existedUserModel = await userRepository.checkExistingUser(
           event.email,
         );
-        if (existedUserModel == null) {
+        if (existedUserModel == null||
+            existedUserModel.isRegistered == false) {
           final userCredential = await authRepository
               .signUpWithEmailAndPassword(
                 email: event.email,
@@ -66,7 +67,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
               phoneNo: '',
               signupMethod: 'email and password',
               photoUrl: '',
-              isActive: true,
+              isRegistered: true,
               isDeleted: false,
               isBlocked: false,
               receivingNotifications: false,
@@ -77,8 +78,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
               lastActivity: DateTime(1970, 1, 1),
               recentLogin: DateTime.now(),
               totalTransactions: 0,
-              totalFriends: 0,
-              totalBalance: 0,
+              totalBalance: 0.0,
             );
             emit(
               state.copyWith(
@@ -89,7 +89,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             return await userRepository.createUser(userModel);
           }
         } else {
-          emit(state.copyWith(authStatus: AuthStatus.unauthenticated));
+          emit(state.copyWith(authStatus: AuthStatus.unauthenticated,error: CustomError(
+            message: 'User already exists',
+            code: 'user-exists',
+            plugin: 'auth_bloc',
+          )));
         }
       } on CustomError catch (e) {
         emit(
@@ -140,7 +144,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             phoneNo: user.phoneNumber ?? '',
             signupMethod: 'google',
             photoUrl: user.photoURL.toString(),
-            isActive: true,
+            isRegistered: true,
             isDeleted: false,
             isBlocked: false,
             receivingNotifications: false,
@@ -151,7 +155,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             lastActivity: DateTime(1970, 1, 1),
             recentLogin: DateTime.now(),
             totalTransactions: 0,
-            totalFriends: 0,
             totalBalance: 0,
           );
           UserModel? existingUserModel = await userRepository.checkExistingUser(

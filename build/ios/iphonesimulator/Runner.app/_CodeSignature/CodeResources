@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		zQAQp0d0NYza9SZIGlA9kD285U4=
+		ntmog+agdjdngxnxzW0jeimGUWE=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		VNgVlqBnaYzJUo4tFy2SgC1dIus=
+		uLT2/NB4f+uhtEumsOoP1m4d4tk=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
-		hq6ZeXBQZnhelGP5eDCElQtAWno=
+		tdKJbH1CAKHeAhLkAwc4qgtfo5w=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NativeAssetsManifest.json</key>
 		<data>
@@ -134,7 +134,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		FwjIdR2KbXZEcbmi8e4IPCMpnDA=
+		HodRC8ufpRm5+l87PL0bisAEMjM=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -364,6 +364,18 @@
 		<data>
 		kQHPvmcVkBXXX/7y+2iMlPQYLfc=
 		</data>
+		<key>Frameworks/FirebaseFunctions.framework/FirebaseFunctions</key>
+		<data>
+		8VqK6jKUdvXZhekL1pxxvdxemro=
+		</data>
+		<key>Frameworks/FirebaseFunctions.framework/Info.plist</key>
+		<data>
+		q/JgFd2q6EqgH6jlz8X+hsNCKDI=
+		</data>
+		<key>Frameworks/FirebaseFunctions.framework/_CodeSignature/CodeResources</key>
+		<data>
+		b8yk81bkSvTQTObxZbrh7cBdTtg=
+		</data>
 		<key>Frameworks/FirebaseInstallations.framework/FirebaseInstallations</key>
 		<data>
 		ImLnbQ5ZC6KeER29+rauIoo7h2c=
@@ -383,6 +395,18 @@
 		<key>Frameworks/FirebaseInstallations.framework/_CodeSignature/CodeResources</key>
 		<data>
 		ibyRpyaNZxoteh07r0zzS7DHN68=
+		</data>
+		<key>Frameworks/FirebaseMessagingInterop.framework/FirebaseMessagingInterop</key>
+		<data>
+		gA2PFOvkrGam9OXUI88pUt+g8l0=
+		</data>
+		<key>Frameworks/FirebaseMessagingInterop.framework/Info.plist</key>
+		<data>
+		LdnxLVf0MBCjpmi9Uiv5w4kIT1w=
+		</data>
+		<key>Frameworks/FirebaseMessagingInterop.framework/_CodeSignature/CodeResources</key>
+		<data>
+		qdd6TKxtjSUsPgMqidbngreXEfc=
 		</data>
 		<key>Frameworks/FirebaseRemoteConfig.framework/FirebaseRemoteConfig</key>
 		<data>
@@ -1204,7 +1228,7 @@
 		</data>
 		<key>Runner.debug.dylib</key>
 		<data>
-		4UbJe6vBTIY+PtTb4Xa/m02c93U=
+		GV7bqCntE5xbZMDpIak9BPDTYWQ=
 		</data>
 		<key>__preview.dylib</key>
 		<data>
@@ -1303,7 +1327,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			R+8j55JS3O9xDM814W/krXfY+bUjjFajyLEis+jwe00=
+			NdKicK57RnzVOAk4DsGcbZne1kcPbs81GD04Q3XW8Wo=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -1317,7 +1341,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			97Vo9x6LVZXFWnslfpStCYE/1Q2wxXaE8WVBhtCW1ZM=
+			cih5ReB6HjExO1tVOb48mDGU3vLsPdYQ3HQcVB7/oDQ=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
@@ -1345,7 +1369,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			newt/qifYpn0zBWcHx2TYPQIuMx8jZ+mTiOosztghv8=
+			7bf8MtSk9N9tVysKofeEYJAklRpSRhzSozWrzNyAMyU=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/NativeAssetsManifest.json</key>
@@ -1457,7 +1481,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pF4rTkb3/7Kbgmb7H6dBRi6QsTjyHBfVvYAZDFdiJh4=
+			cMZj7elKlbMl6Bned50Cr9cFXxIQq/tl6xmeDeZgMOA=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -1859,6 +1883,27 @@
 			1IOhT9F5fzSLC3j1y8ro4EgLNJbJ7a8h2DR/RHNantM=
 			</data>
 		</dict>
+		<key>Frameworks/FirebaseFunctions.framework/FirebaseFunctions</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			NsZhcO51MQzibscvPfhCXARfxPid1ac544+eIikdMp4=
+			</data>
+		</dict>
+		<key>Frameworks/FirebaseFunctions.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			LbCYp2tWUVxfovNN3vZIo24fHJhf1siGPTjV+HiIkEk=
+			</data>
+		</dict>
+		<key>Frameworks/FirebaseFunctions.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			fPVVRtezBHqxqJQoL5ln+KECVD5sVHKvet7lcNgsHNI=
+			</data>
+		</dict>
 		<key>Frameworks/FirebaseInstallations.framework/FirebaseInstallations</key>
 		<dict>
 			<key>hash2</key>
@@ -1892,6 +1937,27 @@
 			<key>hash2</key>
 			<data>
 			0jcNsy+5qxiUNRejFhv5OjjYjZV7ceEEe77LBfv2zOY=
+			</data>
+		</dict>
+		<key>Frameworks/FirebaseMessagingInterop.framework/FirebaseMessagingInterop</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			fvmziwk8ozHJfD8iuLiAVeVFJO94EybCLE6g3zwT+TI=
+			</data>
+		</dict>
+		<key>Frameworks/FirebaseMessagingInterop.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			tf3uS7pQXuwEOAP90tWRFbuINVlyyM6+BRx7I+1PB8s=
+			</data>
+		</dict>
+		<key>Frameworks/FirebaseMessagingInterop.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			jThjnpXNh/qYYUSo5cvx8J6j/PdIEpwoCq4qCUT1bgE=
 			</data>
 		</dict>
 		<key>Frameworks/FirebaseRemoteConfig.framework/FirebaseRemoteConfig</key>
@@ -3059,7 +3125,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+BEHprPfuqwwyecEGiziwziaFATneFvWp2bLZf14uhE=
+			wtzCqerxuPIc+7KJL04sdko0IvXfFNMehlX/hxkfvvc=
 			</data>
 		</dict>
 		<key>__preview.dylib</key>

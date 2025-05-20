@@ -1,15 +1,15 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 part of 'user_cubit.dart';
 
 class UserState extends Equatable {
   final RequestStatus requestStatus;
   final CustomError? error;
   final UserModel? user;
+  final Timer? timer;
   const UserState({
     required this.requestStatus,
     required this.error,
     this.user,
+    this.timer,
   });
 
   factory UserState.initial() {
@@ -20,7 +20,7 @@ class UserState extends Equatable {
   }
 
   @override
-  List<Object> get props => [requestStatus, error ?? CustomError(), user ?? ''];
+  List<Object?> get props => [requestStatus, error, user, timer];
 
   @override
   bool get stringify => true;
@@ -29,11 +29,13 @@ class UserState extends Equatable {
     RequestStatus? requestStatus,
     CustomError? error,
     UserModel? user,
+    Timer? timer,
   }) {
     return UserState(
       requestStatus: requestStatus ?? this.requestStatus,
       error: error ?? this.error,
       user: user ?? this.user,
+      timer: timer ?? this.timer,
     );
   }
 }

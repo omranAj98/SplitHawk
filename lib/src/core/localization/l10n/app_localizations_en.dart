@@ -358,4 +358,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get accountLinking => 'Account Linking';
+
+  @override
+  String get nameLength => 'Name must be at least 3 characters';
+
+  @override
+  String get nickName => 'Nickname';
+
+  @override
+  String get addNewFriend => 'Add New Friend';
+
+  @override
+  String get searchContacts => 'Search your contacts';
+
+  @override
+  String get userAlreadyExists => 'User already exists try to login or reset your password';
+
+  @override
+  String get tryAgainLater => 'Try again later';
+
+  @override
+  String get resetPasswordEmailSent => 'Reset password email sent';
+
+  @override
+  String get friendAlreadyAddedBefore => 'Friend already added before';
 }

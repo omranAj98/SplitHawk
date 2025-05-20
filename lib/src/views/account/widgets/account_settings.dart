@@ -162,13 +162,42 @@ class AccountSettings extends StatelessWidget {
                           AppLocalizations.of(context)!.resetPassword,
                         ),
                         onTap: () {
-                          context.read<AuthBloc>().add(
-                            AuthResetPasswordEvent(
-                              email:
-                                  context.read<UserCubit>().state.user!.email,
-                            ),
-                          );
+                          final userCubit = context.read<UserCubit>();
+                          if (userCubit.canResetPassword) {
+                            context.read<AuthBloc>().add(
+                              AuthResetPasswordEvent(
+                                email: userCubit.state.user!.email,
+                              ),
+                            );
+                            userCubit.startResetPasswordTimer();
+                            AppSnackBar.show(
+                              context,
+                              message:
+                                  AppLocalizations.of(
+                                    context,
+                                  )!.resetPasswordEmailSent,
+                              type: SnackBarType.success,
+                            );
+                          }
                         },
+                        enabled: context.select(
+                          (UserCubit cubit) => cubit.canResetPassword,
+                        ),
+                        subtitle: BlocBuilder<UserCubit, UserState>(
+                          builder: (context, state) {
+                            final remainingTime =
+                                context
+                                    .read<UserCubit>()
+                                    .getRemainingResetPasswordTime();
+                            if (remainingTime == null) return SizedBox.shrink();
+                            return Text(
+                              AppLocalizations.of(context)!.tryAgainLater,
+                              style: textTheme.bodySmall?.copyWith(
+                                color: colorScheme.error,
+                              ),
+                            );
+                          },
+                        ),
                       ),
                       ListTile(
                         leading: Icon(Icons.block_rounded),

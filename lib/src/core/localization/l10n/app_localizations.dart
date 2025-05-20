@@ -798,6 +798,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Account Linking'**
   String get accountLinking;
+
+  /// Name length message
+  ///
+  /// In en, this message translates to:
+  /// **'Name must be at least 3 characters'**
+  String get nameLength;
+
+  /// Nickname
+  ///
+  /// In en, this message translates to:
+  /// **'Nickname'**
+  String get nickName;
+
+  /// Add new friend
+  ///
+  /// In en, this message translates to:
+  /// **'Add New Friend'**
+  String get addNewFriend;
+
+  /// Search your contacts
+  ///
+  /// In en, this message translates to:
+  /// **'Search your contacts'**
+  String get searchContacts;
+
+  /// User Already exists try to login or reset your password
+  ///
+  /// In en, this message translates to:
+  /// **'User already exists try to login or reset your password'**
+  String get userAlreadyExists;
+
+  /// Try again later
+  ///
+  /// In en, this message translates to:
+  /// **'Try again later'**
+  String get tryAgainLater;
+
+  /// Reset password email sent
+  ///
+  /// In en, this message translates to:
+  /// **'Reset password email sent'**
+  String get resetPasswordEmailSent;
+
+  /// Friend already added before
+  ///
+  /// In en, this message translates to:
+  /// **'Friend already added before'**
+  String get friendAlreadyAddedBefore;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

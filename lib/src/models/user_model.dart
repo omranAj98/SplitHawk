@@ -8,6 +8,7 @@ Uuid uuid = Uuid();
 
 class UserModel extends Equatable {
   final String id;
+  final DocumentReference? userRef;
   final String email;
   final String fullName;
   final String? phoneNo;
@@ -15,34 +16,33 @@ class UserModel extends Equatable {
   final String? signupMethod;
   final bool? isPhoneVerified;
   final bool? isEmailVerified;
-  final bool? isActive;
+  final bool? isRegistered;
   final bool? isDeleted;
   final bool? isBlocked;
   final bool? receivingNotifications;
   final int? totalTransactions;
-  final int? totalFriends;
-  final int? totalBalance;
-  final DateTime? createdAt;
+  final double? totalBalance;
+  DateTime? createdAt;
   final DateTime? updatedAt;
   final DateTime? lastActivity;
   final DateTime? recentLogin;
 
   UserModel({
     String? id,
+    this.userRef,
     required this.email,
     required this.fullName,
-    this.phoneNo,
-    this.photoUrl,
-    this.signupMethod,
-    this.isPhoneVerified,
-    this.isEmailVerified,
-    this.isActive,
-    this.isDeleted,
-    this.isBlocked,
-    this.receivingNotifications,
-    this.totalTransactions,
-    this.totalFriends,
-    this.totalBalance,
+    this.phoneNo = '',
+    this.photoUrl = '',
+    this.signupMethod = '',
+    this.isPhoneVerified = false,
+    this.isEmailVerified = false,
+    this.isRegistered = false,
+    this.isDeleted = false,
+    this.isBlocked = false,
+    this.receivingNotifications = false,
+    this.totalTransactions = 0,
+    this.totalBalance = 0.0,
     this.createdAt,
     this.updatedAt,
     this.lastActivity,
@@ -51,6 +51,7 @@ class UserModel extends Equatable {
 
   UserModel copyWith({
     String? id,
+    DocumentReference? userRef,
     String? email,
     String? fullName,
     String? phoneNo,
@@ -58,13 +59,12 @@ class UserModel extends Equatable {
     String? signupMethod,
     bool? isPhoneVerified,
     bool? isEmailVerified,
-    bool? isActive,
+    bool? isRegistered,
     bool? isDeleted,
     bool? isBlocked,
     bool? receivingNotifications,
     int? totalTransactions,
-    int? totalFriends,
-    int? totalBalance,
+    double? totalBalance,
     DateTime? createdAt,
     DateTime? updatedAt,
     DateTime? lastActivity,
@@ -72,6 +72,7 @@ class UserModel extends Equatable {
   }) {
     return UserModel(
       id: id ?? this.id,
+      userRef: userRef ?? this.userRef,
       email: email ?? this.email,
       fullName: fullName ?? this.fullName,
       phoneNo: phoneNo ?? this.phoneNo,
@@ -79,13 +80,12 @@ class UserModel extends Equatable {
       signupMethod: signupMethod ?? this.signupMethod,
       isPhoneVerified: isPhoneVerified ?? this.isPhoneVerified,
       isEmailVerified: isEmailVerified ?? this.isEmailVerified,
-      isActive: isActive ?? this.isActive,
+      isRegistered: isRegistered ?? this.isRegistered,
       isDeleted: isDeleted ?? this.isDeleted,
       isBlocked: isBlocked ?? this.isBlocked,
       receivingNotifications:
           receivingNotifications ?? this.receivingNotifications,
       totalTransactions: totalTransactions ?? this.totalTransactions,
-      totalFriends: totalFriends ?? this.totalFriends,
       totalBalance: totalBalance ?? this.totalBalance,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
@@ -94,7 +94,7 @@ class UserModel extends Equatable {
     );
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toMapFirestore() {
     return <String, dynamic>{
       'id': id,
       'email': email,
@@ -104,52 +104,83 @@ class UserModel extends Equatable {
       'signupMethod': signupMethod,
       'isPhoneVerified': isPhoneVerified,
       'isEmailVerified': isEmailVerified,
-      'isActive': isActive,
+      'isRegistered': isRegistered,
       'isDeleted': isDeleted,
       'isBlocked': isBlocked,
       'receivingNotifications': receivingNotifications,
       'totalTransactions': totalTransactions,
-      'totalFriends': totalFriends,
       'totalBalance': totalBalance,
-      'createdAt': createdAt!.toIso8601String(),
-      'updatedAt': updatedAt!.toIso8601String(),
-      'lastActivity': lastActivity!.toIso8601String(), // Convert DateTime to String
-      'recentLogin': recentLogin!.toIso8601String(), // Convert DateTime to String
+      'createdAt': createdAt?.toIso8601String(),
+      'updatedAt': updatedAt?.toIso8601String(),
+      'lastActivity': lastActivity?.toIso8601String(),
+      'recentLogin': recentLogin?.toIso8601String(),
     };
+  }
+
+  factory UserModel.fromDocumentSnapshot(
+    DocumentSnapshot<Map<String, dynamic>> doc,
+  ) {
+    final data = doc.data();
+    return UserModel(
+      id: doc.id,
+      userRef: doc.reference,
+      email: data?['email'] as String,
+      fullName: data?['fullName'] as String,
+      phoneNo:
+          data?['phoneNumber'] != null ? data!['phoneNumber'] as String : null,
+      photoUrl: data?['photoUrl'] != null ? data!['photoUrl'] as String : null,
+      signupMethod:
+          data?['signupMethod'] != null
+              ? data!['signupMethod'] as String
+              : null,
+      isPhoneVerified:
+          data?['isPhoneVerified'] != null
+              ? data!['isPhoneVerified'] as bool
+              : null,
+      isEmailVerified:
+          data?['isEmailVerified'] != null
+              ? data!['isEmailVerified'] as bool
+              : null,
+      isRegistered:
+          data?['isRegistered'] != null ? data!['isRegistered'] as bool : null,
+      isDeleted: data?['isDeleted'] != null ? data!['isDeleted'] as bool : null,
+      isBlocked: data?['isBlocked'] != null ? data!['isBlocked'] as bool : null,
+      receivingNotifications:
+          data?['receivingNotifications'] != null
+              ? data!['receivingNotifications'] as bool
+              : null,
+      totalTransactions:
+          data?['totalTransactions'] != null
+              ? data!['totalTransactions'] as int
+              : null,
+      totalBalance:
+          data?['totalBalance'] != null
+              ? data!['totalBalance'] as double
+              : null,
+      createdAt:
+          (data?['createdAt'] is Timestamp)
+              ? (data!['createdAt'] as Timestamp).toDate()
+              : DateTime.parse(data!['createdAt']),
+      updatedAt:
+          (data['updatedAt'] is Timestamp)
+              ? (data['updatedAt'] as Timestamp).toDate()
+              : DateTime.parse(data['updatedAt']),
+      lastActivity:
+          (data['lastActivity'] is Timestamp)
+              ? (data['lastActivity'] as Timestamp).toDate()
+              : DateTime.parse(data['lastActivity']),
+      recentLogin:
+          (data['recentLogin'] is Timestamp)
+              ? (data['recentLogin'] as Timestamp).toDate()
+              : DateTime.parse(data['recentLogin']),
+    );
   }
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
       id: map['id'] as String,
-      email: map['email'] as String,
-      fullName: map['fullName'] as String,
-      phoneNo: map['phoneNumber'] != null ? map['phoneNumber'] as String : null,
-      photoUrl: map['photoUrl'] != null ? map['photoUrl'] as String : null,
-      signupMethod:
-          map['signupMethod'] != null ? map['signupMethod'] as String : null,
-      isPhoneVerified:
-          map['isPhoneVerified'] != null
-              ? map['isPhoneVerified'] as bool
-              : null,
-      isEmailVerified:
-          map['isEmailVerified'] != null
-              ? map['isEmailVerified'] as bool
-              : null,
-      isActive: map['isActive'] != null ? map['isActive'] as bool : null,
-      isDeleted: map['isDeleted'] != null ? map['isDeleted'] as bool : null,
-      isBlocked: map['isBlocked'] != null ? map['isBlocked'] as bool : null,
-      receivingNotifications:
-          map['receivingNotifications'] != null
-              ? map['receivingNotifications'] as bool
-              : null,
-      totalTransactions:
-          map['totalTransactions'] != null
-              ? map['totalTransactions'] as int
-              : null,
-      totalFriends:
-          map['totalFriends'] != null ? map['totalFriends'] as int : null,
-      totalBalance:
-          map['totalBalance'] != null ? map['totalBalance'] as int : null,
+      userRef:
+          map['userRef'] != null ? map['userRef'] as DocumentReference : null,
       createdAt:
           map['createdAt'] != null
               ? (map['createdAt'] is Timestamp
@@ -174,7 +205,60 @@ class UserModel extends Equatable {
                   ? (map['recentLogin'] as Timestamp).toDate()
                   : DateTime.parse(map['recentLogin'] as String))
               : null,
+      email: map['email'] as String,
+      fullName: map['fullName'] as String,
+      phoneNo: map['phoneNumber'] != null ? map['phoneNumber'] as String : null,
+      photoUrl: map['photoUrl'] != null ? map['photoUrl'] as String : null,
+      signupMethod:
+          map['signupMethod'] != null ? map['signupMethod'] as String : null,
+      isPhoneVerified:
+          map['isPhoneVerified'] != null
+              ? map['isPhoneVerified'] as bool
+              : null,
+
+      isEmailVerified:
+          map['isEmailVerified'] != null
+              ? map['isEmailVerified'] as bool
+              : null,
+      isRegistered:
+          map['isRegistered'] != null ? map['isRegistered'] as bool : null,
+      isDeleted: map['isDeleted'] != null ? map['isDeleted'] as bool : null,
+      isBlocked: map['isBlocked'] != null ? map['isBlocked'] as bool : null,
+      receivingNotifications:
+          map['receivingNotifications'] != null
+              ? map['receivingNotifications'] as bool
+              : null,
+      totalTransactions:
+          map['totalTransactions'] != null
+              ? map['totalTransactions'] as int
+              : 0,
+      totalBalance:
+          map['totalBalance'] != null ? map['totalBalance'] as double : 0.0,
     );
+  }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+      'userRef': userRef,
+      'createdAt': createdAt?.toIso8601String(),
+      'updatedAt': updatedAt?.toIso8601String(),
+      'lastActivity': lastActivity?.toIso8601String(),
+      'recentLogin': recentLogin?.toIso8601String(),
+      'email': email,
+      'fullName': fullName,
+      'phoneNumber': phoneNo,
+      'photoUrl': photoUrl,
+      'signupMethod': signupMethod,
+      'isPhoneVerified': isPhoneVerified,
+      'isEmailVerified': isEmailVerified,
+      'isRegistered': isRegistered,
+      'isDeleted': isDeleted,
+      'isBlocked': isBlocked,
+      'receivingNotifications': receivingNotifications,
+      'totalTransactions': totalTransactions,
+      'totalBalance': totalBalance,
+    };
   }
 
   @override
@@ -184,6 +268,7 @@ class UserModel extends Equatable {
   List<Object> get props {
     return [
       id,
+      userRef ?? '',
       email,
       fullName,
       phoneNo ?? '',
@@ -191,13 +276,12 @@ class UserModel extends Equatable {
       signupMethod ?? '',
       isPhoneVerified ?? false,
       isEmailVerified ?? false,
-      isActive ?? false,
+      isRegistered ?? false,
       isDeleted ?? false,
       isBlocked ?? false,
       receivingNotifications ?? false,
       totalTransactions ?? 0,
-      totalFriends ?? 0,
-      totalBalance ?? 0,
+      totalBalance ?? 0.0,
       createdAt ?? DateTime(1970, 1, 1),
       updatedAt ?? DateTime(1970, 1, 1),
       lastActivity ?? DateTime(1970, 1, 1),

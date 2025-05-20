@@ -118,3 +118,11 @@ next/Next button/Next/Suivant/التالي
 confirm/Confirm button/Confirm/Confirmer/تأكيد
 editContact/Edit contact info/Edit Contact/Éditer le contact/تعديل جهة الاتصال
 accountLinking/Account linking/Account Linking/Liaison de compte/ربط الحساب
+nameLength/Name length message/Name must be at least 3 characters/Le nom doit comporter au moins 3 caractères/يجب أن يتكون الاسم من ٣ أحرف على الأقل
+nickName/Nickname/Nickname/Surnom/الاسم المستعار
+addNewFriend/Add new friend/Add New Friend/Ajouter un nouvel ami/إضافة صديق جديد
+searchContacts/Search your contacts/Search your contacts/Rechercher vos contacts/البحث في جهات الاتصال الخاصة بك
+userAlreadyExists/User Already exists try to login or reset your password/User already exists try to login or reset your password/L'utilisateur existe déjà essayez de vous connecter ou de réinitialiser votre mot de passe/المستخدم موجود بالفعل حاول تسجيل الدخول أو إعادة تعيين كلمة المرور الخاصة بك
+tryAgainLater/Try again later/Try again later/Essayez à nouveau plus tard/حاول مرة أخرى لاحقًا
+resetPasswordEmailSent/Reset password email sent/Reset password email sent/Email de réinitialisation du mot de passe envoyé/تم إرسال بريد إعادة تعيين كلمة المرور
+friendAlreadyAddedBefore/Friend already added before/Friend already added before/Ami déjà ajouté avant/تمت إضافة الصديق من قبل

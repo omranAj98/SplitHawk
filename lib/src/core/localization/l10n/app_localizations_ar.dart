@@ -358,4 +358,28 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get accountLinking => 'ربط الحساب';
+
+  @override
+  String get nameLength => 'يجب أن يتكون الاسم من ٣ أحرف على الأقل';
+
+  @override
+  String get nickName => 'الاسم المستعار';
+
+  @override
+  String get addNewFriend => 'إضافة صديق جديد';
+
+  @override
+  String get searchContacts => 'البحث في جهات الاتصال الخاصة بك';
+
+  @override
+  String get userAlreadyExists => 'المستخدم موجود بالفعل حاول تسجيل الدخول أو إعادة تعيين كلمة المرور الخاصة بك';
+
+  @override
+  String get tryAgainLater => 'حاول مرة أخرى لاحقًا';
+
+  @override
+  String get resetPasswordEmailSent => 'تم إرسال بريد إعادة تعيين كلمة المرور';
+
+  @override
+  String get friendAlreadyAddedBefore => 'تمت إضافة الصديق من قبل';
 }

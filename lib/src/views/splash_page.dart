@@ -24,18 +24,18 @@ class SplashPage extends StatelessWidget {
 
             if (state.authStatus == AuthStatus.authenticated) {
               debugPrint("Navigating to the home screen from splash screen");
-              context.pushReplacementNamed(AppRoutesName.home);
+              context.goNamed(AppRoutesName.main);
             } else if (state.authStatus == AuthStatus.initial ||
                 state.authStatus == AuthStatus.unauthenticated) {
               debugPrint("Navigating to the signin screen from splash screen");
-              context.pushReplacementNamed(AppRoutesName.signin);
+              context.goNamed(AppRoutesName.signin);
             }
 
             return;
           }
           if (state.authStatus == AuthStatus.unauthenticated) {
             debugPrint("Navigating to the signin screen from splash screen");
-            context.pushReplacementNamed(AppRoutesName.signin);
+            context.goNamed(AppRoutesName.signin);
 
             return;
           }

@@ -467,5 +467,37 @@
   "accountLinking": "ربط الحساب",
   "@accountLinking": {
     "description": "Account linking"
+  },
+  "nameLength": "يجب أن يتكون الاسم من ٣ أحرف على الأقل",
+  "@nameLength": {
+    "description": "Name length message"
+  },
+  "nickName": "الاسم المستعار",
+  "@nickName": {
+    "description": "Nickname"
+  },
+  "addNewFriend": "إضافة صديق جديد",
+  "@addNewFriend": {
+    "description": "Add new friend"
+  },
+  "searchContacts": "البحث في جهات الاتصال الخاصة بك",
+  "@searchContacts": {
+    "description": "Search your contacts"
+  },
+  "userAlreadyExists": "المستخدم موجود بالفعل حاول تسجيل الدخول أو إعادة تعيين كلمة المرور الخاصة بك",
+  "@userAlreadyExists": {
+    "description": "User Already exists try to login or reset your password"
+  },
+  "tryAgainLater": "حاول مرة أخرى لاحقًا",
+  "@tryAgainLater": {
+    "description": "Try again later"
+  },
+  "resetPasswordEmailSent": "تم إرسال بريد إعادة تعيين كلمة المرور",
+  "@resetPasswordEmailSent": {
+    "description": "Reset password email sent"
+  },
+  "friendAlreadyAddedBefore": "تمت إضافة الصديق من قبل",
+  "@friendAlreadyAddedBefore": {
+    "description": "Friend already added before"
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +14,7 @@ import 'package:splithawk/src/core/localization/l10n/app_localizations.dart';
 import 'package:splithawk/src/core/routes/routes.dart';
 import 'package:splithawk/src/core/theme/cubit/theme_cubit.dart';
 import 'package:splithawk/src/core/theme/shimmer/shimmer_box_decoration.dart';
+import 'package:splithawk/src/core/widgets/app_snack_bar.dart';
 import 'package:splithawk/src/views/account/widgets/dialog_qrcode.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -20,7 +23,6 @@ part 'widgets/account_settings.dart';
 part 'widgets/qr_section.dart';
 
 class AccountScreen extends StatelessWidget {
-  bool initLoad = false;
   AccountScreen({super.key});
 
   Future<void> _refreshUserData(BuildContext context) async {
@@ -30,8 +32,6 @@ class AccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    initLoad ? null : (_refreshUserData(context), initLoad = true);
-
     return Scaffold(
       body: BlocListener<UserCubit, UserState>(
         listener: (context, state) {

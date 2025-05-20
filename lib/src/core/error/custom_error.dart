@@ -20,7 +20,7 @@ class CustomError extends Equatable {
   bool get stringify => true;
 
   String getMessage(BuildContext context) {
-    if (code.isNotEmpty) {
+    if (code.isNotEmpty && plugin.isNotEmpty) {
       return ErrorMessages.getLocalizedMessage(code, context, plugin);
     }
     return AppLocalizations.of(context)!.defaultErrorMessage;

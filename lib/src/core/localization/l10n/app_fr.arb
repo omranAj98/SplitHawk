@@ -467,5 +467,37 @@
   "accountLinking": "Liaison de compte",
   "@accountLinking": {
     "description": "Account linking"
+  },
+  "nameLength": "Le nom doit comporter au moins 3 caractères",
+  "@nameLength": {
+    "description": "Name length message"
+  },
+  "nickName": "Surnom",
+  "@nickName": {
+    "description": "Nickname"
+  },
+  "addNewFriend": "Ajouter un nouvel ami",
+  "@addNewFriend": {
+    "description": "Add new friend"
+  },
+  "searchContacts": "Rechercher vos contacts",
+  "@searchContacts": {
+    "description": "Search your contacts"
+  },
+  "userAlreadyExists": "L'utilisateur existe déjà essayez de vous connecter ou de réinitialiser votre mot de passe",
+  "@userAlreadyExists": {
+    "description": "User Already exists try to login or reset your password"
+  },
+  "tryAgainLater": "Essayez à nouveau plus tard",
+  "@tryAgainLater": {
+    "description": "Try again later"
+  },
+  "resetPasswordEmailSent": "Email de réinitialisation du mot de passe envoyé",
+  "@resetPasswordEmailSent": {
+    "description": "Reset password email sent"
+  },
+  "friendAlreadyAddedBefore": "Ami déjà ajouté avant",
+  "@friendAlreadyAddedBefore": {
+    "description": "Friend already added before"
   }
 }

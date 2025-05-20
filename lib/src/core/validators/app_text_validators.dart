@@ -21,6 +21,15 @@ class AppTextValidators {
     return null;
   }
 
+  static String? validateName(BuildContext context, String? value) {
+    if (value == null || value.isEmpty) {
+      return AppLocalizations.of(context)!.enterYourName;
+    } else if (value.trim().length < 3) {
+      return AppLocalizations.of(context)!.nameLength;
+    }
+    return null;
+  }
+
   static String? validatePassword(BuildContext context, String? value) {
     if (value == null || value.isEmpty) {
       return AppLocalizations.of(context)!.enterYourPassword;

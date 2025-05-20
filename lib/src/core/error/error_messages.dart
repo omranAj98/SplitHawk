@@ -43,6 +43,20 @@ class ErrorMessages {
           default:
             return AppLocalizations.of(context)!.signInCanceled;
         }
+      case 'auth_bloc':
+        switch (code) {
+          case 'user-exists':
+            return AppLocalizations.of(context)!.userAlreadyExists;
+          default:
+            return AppLocalizations.of(context)!.defaultErrorMessage;
+        }
+      case 'friend_cubit':
+        switch (code) {
+          case 'already_friends':
+            return AppLocalizations.of(context)!.friendAlreadyAddedBefore;
+          default:
+            return AppLocalizations.of(context)!.defaultErrorMessage;
+        }
       default:
         return AppLocalizations.of(context)!.defaultErrorMessage;
     }

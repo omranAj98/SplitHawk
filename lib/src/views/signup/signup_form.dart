@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:splithawk/src/blocs/auth/auth_bloc.dart';
 import 'package:splithawk/src/core/constants/app_size.dart';
 import 'package:splithawk/src/core/error/custom_error.dart';
+import 'package:splithawk/src/core/error/snackbar_error.dart';
 import 'package:splithawk/src/core/validators/app_text_validators.dart';
 import 'package:splithawk/src/core/localization/l10n/app_localizations.dart';
 
@@ -15,8 +16,6 @@ class SignupForm extends StatelessWidget {
   String? phoneNo;
   @override
   Widget build(BuildContext context) {
-    // final controller = Get.put(SignUpController());
-
     final formKey = GlobalKey<FormState>();
 
     void submit() async {
@@ -31,14 +30,10 @@ class SignupForm extends StatelessWidget {
             ),
           );
         } on CustomError catch (e) {
-          e.showErrorDialog(context);
+          AppErrorSnackBar(error: e, context: context);
         } catch (e) {
-          print(e);
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(AppLocalizations.of(context)!.errorOccurred),
-            ),
-          );
+          debugPrint("Signup form error Listener: ${e.toString()}");
+          AppErrorSnackBar(context: context);
         }
       }
     }
@@ -52,7 +47,10 @@ class SignupForm extends StatelessWidget {
             key: formKey,
             child: Column(
               children: [
-                Align(alignment: Alignment.center, child: Text("Register Now")),
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(AppLocalizations.of(context)!.signUp),
+                ),
                 const SizedBox(height: 12),
                 TextFormField(
                   decoration: InputDecoration(

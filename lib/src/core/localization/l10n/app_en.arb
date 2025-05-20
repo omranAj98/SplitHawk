@@ -467,5 +467,37 @@
   "accountLinking": "Account Linking",
   "@accountLinking": {
     "description": "Account linking"
+  },
+  "nameLength": "Name must be at least 3 characters",
+  "@nameLength": {
+    "description": "Name length message"
+  },
+  "nickName": "Nickname",
+  "@nickName": {
+    "description": "Nickname"
+  },
+  "addNewFriend": "Add New Friend",
+  "@addNewFriend": {
+    "description": "Add new friend"
+  },
+  "searchContacts": "Search your contacts",
+  "@searchContacts": {
+    "description": "Search your contacts"
+  },
+  "userAlreadyExists": "User already exists try to login or reset your password",
+  "@userAlreadyExists": {
+    "description": "User Already exists try to login or reset your password"
+  },
+  "tryAgainLater": "Try again later",
+  "@tryAgainLater": {
+    "description": "Try again later"
+  },
+  "resetPasswordEmailSent": "Reset password email sent",
+  "@resetPasswordEmailSent": {
+    "description": "Reset password email sent"
+  },
+  "friendAlreadyAddedBefore": "Friend already added before",
+  "@friendAlreadyAddedBefore": {
+    "description": "Friend already added before"
   }
 }

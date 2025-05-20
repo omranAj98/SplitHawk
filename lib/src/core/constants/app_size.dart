@@ -8,4 +8,6 @@ class AppSize {
   static const double containerSize = 30.0;
   static const double containerSizeL1 = 50.0;
   static double textFormHeight = 40.0.h;
+  static double contactItemHeight = 50.0.h;
+  static double iconSize = 20.0;
 }

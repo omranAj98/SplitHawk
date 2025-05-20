@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as fbAuth;
+import 'package:flutter/material.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 
 import 'package:splithawk/src/core/error/custom_error.dart';
 import 'package:splithawk/src/models/user_model.dart';
@@ -11,14 +13,40 @@ class UserRepository {
 
   Future<void> createUser(UserModel userModel) async {
     try {
-      await firebaseFirestore
-          .collection('users')
-          .doc(userModel.id)
-          .set(userModel.toMap());
-      print('User created successfully');
+      final HttpsCallable callable = FirebaseFunctions.instance.httpsCallable(
+        'createUser',
+      );
+      await callable.call(userModel.toMapFirestore());
+      debugPrint('User created successfully via Cloud Function');
+    } catch (e) {
+      throw CustomError(
+        message: e.toString(),
+        code: 'cloud_function_error',
+        plugin: 'createUser',
+      );
+    }
+  }
+
+  Future<QueryDocumentSnapshot?> getUserDoc(String email) async {
+    try {
+      final snapshot =
+          await firebaseFirestore
+              .collection('users')
+              .where('email', isEqualTo: email)
+              .limit(1)
+              .get();
+
+      if (snapshot.docs.isNotEmpty) {
+        debugPrint('user already exist');
+        final existingDoc = snapshot.docs.first;
+        return existingDoc;
+      } else {
+        debugPrint('User not found');
+        return null;
+      }
     } on FirebaseException catch (e) {
       throw CustomError(
-        message: e.message ?? 'An error occurred during creating user',
+        message: e.message ?? 'An error occurred during checking user',
         code: e.code,
         plugin: e.plugin,
       );
@@ -31,18 +59,21 @@ class UserRepository {
           await firebaseFirestore
               .collection('users')
               .where('email', isEqualTo: email)
+              .limit(1)
               .get();
 
       if (userSnapShot.docs.isNotEmpty) {
-        final userModel = UserModel.fromMap(userSnapShot.docs.first.data());
+        final userModel = UserModel.fromDocumentSnapshot(
+          userSnapShot.docs.first,
+        );
         if (userModel.isEmailVerified == false) {
           await firebaseFirestore.collection('users').doc(userModel.id).update({
             'isEmailVerified': true,
             'updatedAt': DateTime.now(),
           });
-          print('${userModel.email} verified successfully');
+          debugPrint('${userModel.email} verified successfully');
         } else {
-          print('${userModel.email} already exist and verified');
+          debugPrint('${userModel.email} already exist and verified');
           return;
         }
       } else {
@@ -67,13 +98,14 @@ class UserRepository {
           await firebaseFirestore
               .collection('users')
               .where('email', isEqualTo: email)
+              .limit(1)
               .get();
 
       if (snapshot.docs.isNotEmpty) {
-        print('user already exist');
-        return UserModel.fromMap(snapshot.docs.first.data());
+        debugPrint('user already exist');
+        return UserModel.fromDocumentSnapshot(snapshot.docs.first);
       } else {
-        print('User not found');
+        debugPrint('User not found');
         return null;
       }
     } on FirebaseException catch (e) {
@@ -93,9 +125,9 @@ class UserRepository {
       await firebaseFirestore
           .collection('users')
           .doc(userModel.id)
-          .update(updatedUserModel.toMap());
-      print('User updated successfully');
-        } on FirebaseException catch (e) {
+          .update(updatedUserModel.toMapFirestore());
+      debugPrint('User updated successfully');
+    } on FirebaseException catch (e) {
       throw CustomError(
         message: e.message ?? 'An error occurred during updating user',
         code: e.code,
@@ -139,7 +171,10 @@ class UserRepository {
               .get();
 
       if (snapshot.docs.isNotEmpty) {
-        UserModel userModel = UserModel.fromMap(snapshot.docs[0].data());
+        snapshot.docs.first.reference.get();
+        UserModel userModel = UserModel.fromDocumentSnapshot(
+          snapshot.docs.first,
+        );
         return userModel;
       } else {
         throw CustomError(
@@ -149,11 +184,16 @@ class UserRepository {
         );
       }
     } on FirebaseException catch (e) {
-      print('FirebaseException: ${e.message}');
       throw CustomError(
         message: e.message ?? 'An error occurred during getting self user',
         code: e.code,
         plugin: e.plugin,
+      );
+    } on Exception catch (e) {
+      throw CustomError(
+        message: e.toString(),
+        code: 'user_repository_exception',
+        plugin: 'getSelfUser',
       );
     }
   }

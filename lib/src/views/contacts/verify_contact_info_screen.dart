@@ -8,7 +8,7 @@ import 'package:splithawk/src/core/localization/l10n/app_localizations.dart';
 import 'package:splithawk/src/core/routes/names.dart';
 
 class VerifyContactInfoScreen extends StatelessWidget {
-  VerifyContactInfoScreen({super.key});
+  const VerifyContactInfoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

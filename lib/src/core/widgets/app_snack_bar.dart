@@ -10,8 +10,8 @@ class AppSnackBar {
     Duration duration = const Duration(seconds: 3),
   }) {
     final backgroundColor = switch (type) {
-      SnackBarType.success => Colors.green,
-      SnackBarType.error => Colors.red,
+      SnackBarType.success => const Color.fromARGB(255, 117, 164, 119),
+      SnackBarType.error => const Color.fromARGB(255, 191, 81, 73),
     };
 
     final snackBar = SnackBar(

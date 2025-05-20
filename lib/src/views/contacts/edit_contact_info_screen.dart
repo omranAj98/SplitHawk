@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:splithawk/src/blocs/contact/contact_cubit.dart';
 import 'package:splithawk/src/core/constants/app_size.dart';
 import 'package:splithawk/src/core/localization/l10n/app_localizations.dart';
-import 'package:splithawk/src/core/routes/routes.dart';
 import 'package:splithawk/src/models/contact_model.dart';
 
 class EditContactInfoScreen extends StatefulWidget {

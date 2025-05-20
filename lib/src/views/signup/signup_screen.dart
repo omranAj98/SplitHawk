@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:splithawk/src/blocs/auth/auth_bloc.dart';
+import 'package:splithawk/src/core/error/snackbar_error.dart';
 import 'package:splithawk/src/views/signup/signup_form.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -12,13 +13,7 @@ class SignupScreen extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state.authStatus == AuthStatus.error) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                state.error!.message.toString() ?? 'An error occurred',
-              ),
-            ),
-          );
+          AppErrorSnackBar(error: state.error!, context: context);
         }
       },
       child: Scaffold(
@@ -27,7 +22,7 @@ class SignupScreen extends StatelessWidget {
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [SignupForm(initEmail: initEmail,)],
+              children: [SignupForm(initEmail: initEmail)],
             ),
           ),
         ),
