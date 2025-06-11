@@ -7,13 +7,18 @@ import 'package:splithawk/src/core/enums/menus.dart';
 import 'package:splithawk/src/core/routes/names.dart';
 import 'package:splithawk/src/core/widgets/nav_bar/wd_bottom_navigation_bar.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    Menus previousMenu = Menus.home;
+  State<MainPage> createState() => _MainPageState();
+}
 
+class _MainPageState extends State<MainPage> {
+  Menus previousMenu = Menus.home;
+
+  @override
+  Widget build(BuildContext context) {
     return BlocConsumer<MenuCubit, Menus>(
       listener: (context, currentMenu) {
         if (currentMenu == Menus.add) {

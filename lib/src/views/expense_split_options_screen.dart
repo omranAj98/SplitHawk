@@ -39,7 +39,7 @@ class ExpenseSplitOptionsScreen extends StatelessWidget {
             const SizedBox(height: 24),
             _buildSplitOption(
               context,
-              AppLocalizations.of(context)!.theyPaidFullYouOweHalf,
+              AppLocalizations.of(context)!.youPaidFullTheyOweHalf,
               '${AppLocalizations.of(context)!.youPaid} $currency ${amount.toStringAsFixed(2)}\n${AppLocalizations.of(context)!.eachFriendOwesYou} $currency ${(amount / (selectedFriends.length + 1)).toStringAsFixed(2)}',
               Icons.arrow_forward,
               () => _handleSplitSelection(
