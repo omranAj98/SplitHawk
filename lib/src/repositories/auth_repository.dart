@@ -25,14 +25,44 @@ class AuthRepository {
         email: email,
         password: password,
       );
-      //send email verification
-      await firebaseAuth.currentUser!.sendEmailVerification();
-      print("Verification email sent");
 
       return userCredential;
     } on fbAuth.FirebaseAuthException catch (e) {
       throw CustomError(
         message: e.message ?? 'An error occurred during sign-up',
+        code: e.code,
+        plugin: e.plugin,
+      );
+    } catch (e) {
+      throw CustomError(
+        message: 'An unexpected error occurred: ${e.toString()}',
+        code: 'unknown',
+        plugin: 'firebase_auth',
+      );
+    }
+  }
+
+  Future<void> verifyEmail() async {
+    try {
+      final user = firebaseAuth.currentUser;
+      if (user == null) {
+        throw CustomError(
+          message: 'No user is currently signed in',
+          code: 'no_user_signed_in',
+          plugin: 'firebase_auth',
+        );
+      }
+
+      if (user.emailVerified) {
+        print('Email is already verified');
+        return;
+      }
+
+      await user.sendEmailVerification();
+      print('Verification email sent');
+    } on fbAuth.FirebaseAuthException catch (e) {
+      throw CustomError(
+        message: e.message ?? 'An error occurred during email verification',
         code: e.code,
         plugin: e.plugin,
       );
@@ -116,7 +146,7 @@ class AuthRepository {
     required String password,
   }) async {
     try {
-      final userCredential = await firebaseAuth.signInWithEmailAndPassword(
+      await firebaseAuth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );

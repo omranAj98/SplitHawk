@@ -12,7 +12,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get appName => 'FauconPartage';
 
   @override
-  String get appDescription => 'Votre application ultime de partage de dépenses';
+  String get appDescription =>
+      'Votre application ultime de partage de dépenses';
 
   @override
   String get welcomeTo => 'Bienvenue à ';
@@ -42,7 +43,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get resetPassword => 'Réinitialiser le mot de passe';
 
   @override
-  String get resetLinkSent => 'Un lien de réinitialisation a été envoyé à votre e-mail';
+  String get resetLinkSent =>
+      'Un lien de réinitialisation a été envoyé à votre e-mail';
 
   @override
   String get signInWithGoogle => 'Se connecter avec Google';
@@ -153,10 +155,12 @@ class AppLocalizationsFr extends AppLocalizations {
   String get invalidConfirmPassword => 'Mot de passe de confirmation invalide';
 
   @override
-  String get enterYourPhoneNumber => 'veuillez entrer votre numéro de téléphone';
+  String get enterYourPhoneNumber =>
+      'veuillez entrer votre numéro de téléphone';
 
   @override
-  String get passwordLength => 'Mot de passe doit comporter au moins 7 caractères';
+  String get passwordLength =>
+      'Mot de passe doit comporter au moins 7 caractères';
 
   @override
   String get invalidPhoneNumber => 'Numéro de téléphone invalide';
@@ -180,7 +184,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get enterYourName => 'Veuillez entrer votre nom';
 
   @override
-  String get fullNameLength => 'Nom complet doit comporter au moins 3 caractères';
+  String get fullNameLength =>
+      'Nom complet doit comporter au moins 3 caractères';
 
   @override
   String get fullName => 'Nom complet';
@@ -201,7 +206,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get phoneNumber => 'Numéro de téléphone';
 
   @override
-  String get emailAlreadyInUse => 'E-mail déjà utilisé essayez de vous connecter ou de réinitialiser votre mot de passe';
+  String get emailAlreadyInUse =>
+      'E-mail déjà utilisé essayez de vous connecter ou de réinitialiser votre mot de passe';
 
   @override
   String get emailNotFound => 'E-mail non trouvé';
@@ -219,19 +225,24 @@ class AppLocalizationsFr extends AppLocalizations {
   String get errorOccurred => 'Une erreur s\'est produite';
 
   @override
-  String get mustContainUppercase => 'Mot de passe doit contenir au moins une lettre majuscule';
+  String get mustContainUppercase =>
+      'Mot de passe doit contenir au moins une lettre majuscule';
 
   @override
-  String get mustContainLowercase => 'Mot de passe doit contenir au moins une lettre minuscule';
+  String get mustContainLowercase =>
+      'Mot de passe doit contenir au moins une lettre minuscule';
 
   @override
-  String get mustContainNumber => 'Mot de passe doit contenir au moins un chiffre';
+  String get mustContainNumber =>
+      'Mot de passe doit contenir au moins un chiffre';
 
   @override
-  String get mustContainSpecialChar => 'Mot de passe doit contenir au moins un caractère spécial';
+  String get mustContainSpecialChar =>
+      'Mot de passe doit contenir au moins un caractère spécial';
 
   @override
-  String get defaultErrorMessage => 'Une erreur s\'est produite. Veuillez réessayer';
+  String get defaultErrorMessage =>
+      'Une erreur s\'est produite. Veuillez réessayer';
 
   @override
   String get userNotFound => 'Votre compte n\'existe pas';
@@ -240,7 +251,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get networkError => 'Erreur réseau';
 
   @override
-  String get tooManyRequests => 'Trop de demandes. Veuillez réessayer plus tard';
+  String get tooManyRequests =>
+      'Trop de demandes. Veuillez réessayer plus tard';
 
   @override
   String get notFound => 'Enregistrement non trouvé';
@@ -339,7 +351,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get confirmAddContact => 'Confirmer l\'ajout de contact';
 
   @override
-  String get checkNumberBeforeConfirmation => 'Vérifier le numéro avant la confirmation';
+  String get checkNumberBeforeConfirmation =>
+      'Vérifier le numéro avant la confirmation';
 
   @override
   String get finish => 'Terminer';
@@ -372,14 +385,92 @@ class AppLocalizationsFr extends AppLocalizations {
   String get searchContacts => 'Rechercher vos contacts';
 
   @override
-  String get userAlreadyExists => 'L\'utilisateur existe déjà essayez de vous connecter ou de réinitialiser votre mot de passe';
+  String get userAlreadyExists =>
+      'L\'utilisateur existe déjà essayez de vous connecter ou de réinitialiser votre mot de passe';
 
   @override
   String get tryAgainLater => 'Essayez à nouveau plus tard';
 
   @override
-  String get resetPasswordEmailSent => 'Email de réinitialisation du mot de passe envoyé';
+  String get resetPasswordEmailSent =>
+      'Email de réinitialisation du mot de passe envoyé';
 
   @override
   String get friendAlreadyAddedBefore => 'Ami déjà ajouté avant';
+
+  @override
+  String get friendAddedSuccessfully => 'Ami ajouté avec succès';
+
+  @override
+  String get tryAddingSomeFriends => 'Essayez d\'ajouter des amis';
+
+  @override
+  String get somethingWentWrong => 'Quelque chose s\'est mal passé';
+
+  @override
+  String get errorFetchingFriends => 'Erreur lors de la récupération des amis';
+
+  @override
+  String get noFriendsFound => 'Aucun ami trouvé';
+
+  @override
+  String get tooLongMoreThan18Chars => 'Trop long, plus de 18 caractères';
+
+  @override
+  String get invalidCharacters => 'Caractères invalides';
+
+  @override
+  String get settled => 'Réglé';
+
+  @override
+  String get youOwe => 'Vous devez';
+
+  @override
+  String get owesYou => 'vous devez';
+
+  @override
+  String get enterAmount => 'Veuillez entrer le montant';
+
+  @override
+  String get invalidAmount => 'Montant invalide. Exemple : 10,5';
+
+  @override
+  String get expenseAmount => 'Montant de la dépense';
+
+  @override
+  String get friendsSelected => 'Amis sélectionnés';
+
+  @override
+  String get splitMethod => 'Méthode de partage';
+
+  @override
+  String get equalSplit => 'Partage égal';
+
+  @override
+  String get theyPaidFullYouOweHalf =>
+      'Ils ont payé la totalité, vous devez la moitié';
+
+  @override
+  String get theyPaidFullYouOweFull =>
+      'Ils ont payé la totalité, vous devez la totalité';
+
+  @override
+  String get youPaidFullTheyOweHalf =>
+      'Vous avez payé la totalité, ils doivent la moitié';
+
+  @override
+  String get youPaidFullTheyOweFull =>
+      'Vous avez payé la totalité, ils doivent la totalité';
+
+  @override
+  String get youPaid => 'Vous avez payé';
+
+  @override
+  String get eachFriendOwesYou => 'Chaque ami vous doit';
+
+  @override
+  String get theyPaid => 'Ils ont payé';
+
+  @override
+  String get youOweEachFriend => 'Vous devez à chaque ami';
 }

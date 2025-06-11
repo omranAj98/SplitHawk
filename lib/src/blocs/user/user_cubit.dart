@@ -1,19 +1,16 @@
 import 'dart:async';
-import 'dart:convert';
 
-import 'package:encrypt/encrypt.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
-import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:splithawk/src/core/enums/request_status.dart';
 import 'package:splithawk/src/core/error/custom_error.dart';
 import 'package:splithawk/src/models/user_model.dart';
 import 'package:splithawk/src/repositories/user_repository.dart';
-import 'package:splithawk/src/core/config/encryption_setup.dart';
 
 part 'user_state.dart';
 
-class UserCubit extends HydratedCubit<UserState> {
+class UserCubit extends Cubit<UserState> {
   UserRepository userRepository;
 
   UserCubit({required this.userRepository}) : super(UserState.initial()) {
@@ -102,71 +99,4 @@ class UserCubit extends HydratedCubit<UserState> {
     return super.close();
   }
 
-  @override
-  UserState? fromJson(Map<String, dynamic> json) {
-    try {
-      final encryptedData = json['data'] as String;
-      final encryptedObject = Encrypted.fromBase64(encryptedData);
-      final decrypted = EncryptionSetup.encrypter.decrypt(
-        encryptedObject,
-        iv: EncryptionSetup.iv,
-      );
-
-      final decoded = jsonDecode(decrypted);
-
-      Timer? timer;
-      if (decoded['resetPasswordTimeoutEnd'] != null) {
-        _resetPasswordTimeoutEnd = DateTime.parse(
-          decoded['resetPasswordTimeoutEnd'],
-        );
-        final remaining = _resetPasswordTimeoutEnd!.difference(DateTime.now());
-
-        if (remaining.inSeconds > 0) {
-          timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-            final now = DateTime.now();
-            if (now.isAfter(_resetPasswordTimeoutEnd!)) {
-              timer.cancel();
-            }
-          });
-        } else {
-          _resetPasswordTimeoutEnd = null;
-        }
-      }
-
-      final state = UserState(
-        user:
-            decoded['user'] != null ? UserModel.fromMap(decoded['user']) : null,
-        requestStatus: RequestStatus.values[decoded['requestStatus'] as int],
-        error: null,
-        timer: timer,
-      );
-
-      debugPrint('Restored State from user_cubit: $state');
-      return state;
-    } catch (e) {
-      debugPrint('Error in fromJson in user_cubit: $e');
-      return null;
-    }
-  }
-
-  @override
-  Map<String, dynamic>? toJson(UserState state) {
-    try {
-      final json = {
-        'user': state.user?.toMap(),
-        'requestStatus': state.requestStatus.index,
-        'resetPasswordTimeoutEnd': _resetPasswordTimeoutEnd?.toIso8601String(),
-      };
-
-      final encrypted = EncryptionSetup.encrypter.encrypt(
-        jsonEncode(json),
-        iv: EncryptionSetup.iv,
-      );
-
-      return {'data': encrypted.base64};
-    } catch (e) {
-      debugPrint('Error in toJson in user_cubit: $e');
-      return null;
-    }
-  }
 }

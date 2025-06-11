@@ -5,12 +5,15 @@ import 'package:go_router/go_router.dart';
 import 'package:splithawk/src/blocs/friend/friend_cubit.dart';
 import 'package:splithawk/src/blocs/user/user_cubit.dart';
 import 'package:splithawk/src/core/constants/app_size.dart';
+import 'package:splithawk/src/core/enums/request_status.dart';
 import 'package:splithawk/src/core/localization/l10n/app_localizations.dart';
 import 'package:splithawk/src/core/routes/routes.dart';
 import 'package:splithawk/src/core/validators/app_text_validators.dart';
+import 'package:splithawk/src/core/widgets/app_snack_bar.dart';
+import 'package:splithawk/src/core/widgets/loading_overlay.dart';
 
 class AddNewFriendScreen extends StatefulWidget {
-  AddNewFriendScreen({super.key});
+  const AddNewFriendScreen({super.key});
 
   @override
   State<AddNewFriendScreen> createState() => _AddNewFriendScreenState();
@@ -28,17 +31,34 @@ class _AddNewFriendScreenState extends State<AddNewFriendScreen> {
     super.dispose();
   }
 
-  _submit(BuildContext context) {
+  _submit(BuildContext context) async {
     final form = formKey.currentState;
     if (form!.validate()) {
       form.save();
 
-      context.read<FriendCubit>().addFriend(
+      await context.read<FriendCubit>().addFriend(
         email: email,
         name: name,
         selfUserModel: context.read<UserCubit>().state.user!,
       );
-      context.goNamed(AppRoutesName.main);
+      if ((context.read<FriendCubit>().state.requestStatus ==
+              RequestStatus.error) &&
+          (context.read<FriendCubit>().state.actionType ==
+              FriendActionType.add)) {
+        context.read<FriendCubit>().state.error!.showErrorDialog(context);
+      }
+      if (context.read<FriendCubit>().state.requestStatus ==
+              RequestStatus.success &&
+          context.read<FriendCubit>().state.actionType ==
+              FriendActionType.add) {
+        AppSnackBar.show(
+          context,
+          type: SnackBarType.success,
+          message: AppLocalizations.of(context)!.friendAddedSuccessfully,
+        );
+
+        context.goNamed(AppRoutesName.main);
+      }
     }
   }
 
@@ -48,98 +68,117 @@ class _AddNewFriendScreenState extends State<AddNewFriendScreen> {
     final colorScheme = Theme.of(context).colorScheme;
     double screenWidth = MediaQuery.of(context).size.width;
 
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(screenWidth * 0.13),
-        child: SafeArea(
-          child: Container(
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+    return BlocBuilder<FriendCubit, FriendState>(
+      builder: (context, state) {
+        return LoadingOverlay(
+          isLoading:
+              state.requestStatus == RequestStatus.loading &&
+              state.actionType == FriendActionType.add,
+          child: Scaffold(
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(screenWidth * 0.13),
+              child: SafeArea(
+                child: Container(
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          TextButton(
+                            onPressed: () => context.pop(),
+                            child: Icon(Icons.arrow_back_ios_new_rounded),
+                          ),
+                          SizedBox(
+                            child: Text(
+                              AppLocalizations.of(context)!.addFriend,
+                              style: TextStyle(fontSize: 16.sp),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            child: TextButton(
+                              onPressed: () {
+                                _submit(context);
+                              },
+                              child: Text(
+                                AppLocalizations.of(context)!.confirm,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            body: Padding(
+              padding: EdgeInsets.only(
+                left: AppSize.paddingSizeL2,
+                right: AppSize.paddingSizeL2,
+              ),
+              child: Form(
+                key: formKey,
+                child: Column(
                   children: [
-                    TextButton(
-                      onPressed: () => context.pop(),
-                      child: Icon(Icons.arrow_back_ios_new_rounded),
-                    ),
-                    SizedBox(
-                      child: Text(
-                        AppLocalizations.of(context)!.addFriend,
-                        style: TextStyle(fontSize: 16.sp),
-                        textAlign: TextAlign.center,
+                    SizedBox(height: AppSize.paddingSizeL2),
+                    TextFormField(
+                      textInputAction: TextInputAction.next,
+                      textCapitalization: TextCapitalization.words,
+                      keyboardType: TextInputType.name,
+                      validator:
+                          (value) =>
+                              AppTextValidators.validateName(context, value),
+                      decoration: InputDecoration(
+                        border: UnderlineInputBorder(),
+                        labelText: AppLocalizations.of(context)!.nickName,
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(),
+                        ),
                       ),
+                      onChanged: (value) {
+                        name = value;
+                      },
+                      onSaved: (newValue) => name = newValue!,
+                      onFieldSubmitted: (value) {
+                        FocusScope.of(context).requestFocus(_emailFocusNode);
+                      },
+                      autocorrect: false,
+                      autofocus: true,
                     ),
-                    SizedBox(
-                      child: TextButton(
-                        onPressed: () {
-                          _submit(context);
-                        },
-                        child: Text(AppLocalizations.of(context)!.confirm),
+                    SizedBox(height: AppSize.paddingSizeL2),
+                    TextFormField(
+                      focusNode: _emailFocusNode,
+                      autocorrect: false,
+                      keyboardType: TextInputType.emailAddress,
+                      textInputAction: TextInputAction.done,
+                      textCapitalization: TextCapitalization.none,
+                      validator:
+                          (value) =>
+                              AppTextValidators.validateEmail(context, value),
+                      decoration: InputDecoration(
+                        border: UnderlineInputBorder(),
+                        label: Text(AppLocalizations.of(context)!.email),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(),
+                        ),
                       ),
+                      onChanged: (value) {
+                        email = value.trim();
+                      },
+                      onSaved: (newValue) => email = newValue!,
+                      onFieldSubmitted: (value) {
+                        _submit(context);
+                      },
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
-      body: Padding(
-        padding: EdgeInsets.only(
-          left: AppSize.paddingSizeL2,
-          right: AppSize.paddingSizeL2,
-        ),
-        child: Form(
-          key: formKey,
-          child: Column(
-            children: [
-              SizedBox(height: AppSize.paddingSizeL2),
-              TextFormField(
-                textInputAction: TextInputAction.next,
-                textCapitalization: TextCapitalization.words,
-                keyboardType: TextInputType.name,
-                validator:
-                    (value) => AppTextValidators.validateName(context, value),
-                decoration: InputDecoration(
-                  border: UnderlineInputBorder(),
-                  labelText: AppLocalizations.of(context)!.nickName,
-                  focusedBorder: UnderlineInputBorder(borderSide: BorderSide()),
-                ),
-                onChanged: (value) {
-                  name = value;
-                },
-                onFieldSubmitted: (value) {
-                  FocusScope.of(context).requestFocus(_emailFocusNode);
-                },
-                autocorrect: false,
-                autofocus: true,
-              ),
-              SizedBox(height: AppSize.paddingSizeL2),
-              TextFormField(
-                focusNode: _emailFocusNode,
-                autocorrect: false,
-                keyboardType: TextInputType.emailAddress,
-                textInputAction: TextInputAction.done,
-                textCapitalization: TextCapitalization.none,
-                validator:
-                    (value) => AppTextValidators.validateEmail(context, value),
-                decoration: InputDecoration(
-                  border: UnderlineInputBorder(),
-                  label: Text(AppLocalizations.of(context)!.email),
-                  focusedBorder: UnderlineInputBorder(borderSide: BorderSide()),
-                ),
-                onChanged: (value) {
-                  email = value.trim();
-                },
-                onFieldSubmitted: (value) {
-                  _submit(context);
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

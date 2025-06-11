@@ -6,7 +6,7 @@
 	<dict>
 		<key>FirebaseRemoteConfig_Privacy.bundle/Info.plist</key>
 		<data>
-		G1pX5OMeRRr7ysm+nXLXSMySHTc=
+		RdgWDDu1prEH1IaVVUtNY1iyfl8=
 		</data>
 		<key>FirebaseRemoteConfig_Privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -30,15 +30,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		q5hb9kSawUgi27BFhzuH72BrPbU=
+		eOiOw95+ZMGLvwSXFZFr5MyvTgU=
 		</data>
 		<key>Modules/FirebaseRemoteConfig.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		9Ww2XgBanL5wZSncslxY4QfkfgY=
+		9UiJFtewg3tJwAdmRHCJJ0rmisg=
 		</data>
 		<key>Modules/FirebaseRemoteConfig.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		rO1FHlVMzlbI2F7LsCiv0S6eV7A=
+		qYkQFxucR2qBZ1mSh02zcaufRSI=
 		</data>
 		<key>Modules/FirebaseRemoteConfig.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -75,7 +75,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pG3EfpK1fU1ZCs+wY2C2jJjj52I1OV5qVaDIM/ycaCg=
+			EmyuDjD6GpSW2Ij0jskqZSA9rPZcecHEbTf1KM2QGxg=
 			</data>
 		</dict>
 		<key>FirebaseRemoteConfig_Privacy.bundle/PrivacyInfo.xcprivacy</key>
@@ -117,14 +117,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KoKaesj2T4/KUrPPGcGLCNQh7IKmb7V3BLZsuFUB0/4=
+			zDgsTaj7ojJodM9bm5nq6n6kV2J/JjiQiR2FusT6ENQ=
 			</data>
 		</dict>
 		<key>Modules/FirebaseRemoteConfig.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			L7ebqBDRFDrQzRoK1VRho0OO4VfylS+c0Hm92/DbZwA=
+			uKq4MhP2I00oS4w4V0x0vn7DryqrI+5JaOTEpOz6kns=
 			</data>
 		</dict>
 		<key>Modules/FirebaseRemoteConfig.swiftmodule/arm64-apple-ios-simulator.abi.json</key>

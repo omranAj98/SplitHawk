@@ -10,4 +10,5 @@ class AppColors {
   static const lightGrey = Color(0xFFF6F6F6);
   static const softGrey = Color(0xFFB9B9B9);
   static const grey = Color(0xFFC7C9D9);
+  static const neww = Color.fromARGB(255, 174, 249, 77);
 }

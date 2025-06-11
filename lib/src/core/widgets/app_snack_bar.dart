@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 enum SnackBarType { success, error }
@@ -10,8 +11,8 @@ class AppSnackBar {
     Duration duration = const Duration(seconds: 3),
   }) {
     final backgroundColor = switch (type) {
-      SnackBarType.success => const Color.fromARGB(255, 117, 164, 119),
-      SnackBarType.error => const Color.fromARGB(255, 191, 81, 73),
+      SnackBarType.success => Theme.of(context).colorScheme.primary,
+      SnackBarType.error => Theme.of(context).colorScheme.error,
     };
 
     final snackBar = SnackBar(
@@ -21,6 +22,7 @@ class AppSnackBar {
       ),
       backgroundColor: backgroundColor,
       duration: duration,
+
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),

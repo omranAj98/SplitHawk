@@ -22,17 +22,18 @@ class SignupForm extends StatelessWidget {
       if (formKey.currentState!.validate()) {
         formKey.currentState!.save();
         try {
-          context.read<AuthBloc>().add(
+           context.read<AuthBloc>().add(
             AuthSignUpWithEmailEvent(
               email: email!,
               password: password!,
               name: fullName!,
             ),
           );
+             
         } on CustomError catch (e) {
           AppErrorSnackBar(error: e, context: context);
         } catch (e) {
-          debugPrint("Signup form error Listener: ${e.toString()}");
+          debugPrint("Signup form error catcher: ${e.toString()}");
           AppErrorSnackBar(context: context);
         }
       }

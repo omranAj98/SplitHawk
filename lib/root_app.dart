@@ -35,39 +35,28 @@ class RootApp extends StatelessWidget {
                 BlocProvider<AuthBloc>.value(value: locator<AuthBloc>()),
               ],
 
-              child: BlocListener<LocalizationCubit, Locale>(
-                listener: (context, state) {
-                  updateFirebaseAuthLanguage(
-                    context.read<LocalizationCubit>().state.languageCode,
+              child: BlocBuilder<ThemeCubit, ThemeState>(
+                builder: (context, state) {
+                  return MaterialApp.router(
+                    localizationsDelegates: [
+                      AppLocalizations.delegate,
+                      GlobalMaterialLocalizations.delegate,
+                      GlobalWidgetsLocalizations.delegate,
+                      GlobalCupertinoLocalizations.delegate,
+                    ],
+                    supportedLocales: [
+                      Locale('en'),
+                      Locale('ar'),
+                      Locale('fr'),
+                    ],
+                    theme: AppTheme.lightTheme(),
+                    darkTheme: AppTheme.darkTheme(),
+                    themeMode: state.themeMode,
+                    debugShowCheckedModeBanner: false,
+                    routerConfig: appRouter,
+                    locale: context.watch<LocalizationCubit>().state,
                   );
                 },
-
-                child: BlocBuilder<ThemeCubit, ThemeState>(
-                  builder: (context, state) {
-                    updateFirebaseAuthLanguage(
-                      context.read<LocalizationCubit>().state.languageCode,
-                    );
-                    return MaterialApp.router(
-                      localizationsDelegates: [
-                        AppLocalizations.delegate,
-                        GlobalMaterialLocalizations.delegate,
-                        GlobalWidgetsLocalizations.delegate,
-                        GlobalCupertinoLocalizations.delegate,
-                      ],
-                      supportedLocales: [
-                        Locale('en'),
-                        Locale('ar'),
-                        Locale('fr'),
-                      ],
-                      theme: AppTheme.lightTheme(),
-                      darkTheme: AppTheme.darkTheme(),
-                      themeMode: state.themeMode,
-                      debugShowCheckedModeBanner: false,
-                      routerConfig: appRouter,
-                      locale: context.watch<LocalizationCubit>().state,
-                    );
-                  },
-                ),
               ),
             ),
           ),

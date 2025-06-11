@@ -42,7 +42,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resetPassword => 'إعادة تعيين كلمة المرور';
 
   @override
-  String get resetLinkSent => 'تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني';
+  String get resetLinkSent =>
+      'تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني';
 
   @override
   String get signInWithGoogle => 'تسجيل الدخول باستخدام جوجل';
@@ -201,7 +202,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get phoneNumber => 'رقم الهاتف';
 
   @override
-  String get emailAlreadyInUse => 'البريد الإلكتروني مستخدم بالفعل حاول تسجيل الدخول أو إعادة تعيين كلمة المرور الخاصة بك';
+  String get emailAlreadyInUse =>
+      'البريد الإلكتروني مستخدم بالفعل حاول تسجيل الدخول أو إعادة تعيين كلمة المرور الخاصة بك';
 
   @override
   String get emailNotFound => 'البريد الإلكتروني غير موجود';
@@ -219,16 +221,20 @@ class AppLocalizationsAr extends AppLocalizations {
   String get errorOccurred => 'حدث خطأ';
 
   @override
-  String get mustContainUppercase => 'يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل';
+  String get mustContainUppercase =>
+      'يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل';
 
   @override
-  String get mustContainLowercase => 'يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل';
+  String get mustContainLowercase =>
+      'يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل';
 
   @override
-  String get mustContainNumber => 'يجب أن تحتوي كلمة المرور على رقم واحد على الأقل';
+  String get mustContainNumber =>
+      'يجب أن تحتوي كلمة المرور على رقم واحد على الأقل';
 
   @override
-  String get mustContainSpecialChar => 'يجب أن تحتوي كلمة المرور على حرف خاص واحد على الأقل';
+  String get mustContainSpecialChar =>
+      'يجب أن تحتوي كلمة المرور على حرف خاص واحد على الأقل';
 
   @override
   String get defaultErrorMessage => 'حدث خطأ. يرجى المحاولة مرة أخرى';
@@ -372,7 +378,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get searchContacts => 'البحث في جهات الاتصال الخاصة بك';
 
   @override
-  String get userAlreadyExists => 'المستخدم موجود بالفعل حاول تسجيل الدخول أو إعادة تعيين كلمة المرور الخاصة بك';
+  String get userAlreadyExists =>
+      'المستخدم موجود بالفعل حاول تسجيل الدخول أو إعادة تعيين كلمة المرور الخاصة بك';
 
   @override
   String get tryAgainLater => 'حاول مرة أخرى لاحقًا';
@@ -382,4 +389,76 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get friendAlreadyAddedBefore => 'تمت إضافة الصديق من قبل';
+
+  @override
+  String get friendAddedSuccessfully => 'تمت إضافة الصديق بنجاح';
+
+  @override
+  String get tryAddingSomeFriends => 'حاول إضافة أصدقاء';
+
+  @override
+  String get somethingWentWrong => 'حدث خطأ ما';
+
+  @override
+  String get errorFetchingFriends => 'خطأ في جلب الأصدقاء';
+
+  @override
+  String get noFriendsFound => 'لم يتم العثور على أصدقاء';
+
+  @override
+  String get tooLongMoreThan18Chars => 'طويل جدًا، أكثر من 18 حرفًا';
+
+  @override
+  String get invalidCharacters => 'أحرف غير صالحة';
+
+  @override
+  String get settled => 'تم التسوية';
+
+  @override
+  String get youOwe => 'أنت مدين';
+
+  @override
+  String get owesYou => 'مدين لك';
+
+  @override
+  String get enterAmount => 'يرجى إدخال المبلغ';
+
+  @override
+  String get invalidAmount => 'مبلغ غير صالح. مثال: 10.5';
+
+  @override
+  String get expenseAmount => 'مبلغ المصاريف';
+
+  @override
+  String get friendsSelected => 'الأصدقاء المحددون';
+
+  @override
+  String get splitMethod => 'طريقة التقسيم';
+
+  @override
+  String get equalSplit => 'تقسيم متساوي';
+
+  @override
+  String get theyPaidFullYouOweHalf => 'لقد دفعوا بالكامل، أنت مدين بنصف';
+
+  @override
+  String get theyPaidFullYouOweFull => 'لقد دفعوا بالكامل، أنت مدين بالكامل';
+
+  @override
+  String get youPaidFullTheyOweHalf => 'لقد دفعت بالكامل، هم مدينون بنصف';
+
+  @override
+  String get youPaidFullTheyOweFull => 'لقد دفعت بالكامل، هم مدينون بالكامل';
+
+  @override
+  String get youPaid => 'لقد دفعت';
+
+  @override
+  String get eachFriendOwesYou => 'كل صديق مدين لك';
+
+  @override
+  String get theyPaid => 'Iلقد دفعوا';
+
+  @override
+  String get youOweEachFriend => 'أنت مدين لكل صديق';
 }

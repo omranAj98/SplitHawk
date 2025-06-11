@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
+import 'package:splithawk/src/models/balance_model.dart';
 import 'package:uuid/uuid.dart';
 
 Uuid uuid = Uuid();
@@ -21,11 +22,11 @@ class UserModel extends Equatable {
   final bool? isBlocked;
   final bool? receivingNotifications;
   final int? totalTransactions;
-  final double? totalBalance;
-  DateTime? createdAt;
-  final DateTime? updatedAt;
+  final DateTime? createdAt;
   final DateTime? lastActivity;
   final DateTime? recentLogin;
+
+  final List<BalanceModel>? balance;
 
   UserModel({
     String? id,
@@ -42,11 +43,11 @@ class UserModel extends Equatable {
     this.isBlocked = false,
     this.receivingNotifications = false,
     this.totalTransactions = 0,
-    this.totalBalance = 0.0,
     this.createdAt,
-    this.updatedAt,
     this.lastActivity,
     this.recentLogin,
+
+    this.balance,
   }) : id = id ?? uuid.v4();
 
   UserModel copyWith({
@@ -64,11 +65,12 @@ class UserModel extends Equatable {
     bool? isBlocked,
     bool? receivingNotifications,
     int? totalTransactions,
-    double? totalBalance,
     DateTime? createdAt,
     DateTime? updatedAt,
     DateTime? lastActivity,
     DateTime? recentLogin,
+
+    List<BalanceModel>? balance,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -86,15 +88,15 @@ class UserModel extends Equatable {
       receivingNotifications:
           receivingNotifications ?? this.receivingNotifications,
       totalTransactions: totalTransactions ?? this.totalTransactions,
-      totalBalance: totalBalance ?? this.totalBalance,
-      createdAt: createdAt ?? this.createdAt,
-      updatedAt: updatedAt ?? this.updatedAt,
+      createdAt: createdAt ?? this.createdAt, 
       lastActivity: lastActivity ?? this.lastActivity,
       recentLogin: recentLogin ?? this.recentLogin,
+
+      balance: balance ?? this.balance,
     );
   }
 
-  Map<String, dynamic> toMapFirestore() {
+  Map<String, dynamic> toFirestoreMap() {
     return <String, dynamic>{
       'id': id,
       'email': email,
@@ -109,156 +111,67 @@ class UserModel extends Equatable {
       'isBlocked': isBlocked,
       'receivingNotifications': receivingNotifications,
       'totalTransactions': totalTransactions,
-      'totalBalance': totalBalance,
-      'createdAt': createdAt?.toIso8601String(),
-      'updatedAt': updatedAt?.toIso8601String(),
-      'lastActivity': lastActivity?.toIso8601String(),
-      'recentLogin': recentLogin?.toIso8601String(),
+      'createdAt': createdAt?.toIso8601String()?? FieldValue.serverTimestamp(),
+      'lastActivity': FieldValue.serverTimestamp(),
+      'recentLogin': recentLogin?.toIso8601String()??FieldValue.serverTimestamp(),
     };
   }
 
-  factory UserModel.fromDocumentSnapshot(
-    DocumentSnapshot<Map<String, dynamic>> doc,
-  ) {
-    final data = doc.data();
+  factory UserModel.fromUserDocAndBalanceModel({
+    required DocumentSnapshot userDoc,
+    List<BalanceModel>? balanceList,
+  }) {
+    final data = userDoc.data() as Map<String, dynamic>;
     return UserModel(
-      id: doc.id,
-      userRef: doc.reference,
-      email: data?['email'] as String,
-      fullName: data?['fullName'] as String,
+      id: userDoc.id,
+      userRef: userDoc.reference,
+      email: data['email'] as String,
+      fullName: data['fullName'] as String,
       phoneNo:
-          data?['phoneNumber'] != null ? data!['phoneNumber'] as String : null,
-      photoUrl: data?['photoUrl'] != null ? data!['photoUrl'] as String : null,
+          data['phoneNumber'] != null ? data['phoneNumber'] as String : null,
+      photoUrl: data['photoUrl'] != null ? data['photoUrl'] as String : null,
       signupMethod:
-          data?['signupMethod'] != null
-              ? data!['signupMethod'] as String
-              : null,
+          data['signupMethod'] != null ? data['signupMethod'] as String : null,
       isPhoneVerified:
-          data?['isPhoneVerified'] != null
-              ? data!['isPhoneVerified'] as bool
+          data['isPhoneVerified'] != null
+              ? data['isPhoneVerified'] as bool
               : null,
       isEmailVerified:
-          data?['isEmailVerified'] != null
-              ? data!['isEmailVerified'] as bool
+          data['isEmailVerified'] != null
+              ? data['isEmailVerified'] as bool
               : null,
       isRegistered:
-          data?['isRegistered'] != null ? data!['isRegistered'] as bool : null,
-      isDeleted: data?['isDeleted'] != null ? data!['isDeleted'] as bool : null,
-      isBlocked: data?['isBlocked'] != null ? data!['isBlocked'] as bool : null,
+          data['isRegistered'] != null ? data['isRegistered'] as bool : null,
+      isDeleted: data['isDeleted'] != null ? data['isDeleted'] as bool : null,
+      isBlocked: data['isBlocked'] != null ? data['isBlocked'] as bool : null,
       receivingNotifications:
-          data?['receivingNotifications'] != null
-              ? data!['receivingNotifications'] as bool
+          data['receivingNotifications'] != null
+              ? data['receivingNotifications'] as bool
               : null,
       totalTransactions:
-          data?['totalTransactions'] != null
-              ? data!['totalTransactions'] as int
+          data['totalTransactions'] != null
+              ? data['totalTransactions'] as int
               : null,
-      totalBalance:
-          data?['totalBalance'] != null
-              ? data!['totalBalance'] as double
-              : null,
-      createdAt:
-          (data?['createdAt'] is Timestamp)
-              ? (data!['createdAt'] as Timestamp).toDate()
-              : DateTime.parse(data!['createdAt']),
-      updatedAt:
-          (data['updatedAt'] is Timestamp)
-              ? (data['updatedAt'] as Timestamp).toDate()
-              : DateTime.parse(data['updatedAt']),
-      lastActivity:
-          (data['lastActivity'] is Timestamp)
-              ? (data['lastActivity'] as Timestamp).toDate()
-              : DateTime.parse(data['lastActivity']),
-      recentLogin:
-          (data['recentLogin'] is Timestamp)
-              ? (data['recentLogin'] as Timestamp).toDate()
-              : DateTime.parse(data['recentLogin']),
-    );
-  }
 
-  factory UserModel.fromMap(Map<String, dynamic> map) {
-    return UserModel(
-      id: map['id'] as String,
-      userRef:
-          map['userRef'] != null ? map['userRef'] as DocumentReference : null,
       createdAt:
-          map['createdAt'] != null
-              ? (map['createdAt'] is Timestamp
-                  ? (map['createdAt'] as Timestamp).toDate()
-                  : DateTime.parse(map['createdAt'] as String))
-              : null,
-      updatedAt:
-          map['updatedAt'] != null
-              ? (map['updatedAt'] is Timestamp
-                  ? (map['updatedAt'] as Timestamp).toDate()
-                  : DateTime.parse(map['updatedAt'] as String))
-              : null,
+          (data['createdAt'] is Timestamp)
+              ? (data['createdAt'] as Timestamp).toDate()
+              : DateTime.parse(data['createdAt']),
       lastActivity:
-          map['lastActivity'] != null
-              ? (map['lastActivity'] is Timestamp
-                  ? (map['lastActivity'] as Timestamp).toDate()
-                  : DateTime.parse(map['lastActivity'] as String))
+          data['lastActivity'] != null
+              ? (data['lastActivity'] is Timestamp)
+                  ? (data['lastActivity'] as Timestamp).toDate()
+                  : DateTime.parse(data['lastActivity'])
               : null,
       recentLogin:
-          map['recentLogin'] != null
-              ? (map['recentLogin'] is Timestamp
-                  ? (map['recentLogin'] as Timestamp).toDate()
-                  : DateTime.parse(map['recentLogin'] as String))
-              : null,
-      email: map['email'] as String,
-      fullName: map['fullName'] as String,
-      phoneNo: map['phoneNumber'] != null ? map['phoneNumber'] as String : null,
-      photoUrl: map['photoUrl'] != null ? map['photoUrl'] as String : null,
-      signupMethod:
-          map['signupMethod'] != null ? map['signupMethod'] as String : null,
-      isPhoneVerified:
-          map['isPhoneVerified'] != null
-              ? map['isPhoneVerified'] as bool
+          data['recentLogin'] != null
+              ? (data['recentLogin'] is Timestamp)
+                  ? (data['recentLogin'] as Timestamp).toDate()
+                  : DateTime.parse(data['recentLogin'])
               : null,
 
-      isEmailVerified:
-          map['isEmailVerified'] != null
-              ? map['isEmailVerified'] as bool
-              : null,
-      isRegistered:
-          map['isRegistered'] != null ? map['isRegistered'] as bool : null,
-      isDeleted: map['isDeleted'] != null ? map['isDeleted'] as bool : null,
-      isBlocked: map['isBlocked'] != null ? map['isBlocked'] as bool : null,
-      receivingNotifications:
-          map['receivingNotifications'] != null
-              ? map['receivingNotifications'] as bool
-              : null,
-      totalTransactions:
-          map['totalTransactions'] != null
-              ? map['totalTransactions'] as int
-              : 0,
-      totalBalance:
-          map['totalBalance'] != null ? map['totalBalance'] as double : 0.0,
+      balance: balanceList,
     );
-  }
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'userRef': userRef,
-      'createdAt': createdAt?.toIso8601String(),
-      'updatedAt': updatedAt?.toIso8601String(),
-      'lastActivity': lastActivity?.toIso8601String(),
-      'recentLogin': recentLogin?.toIso8601String(),
-      'email': email,
-      'fullName': fullName,
-      'phoneNumber': phoneNo,
-      'photoUrl': photoUrl,
-      'signupMethod': signupMethod,
-      'isPhoneVerified': isPhoneVerified,
-      'isEmailVerified': isEmailVerified,
-      'isRegistered': isRegistered,
-      'isDeleted': isDeleted,
-      'isBlocked': isBlocked,
-      'receivingNotifications': receivingNotifications,
-      'totalTransactions': totalTransactions,
-      'totalBalance': totalBalance,
-    };
   }
 
   @override
@@ -281,11 +194,10 @@ class UserModel extends Equatable {
       isBlocked ?? false,
       receivingNotifications ?? false,
       totalTransactions ?? 0,
-      totalBalance ?? 0.0,
       createdAt ?? DateTime(1970, 1, 1),
-      updatedAt ?? DateTime(1970, 1, 1),
       lastActivity ?? DateTime(1970, 1, 1),
       recentLogin ?? DateTime(1970, 1, 1),
+      balance ?? <BalanceModel>[],
     ];
   }
 }

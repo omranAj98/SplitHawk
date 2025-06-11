@@ -22,7 +22,9 @@ class QrSection extends StatelessWidget {
           ),
         ),
         TextButton.icon(
-          onPressed: () {},
+          onPressed: () {
+            context.read<AuthBloc>().add(AuthSignOutEvent());
+          },
           label: Text(AppLocalizations.of(context)!.scanYourFriendQrCode),
           icon: const Icon(Icons.qr_code_scanner),
         ),

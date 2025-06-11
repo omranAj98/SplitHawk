@@ -126,3 +126,28 @@ userAlreadyExists/User Already exists try to login or reset your password/User a
 tryAgainLater/Try again later/Try again later/Essayez à nouveau plus tard/حاول مرة أخرى لاحقًا
 resetPasswordEmailSent/Reset password email sent/Reset password email sent/Email de réinitialisation du mot de passe envoyé/تم إرسال بريد إعادة تعيين كلمة المرور
 friendAlreadyAddedBefore/Friend already added before/Friend already added before/Ami déjà ajouté avant/تمت إضافة الصديق من قبل
+friendAddedSuccessfully/Friend added successfully/Friend added successfully/Ami ajouté avec succès/تمت إضافة الصديق بنجاح
+tryAddingSomeFriends/Try adding some friends/Try adding some friends/Essayez d'ajouter des amis/حاول إضافة أصدقاء
+somethingWentWrong/Error message/Something went wrong/Quelque chose s'est mal passé/حدث خطأ ما
+errorFetchingFriends/Error fetching friends/Error fetching friends/Erreur lors de la récupération des amis/خطأ في جلب الأصدقاء
+noFriendsFound/No friends found/No friends found/Aucun ami trouvé/لم يتم العثور على أصدقاء
+tooLongMoreThan18Chars/Too long message/Too long, more than 18 characters/Trop long, plus de 18 caractères/طويل جدًا، أكثر من 18 حرفًا
+invalidCharacters/Invalid characters message/Invalid characters/Caractères invalides/أحرف غير صالحة
+settled/settled/Settled/Réglé/تم التسوية
+youOwe/You owe/You owe/Vous devez/أنت مدين
+owesYou/Owes you/owes you/vous devez/مدين لك
+enterAmount/Enter amount prompt/Please enter the amount/Veuillez entrer le montant/يرجى إدخال المبلغ
+invalidAmount/Invalid amount message ex:10.5/Invalid amount. Example: 10.5/Montant invalide. Exemple : 10,5/مبلغ غير صالح. مثال: 10.5
+expenseAmount/Expense amount/Expense Amount/Montant de la dépense/مبلغ المصاريف
+friendsSelected/Friends selected/friends selected/Amis sélectionnés/الأصدقاء المحددون
+splitMethod/Split method/Split Method/Méthode de partage/طريقة التقسيم
+equalSplit/Equal split/Equal Split/Partage égal/تقسيم متساوي
+theyPaidFullYouOweHalf/They paid full, you owe half/They paid full, you owe half/Ils ont payé la totalité, vous devez la moitié/لقد دفعوا بالكامل، أنت مدين بنصف
+theyPaidFullYouOweFull/They paid full, you owe full/They paid full, you owe full/Ils ont payé la totalité, vous devez la totalité/لقد دفعوا بالكامل، أنت مدين بالكامل
+youPaidFullTheyOweHalf/You paid full, they owe half/You paid full, they owe half/Vous avez payé la totalité, ils doivent la moitié/لقد دفعت بالكامل، هم مدينون بنصف
+youPaidFullTheyOweFull/You paid full, they owe full/You paid full, they owe full/Vous avez payé la totalité, ils doivent la totalité/لقد دفعت بالكامل، هم مدينون بالكامل
+youPaid/You paid/You paid/Vous avez payé/لقد دفعت
+youOwe/You owe/You owe/Vous devez/أنت مدين
+eachFriendOwesYou/Each friend owes you/Each friend owes you/Chaque ami vous doit/كل صديق مدين لك
+theyPaid/They paid/They paid/Ils ont payé/Iلقد دفعوا
+youOweEachFriend/You owe each friend/You owe each friend/Vous devez à chaque ami/أنت مدين لكل صديق

@@ -4,25 +4,37 @@ import 'package:flutter/material.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 
 import 'package:splithawk/src/core/error/custom_error.dart';
+import 'package:splithawk/src/models/balance_model.dart';
 import 'package:splithawk/src/models/user_model.dart';
+import 'package:splithawk/src/repositories/balance_repository.dart';
 
 class UserRepository {
   final FirebaseFirestore firebaseFirestore;
-
-  UserRepository({required this.firebaseFirestore});
+  final FirebaseFunctions firebaseFunctions;
+  final BalanceRepository balanceRepository;
+  UserRepository({
+    required this.firebaseFirestore,
+    required this.firebaseFunctions,
+    required this.balanceRepository,
+  });
 
   Future<void> createUser(UserModel userModel) async {
     try {
-      final HttpsCallable callable = FirebaseFunctions.instance.httpsCallable(
-        'createUser',
-      );
-      await callable.call(userModel.toMapFirestore());
-      debugPrint('User created successfully via Cloud Function');
+      await firebaseFirestore
+          .collection('users')
+          .doc(userModel.id)
+          .set(userModel.toFirestoreMap());
+
+      // final HttpsCallable callable = firebaseFunctions.httpsCallable(
+      //   'createUser',
+      // );
+      // await callable.call(userModel.toFirestoreMap());
+      debugPrint('User created successfully');
     } catch (e) {
       throw CustomError(
         message: e.toString(),
-        code: 'cloud_function_error',
-        plugin: 'createUser',
+        code: 'createUser',
+        plugin: 'user_repository',
       );
     }
   }
@@ -37,7 +49,7 @@ class UserRepository {
               .get();
 
       if (snapshot.docs.isNotEmpty) {
-        debugPrint('user already exist');
+        debugPrint('user found');
         final existingDoc = snapshot.docs.first;
         return existingDoc;
       } else {
@@ -49,6 +61,12 @@ class UserRepository {
         message: e.message ?? 'An error occurred during checking user',
         code: e.code,
         plugin: e.plugin,
+      );
+    } on Exception catch (e) {
+      throw CustomError(
+        message: e.toString(),
+        code: 'getUserDoc',
+        plugin: 'user_repository',
       );
     }
   }
@@ -63,8 +81,8 @@ class UserRepository {
               .get();
 
       if (userSnapShot.docs.isNotEmpty) {
-        final userModel = UserModel.fromDocumentSnapshot(
-          userSnapShot.docs.first,
+        final userModel = UserModel.fromUserDocAndBalanceModel(
+          userDoc: userSnapShot.docs.first,
         );
         if (userModel.isEmailVerified == false) {
           await firebaseFirestore.collection('users').doc(userModel.id).update({
@@ -94,16 +112,19 @@ class UserRepository {
 
   Future<UserModel?> checkExistingUser(String email) async {
     try {
-      final snapshot =
+      final userSnapshot =
           await firebaseFirestore
               .collection('users')
               .where('email', isEqualTo: email)
               .limit(1)
               .get();
 
-      if (snapshot.docs.isNotEmpty) {
+      if (userSnapshot.docs.isNotEmpty) {
         debugPrint('user already exist');
-        return UserModel.fromDocumentSnapshot(snapshot.docs.first);
+
+        return UserModel.fromUserDocAndBalanceModel(
+          userDoc: userSnapshot.docs.first,
+        );
       } else {
         debugPrint('User not found');
         return null;
@@ -125,7 +146,8 @@ class UserRepository {
       await firebaseFirestore
           .collection('users')
           .doc(userModel.id)
-          .update(updatedUserModel.toMapFirestore());
+          .update(updatedUserModel.toFirestoreMap());
+
       debugPrint('User updated successfully');
     } on FirebaseException catch (e) {
       throw CustomError(
@@ -164,24 +186,26 @@ class UserRepository {
           plugin: 'firebase_auth',
         );
       }
-      final snapshot =
+      final userSnapshot =
           await firebaseFirestore
               .collection('users')
               .where('email', isEqualTo: currentUser.email)
               .get();
 
-      if (snapshot.docs.isNotEmpty) {
-        snapshot.docs.first.reference.get();
-        UserModel userModel = UserModel.fromDocumentSnapshot(
-          snapshot.docs.first,
+      final balanceList = await balanceRepository.getUserNetBalances(
+        userSnapshot.docs.first.id,
+      );
+
+      if (userSnapshot.docs.isNotEmpty) {
+        userSnapshot.docs.first.reference.get();
+        UserModel userModel = UserModel.fromUserDocAndBalanceModel(
+          userDoc: userSnapshot.docs.first,
+          balanceList: balanceList,
         );
         return userModel;
       } else {
-        throw CustomError(
-          message: 'User not found',
-          code: 'user_not_found',
-          plugin: 'firebase_firestore',
-        );
+        debugPrint('GetSelfUser in user_repository.dart: User not found');
+        return null;
       }
     } on FirebaseException catch (e) {
       throw CustomError(

@@ -12,6 +12,14 @@ class AppTextValidators {
     // Add more complex email validation if needed
     return null;
   }
+  static String? validateAmount(BuildContext context, String? value) {
+    if (value == null || value.isEmpty) {
+      return AppLocalizations.of(context)!.enterAmount;
+    } else if (!RegExp(r'^\d+(\.\d{1,2})?$').hasMatch(value)) {
+      return AppLocalizations.of(context)!.invalidAmount;
+    }
+    return null;
+  }
 
   static String? validateEmpty(BuildContext context, String? value) {
     if (value == null || value.isEmpty) {
@@ -26,6 +34,10 @@ class AppTextValidators {
       return AppLocalizations.of(context)!.enterYourName;
     } else if (value.trim().length < 3) {
       return AppLocalizations.of(context)!.nameLength;
+    } else if (!RegExp(r'^[a-zA-Z1-9\s]+$').hasMatch(value)) {
+      return AppLocalizations.of(context)!.invalidCharacters;
+    } else if (value.trim().length > 18) {
+      return AppLocalizations.of(context)!.tooLongMoreThan18Chars;
     }
     return null;
   }

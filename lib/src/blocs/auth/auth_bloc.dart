@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:equatable/equatable.dart';
-import 'package:bloc/bloc.dart'; 
+import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart' as fbAuth;
 import 'package:splithawk/src/core/error/custom_error.dart';
 import 'package:splithawk/src/models/user_model.dart';
@@ -52,7 +52,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         final existedUserModel = await userRepository.checkExistingUser(
           event.email,
         );
-        if (existedUserModel == null||
+        if (existedUserModel == null ||
             existedUserModel.isRegistered == false) {
           final userCredential = await authRepository
               .signUpWithEmailAndPassword(
@@ -60,8 +60,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
                 password: event.password,
               );
           print(userCredential.user!.displayName);
+
           if (userCredential.user != null) {
+            authRepository.verifyEmail();
+
             UserModel userModel = UserModel(
+              id: existedUserModel?.id,
               fullName: event.name,
               email: event.email,
               phoneNo: '',
@@ -73,12 +77,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
               receivingNotifications: false,
               isPhoneVerified: false,
               isEmailVerified: false,
-              createdAt: DateTime.now(),
-              updatedAt: DateTime.now(),
               lastActivity: DateTime(1970, 1, 1),
-              recentLogin: DateTime.now(),
-              totalTransactions: 0,
-              totalBalance: 0.0,
+              totalTransactions: existedUserModel?.totalTransactions ?? 0,
             );
             emit(
               state.copyWith(
@@ -86,14 +86,27 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
                 user: userCredential.user,
               ),
             );
-            return await userRepository.createUser(userModel);
+
+            if (existedUserModel != null) {
+              await userRepository.updateUser(
+                userModel: existedUserModel,
+                updatedUserModel: userModel,
+              );
+            } else {
+              await userRepository.createUser(userModel);
+            }
           }
         } else {
-          emit(state.copyWith(authStatus: AuthStatus.unauthenticated,error: CustomError(
-            message: 'User already exists',
-            code: 'user-exists',
-            plugin: 'auth_bloc',
-          )));
+          emit(
+            state.copyWith(
+              authStatus: AuthStatus.error,
+              error: CustomError(
+                message: 'User already exists',
+                code: 'user-exists',
+                plugin: 'auth_bloc',
+              ),
+            ),
+          );
         }
       } on CustomError catch (e) {
         emit(
@@ -150,12 +163,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             receivingNotifications: false,
             isPhoneVerified: false,
             isEmailVerified: true,
-            createdAt: DateTime.now(),
-            updatedAt: DateTime.now(),
             lastActivity: DateTime(1970, 1, 1),
-            recentLogin: DateTime.now(),
             totalTransactions: 0,
-            totalBalance: 0,
           );
           UserModel? existingUserModel = await userRepository.checkExistingUser(
             user.email!,

@@ -23,7 +23,7 @@ part 'widgets/account_settings.dart';
 part 'widgets/qr_section.dart';
 
 class AccountScreen extends StatelessWidget {
-  AccountScreen({super.key});
+  const AccountScreen({super.key});
 
   Future<void> _refreshUserData(BuildContext context) async {
     // Call the method to reload user data

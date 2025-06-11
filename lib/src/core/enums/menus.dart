@@ -13,8 +13,5 @@ List<Widget> pages = [
   HomeScreen(),
   AddExpenseModel(),
   HomeScreen(),
-  BlocProvider<UserCubit>.value(
-    value: locator<UserCubit>(),
-    child: AccountScreen(),
-  ),
+  AccountScreen(),
 ];

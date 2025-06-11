@@ -1,95 +1,125 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
+import 'package:splithawk/src/models/balance_model.dart';
 import 'package:uuid/uuid.dart';
 
 Uuid uuid = Uuid();
 
 class FriendModel extends Equatable {
   final DocumentReference? userRef;
-  final String id;
+  final String friendId;
+  final String? nickname;
   final String? status;
   final DateTime? friendedAt;
   final DateTime? updatedAt;
   final bool? isBlocked;
   final bool? isFavorite;
 
+  final List<BalanceModel>? balances;
+
   FriendModel({
-    String? id,
+    String? friendId,
     this.userRef,
-    this.status,
+    this.nickname,
+    this.status = "friends",
     this.friendedAt,
     this.updatedAt,
-    this.isBlocked,
-    this.isFavorite,
-  }) : id = id ?? uuid.v4();
+    this.isBlocked= false,
+    this.isFavorite = false,
+    
+
+    this.balances,
+  }) : friendId = friendId ?? uuid.v4();
 
   @override
   List<Object?> get props {
-    return [id, userRef, status, friendedAt, updatedAt, isBlocked, isFavorite];
+    return [
+      friendId,
+      userRef,
+      status,
+      friendedAt,
+      updatedAt,
+      isBlocked,
+      isFavorite,
+      nickname,
+
+      balances,
+    ];
   }
 
   FriendModel copyWith({
-    String? id,
+    String? friendId,
     DocumentReference? userRef,
+    String? nickname,
     String? status,
     DateTime? friendedAt,
     DateTime? updatedAt,
     bool? isBlocked,
     bool? isFavorite,
+
+    List<BalanceModel>? balances,
   }) {
     return FriendModel(
-      id: id ?? this.id,
+      friendId: friendId ?? this.friendId,
       userRef: userRef ?? this.userRef,
+      nickname: nickname ?? this.nickname,
       status: status ?? this.status,
       friendedAt: friendedAt ?? this.friendedAt,
       updatedAt: updatedAt ?? this.updatedAt,
       isBlocked: isBlocked ?? this.isBlocked,
       isFavorite: isFavorite ?? this.isFavorite,
+
+      balances: balances ?? this.balances,
     );
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toFirestoreMap() {
     return <String, dynamic>{
       'userRef': userRef,
       'status': status,
-      'friendedAt': friendedAt,
-      'updatedAt': updatedAt,
+      'nickname': nickname,
+      'friendedAt': friendedAt ?? FieldValue.serverTimestamp(),
+      'updatedAt': FieldValue.serverTimestamp(),
       'isBlocked': isBlocked,
       'isFavorite': isFavorite,
     };
   }
 
-  factory FriendModel.fromMap(Map<String, dynamic> map) {
-    return FriendModel(
-      userRef:
-          map['userRef'] != null ? map['userRef'] as DocumentReference : null,
-      status: map['status'] != null ? map['status'] as String : 'pending',
-      friendedAt:
-          map['friendedAt'] != null
-              ? (map['friendedAt'] is Timestamp
-                  ? (map['friendedAt'] as Timestamp).toDate()
-                  : DateTime.parse(map['friendedAt'] as String))
-              : null,
-      updatedAt:
-          map['updatedAt'] != null
-              ? (map['updatedAt'] is Timestamp
-                  ? (map['updatedAt'] as Timestamp).toDate()
-                  : DateTime.parse(map['updatedAt'] as String))
-              : null,
-      isBlocked: map['isBlocked'] != null ? map['isBlocked'] as bool : false,
-      isFavorite: map['isFavorite'] != null ? map['isFavorite'] as bool : false,
-    );
-  }
+  // factory FriendModel.fromFirestoreMap(Map<String, dynamic> map) {
+  //   return FriendModel(
+  //     userRef:
+  //         map['userRef'] != null ? map['userRef'] as DocumentReference : null,
+  //     status: map['status'] != null ? map['status'] as String : 'pending',
+  //     nickname: map['nickname'] != null ? map['nickname'] as String : null,
+  //     friendedAt:
+  //         map['friendedAt'] != null
+  //             ? (map['friendedAt'] is Timestamp
+  //                 ? (map['friendedAt'] as Timestamp).toDate()
+  //                 : DateTime.parse(map['friendedAt'] as String))
+  //             : null,
+  //     updatedAt:
+  //         map['updatedAt'] != null
+  //             ? (map['updatedAt'] is Timestamp
+  //                 ? (map['updatedAt'] as Timestamp).toDate()
+  //                 : DateTime.parse(map['updatedAt'] as String))
+  //             : null,
+  //     isBlocked: map['isBlocked'] != null ? map['isBlocked'] as bool : false,
+  //     isFavorite: map['isFavorite'] != null ? map['isFavorite'] as bool : false,
+  //   );
+  // }
 
-  factory FriendModel.fromDoc(DocumentSnapshot doc) {
+  factory FriendModel.fromFriendDocAndBalanceModel(
+    DocumentSnapshot doc,
+    List<BalanceModel> balanceModel,
+  ) {
     final data = doc.data() as Map<String, dynamic>;
     return FriendModel(
-      id: doc.id,
+      friendId: doc.id,
       userRef: data['userRef'],
       status: data['status'] ?? 'pending',
+      nickname: data['nickname'] != null ? data['nickname'] as String : null,
       friendedAt:
           data['friendedAt'] != null
               ? (data['friendedAt'] is Timestamp
@@ -105,15 +135,11 @@ class FriendModel extends Equatable {
       isBlocked: data['isBlocked'] != null ? data['isBlocked'] as bool : false,
       isFavorite:
           data['isFavorite'] != null ? data['isFavorite'] as bool : false,
+
+      balances: balanceModel,
     );
   }
 
   @override
   bool get stringify => true;
-
-  String fromJson(String source) => json.encode(toMap());
-
-  String toJson() => json.encode(toMap());
-  factory FriendModel.fromJson(String source) =>
-      FriendModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

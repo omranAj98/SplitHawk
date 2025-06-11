@@ -2,46 +2,72 @@
 
 part of 'friend_cubit.dart';
 
-enum FriendRequestStatus {
-  initial,
-  loading,
-  addingSuccess,
-  removingSuccess,
-  blockingSuccess,
-  unblockingSuccess,
-  updatingSuccess,
-  error,
-}
+enum FriendActionType { add, remove, block, unblock, update, fetch }
 
 class FriendState extends Equatable {
-  final FriendRequestStatus requestStatus;
+  final FriendActionType? actionType;
+  final RequestStatus requestStatus;
   final List<FriendModel> friends;
-  final CustomError error;
-  FriendState({
+  final List<FriendDataModel> friendsData;
+  final List<FriendDataModel>? filteredFriends;
+  final List<FriendDataModel>? selectedFriends ;
+  final FriendDataModel? selectedFriend;
+  final CustomError? error;
+
+  const FriendState({
     required this.requestStatus,
+    this.actionType,
     required this.friends,
+    required this.friendsData,
+    this.selectedFriends,
+    this.filteredFriends,
+    this.selectedFriend,
     required this.error,
   });
 
   factory FriendState.initial() {
     return FriendState(
-      requestStatus: FriendRequestStatus.initial,
+      requestStatus: RequestStatus.initial,
+      actionType: null,
       friends: [],
-      error: CustomError(),
+      friendsData: [],
+      selectedFriends: null,
+      filteredFriends: null,
+      selectedFriend: null,
+      error: null,
     );
   }
 
   @override
-  List<Object> get props => [requestStatus, friends, error];
+  List<Object?> get props => [
+    requestStatus,
+    actionType,
+    friends,
+    friendsData,
+    selectedFriends,
+    filteredFriends,
+    selectedFriend,
+    error,
+  ];
 
   FriendState copyWith({
-    FriendRequestStatus? requestStatus,
+    RequestStatus? requestStatus,
+    FriendActionType? actionType,
     List<FriendModel>? friends,
+    List<FriendDataModel>? friendsData,
+    List<FriendDataModel>? filteredFriends,
+    List<FriendDataModel>? selectedFriends,
+    FriendDataModel? selectedFriend,
     CustomError? error,
   }) {
     return FriendState(
       requestStatus: requestStatus ?? this.requestStatus,
+      actionType: actionType ?? this.actionType,
       friends: friends ?? this.friends,
+      friendsData: friendsData ?? this.friendsData,
+      filteredFriends: filteredFriends ?? this.filteredFriends,
+      selectedFriends: selectedFriends ?? this.selectedFriends,
+      selectedFriend: selectedFriend ?? this.selectedFriend,
       error: error ?? this.error,
     );
   }

@@ -42,7 +42,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resetPassword => 'Reset Password';
 
   @override
-  String get resetLinkSent => 'A reset password link has been sent to your email';
+  String get resetLinkSent =>
+      'A reset password link has been sent to your email';
 
   @override
   String get signInWithGoogle => 'Sign In with Google';
@@ -201,7 +202,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get phoneNumber => 'Phone Number';
 
   @override
-  String get emailAlreadyInUse => 'Email already in use try to login or reset your password';
+  String get emailAlreadyInUse =>
+      'Email already in use try to login or reset your password';
 
   @override
   String get emailNotFound => 'Email not found';
@@ -219,16 +221,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorOccurred => 'Error occurred';
 
   @override
-  String get mustContainUppercase => 'Password must contain at least one uppercase letter';
+  String get mustContainUppercase =>
+      'Password must contain at least one uppercase letter';
 
   @override
-  String get mustContainLowercase => 'Password must contain at least one lowercase letter';
+  String get mustContainLowercase =>
+      'Password must contain at least one lowercase letter';
 
   @override
   String get mustContainNumber => 'Password must contain at least one number';
 
   @override
-  String get mustContainSpecialChar => 'Password must contain at least one special character';
+  String get mustContainSpecialChar =>
+      'Password must contain at least one special character';
 
   @override
   String get defaultErrorMessage => 'An error occurred. Please try again';
@@ -339,7 +344,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get confirmAddContact => 'Confirm Add Contact';
 
   @override
-  String get checkNumberBeforeConfirmation => 'Check number before confirmation';
+  String get checkNumberBeforeConfirmation =>
+      'Check number before confirmation';
 
   @override
   String get finish => 'Finish';
@@ -372,7 +378,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get searchContacts => 'Search your contacts';
 
   @override
-  String get userAlreadyExists => 'User already exists try to login or reset your password';
+  String get userAlreadyExists =>
+      'User already exists try to login or reset your password';
 
   @override
   String get tryAgainLater => 'Try again later';
@@ -382,4 +389,76 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get friendAlreadyAddedBefore => 'Friend already added before';
+
+  @override
+  String get friendAddedSuccessfully => 'Friend added successfully';
+
+  @override
+  String get tryAddingSomeFriends => 'Try adding some friends';
+
+  @override
+  String get somethingWentWrong => 'Something went wrong';
+
+  @override
+  String get errorFetchingFriends => 'Error fetching friends';
+
+  @override
+  String get noFriendsFound => 'No friends found';
+
+  @override
+  String get tooLongMoreThan18Chars => 'Too long, more than 18 characters';
+
+  @override
+  String get invalidCharacters => 'Invalid characters';
+
+  @override
+  String get settled => 'Settled';
+
+  @override
+  String get youOwe => 'You owe';
+
+  @override
+  String get owesYou => 'owes you';
+
+  @override
+  String get enterAmount => 'Please enter the amount';
+
+  @override
+  String get invalidAmount => 'Invalid amount. Example: 10.5';
+
+  @override
+  String get expenseAmount => 'Expense Amount';
+
+  @override
+  String get friendsSelected => 'friends selected';
+
+  @override
+  String get splitMethod => 'Split Method';
+
+  @override
+  String get equalSplit => 'Equal Split';
+
+  @override
+  String get theyPaidFullYouOweHalf => 'They paid full, you owe half';
+
+  @override
+  String get theyPaidFullYouOweFull => 'They paid full, you owe full';
+
+  @override
+  String get youPaidFullTheyOweHalf => 'You paid full, they owe half';
+
+  @override
+  String get youPaidFullTheyOweFull => 'You paid full, they owe full';
+
+  @override
+  String get youPaid => 'You paid';
+
+  @override
+  String get eachFriendOwesYou => 'Each friend owes you';
+
+  @override
+  String get theyPaid => 'They paid';
+
+  @override
+  String get youOweEachFriend => 'You owe each friend';
 }

@@ -83,42 +83,36 @@ class AccountSettings extends StatelessWidget {
                             // context.watch<UserCubit>().state.user!.fullName,
                             state.user!.fullName,
                           ),
-                          subtitle: BlocBuilder<UserCubit, UserState>(
-                            builder: (context, state) {
-                              return Column(
+                          subtitle: Column(
+                            children: [
+                              Row(
                                 children: [
-                                  Row(
-                                    children: [
-                                      Text(state.user!.email),
-                                      state.user!.isEmailVerified!
-                                          ? Icon(
-                                            Icons.verified,
-                                            color: colorScheme.primary,
-                                            size: 16,
-                                          )
-                                          : SizedBox(),
-                                    ],
-                                  ),
+                                  Text(state.user!.email),
                                   state.user!.isEmailVerified!
-                                      ? SizedBox()
-                                      : TextButton(
-                                        onPressed: () {
-                                          context.read<AuthBloc>().add(
-                                            AuthReloadVerificationEvent(),
-                                          );
-                                        },
-                                        child: Text(
-                                          AppLocalizations.of(
-                                            context,
-                                          )!.verifyNow,
-                                          style: textTheme.bodySmall?.copyWith(
-                                            color: colorScheme.primary,
-                                          ),
-                                        ),
-                                      ),
+                                      ? Icon(
+                                        Icons.verified,
+                                        color: colorScheme.primary,
+                                        size: 16,
+                                      )
+                                      : SizedBox(),
                                 ],
-                              );
-                            },
+                              ),
+                              state.user!.isEmailVerified!
+                                  ? SizedBox()
+                                  : TextButton(
+                                    onPressed: () {
+                                      context.read<AuthBloc>().add(
+                                        AuthReloadVerificationEvent(),
+                                      );
+                                    },
+                                    child: Text(
+                                      AppLocalizations.of(context)!.verifyNow,
+                                      style: textTheme.bodySmall?.copyWith(
+                                        color: colorScheme.primary,
+                                      ),
+                                    ),
+                                  ),
+                            ],
                           ),
                         );
                   },

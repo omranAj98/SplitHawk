@@ -63,7 +63,8 @@ import 'app_localizations_fr.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale)
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -71,7 +72,8 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -83,18 +85,19 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('ar'),
     Locale('en'),
-    Locale('fr')
+    Locale('fr'),
   ];
 
   /// Name of the app
@@ -846,9 +849,154 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Friend already added before'**
   String get friendAlreadyAddedBefore;
+
+  /// Friend added successfully
+  ///
+  /// In en, this message translates to:
+  /// **'Friend added successfully'**
+  String get friendAddedSuccessfully;
+
+  /// Try adding some friends
+  ///
+  /// In en, this message translates to:
+  /// **'Try adding some friends'**
+  String get tryAddingSomeFriends;
+
+  /// Error message
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get somethingWentWrong;
+
+  /// Error fetching friends
+  ///
+  /// In en, this message translates to:
+  /// **'Error fetching friends'**
+  String get errorFetchingFriends;
+
+  /// No friends found
+  ///
+  /// In en, this message translates to:
+  /// **'No friends found'**
+  String get noFriendsFound;
+
+  /// Too long message
+  ///
+  /// In en, this message translates to:
+  /// **'Too long, more than 18 characters'**
+  String get tooLongMoreThan18Chars;
+
+  /// Invalid characters message
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid characters'**
+  String get invalidCharacters;
+
+  /// settled
+  ///
+  /// In en, this message translates to:
+  /// **'Settled'**
+  String get settled;
+
+  /// You owe
+  ///
+  /// In en, this message translates to:
+  /// **'You owe'**
+  String get youOwe;
+
+  /// Owes you
+  ///
+  /// In en, this message translates to:
+  /// **'owes you'**
+  String get owesYou;
+
+  /// Enter amount prompt
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter the amount'**
+  String get enterAmount;
+
+  /// Invalid amount message ex:10.5
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid amount. Example: 10.5'**
+  String get invalidAmount;
+
+  /// Expense amount
+  ///
+  /// In en, this message translates to:
+  /// **'Expense Amount'**
+  String get expenseAmount;
+
+  /// Friends selected
+  ///
+  /// In en, this message translates to:
+  /// **'friends selected'**
+  String get friendsSelected;
+
+  /// Split method
+  ///
+  /// In en, this message translates to:
+  /// **'Split Method'**
+  String get splitMethod;
+
+  /// Equal split
+  ///
+  /// In en, this message translates to:
+  /// **'Equal Split'**
+  String get equalSplit;
+
+  /// They paid full, you owe half
+  ///
+  /// In en, this message translates to:
+  /// **'They paid full, you owe half'**
+  String get theyPaidFullYouOweHalf;
+
+  /// They paid full, you owe full
+  ///
+  /// In en, this message translates to:
+  /// **'They paid full, you owe full'**
+  String get theyPaidFullYouOweFull;
+
+  /// You paid full, they owe half
+  ///
+  /// In en, this message translates to:
+  /// **'You paid full, they owe half'**
+  String get youPaidFullTheyOweHalf;
+
+  /// You paid full, they owe full
+  ///
+  /// In en, this message translates to:
+  /// **'You paid full, they owe full'**
+  String get youPaidFullTheyOweFull;
+
+  /// You paid
+  ///
+  /// In en, this message translates to:
+  /// **'You paid'**
+  String get youPaid;
+
+  /// Each friend owes you
+  ///
+  /// In en, this message translates to:
+  /// **'Each friend owes you'**
+  String get eachFriendOwesYou;
+
+  /// They paid
+  ///
+  /// In en, this message translates to:
+  /// **'They paid'**
+  String get theyPaid;
+
+  /// You owe each friend
+  ///
+  /// In en, this message translates to:
+  /// **'You owe each friend'**
+  String get youOweEachFriend;
 }
 
-class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -857,26 +1005,28 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['ar', 'en', 'fr'].contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      <String>['ar', 'en', 'fr'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'ar': return AppLocalizationsAr();
-    case 'en': return AppLocalizationsEn();
-    case 'fr': return AppLocalizationsFr();
+    case 'ar':
+      return AppLocalizationsAr();
+    case 'en':
+      return AppLocalizationsEn();
+    case 'fr':
+      return AppLocalizationsFr();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
+    'that was used.',
   );
 }

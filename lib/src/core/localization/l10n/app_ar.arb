@@ -499,5 +499,101 @@
   "friendAlreadyAddedBefore": "تمت إضافة الصديق من قبل",
   "@friendAlreadyAddedBefore": {
     "description": "Friend already added before"
+  },
+  "friendAddedSuccessfully": "تمت إضافة الصديق بنجاح",
+  "@friendAddedSuccessfully": {
+    "description": "Friend added successfully"
+  },
+  "tryAddingSomeFriends": "حاول إضافة أصدقاء",
+  "@tryAddingSomeFriends": {
+    "description": "Try adding some friends"
+  },
+  "somethingWentWrong": "حدث خطأ ما",
+  "@somethingWentWrong": {
+    "description": "Error message"
+  },
+  "errorFetchingFriends": "خطأ في جلب الأصدقاء",
+  "@errorFetchingFriends": {
+    "description": "Error fetching friends"
+  },
+  "noFriendsFound": "لم يتم العثور على أصدقاء",
+  "@noFriendsFound": {
+    "description": "No friends found"
+  },
+  "tooLongMoreThan18Chars": "طويل جدًا، أكثر من 18 حرفًا",
+  "@tooLongMoreThan18Chars": {
+    "description": "Too long message"
+  },
+  "invalidCharacters": "أحرف غير صالحة",
+  "@invalidCharacters": {
+    "description": "Invalid characters message"
+  },
+  "settled": "تم التسوية",
+  "@settled": {
+    "description": "settled"
+  },
+  "youOwe": "أنت مدين",
+  "@youOwe": {
+    "description": "You owe"
+  },
+  "owesYou": "مدين لك",
+  "@owesYou": {
+    "description": "Owes you"
+  },
+  "enterAmount": "يرجى إدخال المبلغ",
+  "@enterAmount": {
+    "description": "Enter amount prompt"
+  },
+  "invalidAmount": "مبلغ غير صالح. مثال: 10.5",
+  "@invalidAmount": {
+    "description": "Invalid amount message ex:10.5"
+  },
+  "expenseAmount": "مبلغ المصاريف",
+  "@expenseAmount": {
+    "description": "Expense amount"
+  },
+  "friendsSelected": "الأصدقاء المحددون",
+  "@friendsSelected": {
+    "description": "Friends selected"
+  },
+  "splitMethod": "طريقة التقسيم",
+  "@splitMethod": {
+    "description": "Split method"
+  },
+  "equalSplit": "تقسيم متساوي",
+  "@equalSplit": {
+    "description": "Equal split"
+  },
+  "theyPaidFullYouOweHalf": "لقد دفعوا بالكامل، أنت مدين بنصف",
+  "@theyPaidFullYouOweHalf": {
+    "description": "They paid full, you owe half"
+  },
+  "theyPaidFullYouOweFull": "لقد دفعوا بالكامل، أنت مدين بالكامل",
+  "@theyPaidFullYouOweFull": {
+    "description": "They paid full, you owe full"
+  },
+  "youPaidFullTheyOweHalf": "لقد دفعت بالكامل، هم مدينون بنصف",
+  "@youPaidFullTheyOweHalf": {
+    "description": "You paid full, they owe half"
+  },
+  "youPaidFullTheyOweFull": "لقد دفعت بالكامل، هم مدينون بالكامل",
+  "@youPaidFullTheyOweFull": {
+    "description": "You paid full, they owe full"
+  },
+  "youPaid": "لقد دفعت",
+  "@youPaid": {
+    "description": "You paid"
+  },
+  "eachFriendOwesYou": "كل صديق مدين لك",
+  "@eachFriendOwesYou": {
+    "description": "Each friend owes you"
+  },
+  "theyPaid": "Iلقد دفعوا",
+  "@theyPaid": {
+    "description": "They paid"
+  },
+  "youOweEachFriend": "أنت مدين لكل صديق",
+  "@youOweEachFriend": {
+    "description": "You owe each friend"
   }
 }

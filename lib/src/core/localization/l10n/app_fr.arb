@@ -499,5 +499,101 @@
   "friendAlreadyAddedBefore": "Ami déjà ajouté avant",
   "@friendAlreadyAddedBefore": {
     "description": "Friend already added before"
+  },
+  "friendAddedSuccessfully": "Ami ajouté avec succès",
+  "@friendAddedSuccessfully": {
+    "description": "Friend added successfully"
+  },
+  "tryAddingSomeFriends": "Essayez d'ajouter des amis",
+  "@tryAddingSomeFriends": {
+    "description": "Try adding some friends"
+  },
+  "somethingWentWrong": "Quelque chose s'est mal passé",
+  "@somethingWentWrong": {
+    "description": "Error message"
+  },
+  "errorFetchingFriends": "Erreur lors de la récupération des amis",
+  "@errorFetchingFriends": {
+    "description": "Error fetching friends"
+  },
+  "noFriendsFound": "Aucun ami trouvé",
+  "@noFriendsFound": {
+    "description": "No friends found"
+  },
+  "tooLongMoreThan18Chars": "Trop long, plus de 18 caractères",
+  "@tooLongMoreThan18Chars": {
+    "description": "Too long message"
+  },
+  "invalidCharacters": "Caractères invalides",
+  "@invalidCharacters": {
+    "description": "Invalid characters message"
+  },
+  "settled": "Réglé",
+  "@settled": {
+    "description": "settled"
+  },
+  "youOwe": "Vous devez",
+  "@youOwe": {
+    "description": "You owe"
+  },
+  "owesYou": "vous devez",
+  "@owesYou": {
+    "description": "Owes you"
+  },
+  "enterAmount": "Veuillez entrer le montant",
+  "@enterAmount": {
+    "description": "Enter amount prompt"
+  },
+  "invalidAmount": "Montant invalide. Exemple : 10,5",
+  "@invalidAmount": {
+    "description": "Invalid amount message ex:10.5"
+  },
+  "expenseAmount": "Montant de la dépense",
+  "@expenseAmount": {
+    "description": "Expense amount"
+  },
+  "friendsSelected": "Amis sélectionnés",
+  "@friendsSelected": {
+    "description": "Friends selected"
+  },
+  "splitMethod": "Méthode de partage",
+  "@splitMethod": {
+    "description": "Split method"
+  },
+  "equalSplit": "Partage égal",
+  "@equalSplit": {
+    "description": "Equal split"
+  },
+  "theyPaidFullYouOweHalf": "Ils ont payé la totalité, vous devez la moitié",
+  "@theyPaidFullYouOweHalf": {
+    "description": "They paid full, you owe half"
+  },
+  "theyPaidFullYouOweFull": "Ils ont payé la totalité, vous devez la totalité",
+  "@theyPaidFullYouOweFull": {
+    "description": "They paid full, you owe full"
+  },
+  "youPaidFullTheyOweHalf": "Vous avez payé la totalité, ils doivent la moitié",
+  "@youPaidFullTheyOweHalf": {
+    "description": "You paid full, they owe half"
+  },
+  "youPaidFullTheyOweFull": "Vous avez payé la totalité, ils doivent la totalité",
+  "@youPaidFullTheyOweFull": {
+    "description": "You paid full, they owe full"
+  },
+  "youPaid": "Vous avez payé",
+  "@youPaid": {
+    "description": "You paid"
+  },
+  "eachFriendOwesYou": "Chaque ami vous doit",
+  "@eachFriendOwesYou": {
+    "description": "Each friend owes you"
+  },
+  "theyPaid": "Ils ont payé",
+  "@theyPaid": {
+    "description": "They paid"
+  },
+  "youOweEachFriend": "Vous devez à chaque ami",
+  "@youOweEachFriend": {
+    "description": "You owe each friend"
   }
 }
