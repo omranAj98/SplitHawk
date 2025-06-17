@@ -11,7 +11,7 @@ class SplitModel extends Equatable {
   final DateTime? settledAt;
   final DateTime? createdAt;
 
-  SplitModel({
+  const SplitModel({
     this.id,
     required this.friendRef,
     required this.amount,

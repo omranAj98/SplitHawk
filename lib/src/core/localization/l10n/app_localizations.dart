@@ -993,6 +993,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You owe each friend'**
   String get youOweEachFriend;
+
+  /// No friends found please add some friends
+  ///
+  /// In en, this message translates to:
+  /// **'No friends found, please add some friends'**
+  String get noFriendsFoundAddSome;
 }
 
 class _AppLocalizationsDelegate

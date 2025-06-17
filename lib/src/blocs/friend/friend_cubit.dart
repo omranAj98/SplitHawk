@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'dart:async';
-import 'dart:math';
 
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -42,6 +41,32 @@ class FriendCubit extends Cubit<FriendState> {
   Future<void> close() {
     _searchController.close();
     return super.close();
+  }
+
+  void clearSelectedFriends() async {
+    try {
+      emit(state.copyWith(selectedFriends: []));
+    } on CustomError catch (e) {
+      emit(
+        state.copyWith(
+          requestStatus: RequestStatus.error,
+          actionType: FriendActionType.fetch,
+          error: e,
+        ),
+      );
+    } on Exception catch (e) {
+      emit(
+        state.copyWith(
+          requestStatus: RequestStatus.error,
+          actionType: FriendActionType.fetch,
+          error: CustomError(
+            message: e.toString(),
+            code: "unknown",
+            plugin: "friend_cubit",
+          ),
+        ),
+      );
+    }
   }
 
   Future<void> selectFriendToExpense(FriendDataModel friendData) async {

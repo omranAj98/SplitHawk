@@ -473,4 +473,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get youOweEachFriend => 'Vous devez à chaque ami';
+
+  @override
+  String get noFriendsFoundAddSome => 'Aucun ami trouvé, veuillez en ajouter';
 }

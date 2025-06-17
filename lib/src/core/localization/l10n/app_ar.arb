@@ -595,5 +595,9 @@
   "youOweEachFriend": "أنت مدين لكل صديق",
   "@youOweEachFriend": {
     "description": "You owe each friend"
+  },
+  "noFriendsFoundAddSome": "لم يتم العثور على أصدقاء، يرجى إضافة بعض الأصدقاء",
+  "@noFriendsFoundAddSome": {
+    "description": "No friends found please add some friends"
   }
 }

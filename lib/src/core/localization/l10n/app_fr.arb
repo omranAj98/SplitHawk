@@ -595,5 +595,9 @@
   "youOweEachFriend": "Vous devez à chaque ami",
   "@youOweEachFriend": {
     "description": "You owe each friend"
+  },
+  "noFriendsFoundAddSome": "Aucun ami trouvé, veuillez en ajouter",
+  "@noFriendsFoundAddSome": {
+    "description": "No friends found please add some friends"
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:splithawk/src/blocs/auth/auth_bloc.dart';
+import 'package:splithawk/src/blocs/user/user_cubit.dart';
 import 'package:splithawk/src/core/routes/names.dart';
 import 'package:splithawk/src/core/validators/app_text_validators.dart';
 import 'package:splithawk/src/core/localization/l10n/app_localizations.dart';
@@ -26,6 +27,7 @@ class SigninPage extends StatelessWidget {
         context.read<AuthBloc>().add(
           AuthSignInWithEmailEvent(email: email!, password: password!),
         );
+        context.read<UserCubit>().getSelfUser();
       }
     }
 

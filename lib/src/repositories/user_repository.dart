@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 
 import 'package:splithawk/src/core/error/custom_error.dart';
-import 'package:splithawk/src/models/balance_model.dart';
 import 'package:splithawk/src/models/user_model.dart';
 import 'package:splithawk/src/repositories/balance_repository.dart';
 

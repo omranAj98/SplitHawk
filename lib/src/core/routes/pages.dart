@@ -16,9 +16,9 @@ import 'package:splithawk/src/views/contacts/add_friend_screen.dart';
 import 'package:splithawk/src/views/contacts/add_new_friend_screen.dart';
 import 'package:splithawk/src/views/contacts/edit_contact_info_screen.dart';
 import 'package:splithawk/src/views/contacts/verify_contact_info_screen.dart';
-import 'package:splithawk/src/views/expense_split_options_screen.dart';
+import 'package:splithawk/src/views/new_expense/expense_split_options_screen.dart';
 import 'package:splithawk/src/views/main_page.dart';
-import 'package:splithawk/src/views/add_expense_screen.dart';
+import 'package:splithawk/src/views/new_expense/add_expense_screen.dart';
 import 'package:splithawk/src/views/reset_password_screen.dart';
 import 'package:splithawk/src/views/signin_page.dart';
 import 'package:splithawk/src/views/signup/signup_screen.dart';
@@ -86,6 +86,7 @@ final GoRouter appRouter = GoRouter(
                   path: 'home',
                   name: AppRoutesName.home,
                   builder: (context, state) {
+                    context.read<FriendCubit>().updateSearchText('');
                     return BlocProvider<MenuCubit>.value(
                       value: locator<MenuCubit>(),
                       child: MainPage(),
@@ -100,11 +101,16 @@ final GoRouter appRouter = GoRouter(
                         );
                       },
                       routes: [
-                        GoRoute(path: 'add_expense',
+                        GoRoute(
+                          path: 'add_expense',
                           name: AppRoutesName.addExpense,
                           builder: (context, state) {
+                            context.read<FriendCubit>().updateSearchText('');
                             final extra = state.extra as Map<String, dynamic>?;
-                            final friendsList = extra?['friendsList'] as List<FriendDataModel>? ?? [];
+                            final friendsList =
+                                extra?['friendsList']
+                                    as List<FriendDataModel>? ??
+                                [];
                             return AddExpenseScreen(friendsList: friendsList);
                           },
                         ),

@@ -10,7 +10,7 @@ class FriendState extends Equatable {
   final List<FriendModel> friends;
   final List<FriendDataModel> friendsData;
   final List<FriendDataModel>? filteredFriends;
-  final List<FriendDataModel>? selectedFriends ;
+  final List<FriendDataModel>? selectedFriends;
   final FriendDataModel? selectedFriend;
   final CustomError? error;
 
@@ -31,7 +31,7 @@ class FriendState extends Equatable {
       actionType: null,
       friends: [],
       friendsData: [],
-      selectedFriends: null,
+      selectedFriends: [],
       filteredFriends: null,
       selectedFriend: null,
       error: null,

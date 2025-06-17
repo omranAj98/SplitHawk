@@ -57,6 +57,13 @@ class ErrorMessages {
           default:
             return AppLocalizations.of(context)!.defaultErrorMessage;
         }
+      case 'MainPage':
+        switch (code) {
+          case 'no_friends_found':
+            return AppLocalizations.of(context)!.noFriendsFoundAddSome;
+          default:
+            return AppLocalizations.of(context)!.defaultErrorMessage;
+        }
       default:
         return AppLocalizations.of(context)!.defaultErrorMessage;
     }

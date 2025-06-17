@@ -461,4 +461,8 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get youOweEachFriend => 'أنت مدين لكل صديق';
+
+  @override
+  String get noFriendsFoundAddSome =>
+      'لم يتم العثور على أصدقاء، يرجى إضافة بعض الأصدقاء';
 }

@@ -23,41 +23,34 @@ class RootApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder:
-          (context, ch) => DismissKeyboard(
-            child: MultiBlocProvider(
-              providers: [
-                BlocProvider(create: (context) => ThemeCubit()),
-                BlocProvider<LocalizationCubit>(
-                  create:
-                      (context) =>
-                          LocalizationCubit(systemLocale: systemLocale),
-                ),
-                BlocProvider<AuthBloc>.value(value: locator<AuthBloc>()),
-              ],
-
-              child: BlocBuilder<ThemeCubit, ThemeState>(
-                builder: (context, state) {
-                  return MaterialApp.router(
-                    localizationsDelegates: [
-                      AppLocalizations.delegate,
-                      GlobalMaterialLocalizations.delegate,
-                      GlobalWidgetsLocalizations.delegate,
-                      GlobalCupertinoLocalizations.delegate,
-                    ],
-                    supportedLocales: [
-                      Locale('en'),
-                      Locale('ar'),
-                      Locale('fr'),
-                    ],
-                    theme: AppTheme.lightTheme(),
-                    darkTheme: AppTheme.darkTheme(),
-                    themeMode: state.themeMode,
-                    debugShowCheckedModeBanner: false,
-                    routerConfig: appRouter,
-                    locale: context.watch<LocalizationCubit>().state,
-                  );
-                },
+          (context, ch) => MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => ThemeCubit()),
+              BlocProvider<LocalizationCubit>(
+                create:
+                    (context) => LocalizationCubit(systemLocale: systemLocale),
               ),
+              BlocProvider<AuthBloc>.value(value: locator<AuthBloc>()),
+            ],
+
+            child: BlocBuilder<ThemeCubit, ThemeState>(
+              builder: (context, state) {
+                return MaterialApp.router(
+                  localizationsDelegates: [
+                    AppLocalizations.delegate,
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                    GlobalCupertinoLocalizations.delegate,
+                  ],
+                  supportedLocales: [Locale('en'), Locale('ar'), Locale('fr')],
+                  theme: AppTheme.lightTheme(),
+                  darkTheme: AppTheme.darkTheme(),
+                  themeMode: state.themeMode,
+                  debugShowCheckedModeBanner: false,
+                  routerConfig: appRouter,
+                  locale: context.watch<LocalizationCubit>().state,
+                );
+              },
             ),
           ),
     );

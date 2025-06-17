@@ -8,7 +8,7 @@ class ExpenseRefModel extends Equatable {
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
-  ExpenseRefModel({
+  const ExpenseRefModel({
     required this.id,
     required this.expenseRef,
     this.isSettled,

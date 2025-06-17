@@ -461,4 +461,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get youOweEachFriend => 'You owe each friend';
+
+  @override
+  String get noFriendsFoundAddSome =>
+      'No friends found, please add some friends';
 }

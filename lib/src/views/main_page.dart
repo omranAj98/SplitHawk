@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:splithawk/src/blocs/friend/friend_cubit.dart';
 import 'package:splithawk/src/core/cubit/menu_cubit.dart';
 import 'package:splithawk/src/core/enums/menus.dart';
+import 'package:splithawk/src/core/error/custom_error.dart';
 import 'package:splithawk/src/core/routes/names.dart';
 import 'package:splithawk/src/core/widgets/nav_bar/wd_bottom_navigation_bar.dart';
 
@@ -56,22 +57,27 @@ class _MainPageState extends State<MainPage> {
   }
 
   void _showAddExpenseScreen(BuildContext context, Menus previousMenu) {
-    context
-        .pushNamed(
-          AppRoutesName.addExpense,
-          extra: {'friendsList': context.read<FriendCubit>().state.friendsData},
-        )
-        .then((_) {
-          context.read<MenuCubit>().updateMenu(previousMenu);
-        });
-    // showModalBottomSheet(
-    //   context: context,
-    //   isScrollControlled: true,
-    //   builder: (context) {
-    //     return  AddExpenseModel();
-    //   },
-    // ).then((_) {
-    //   context.read<MenuCubit>().updateMenu(previousMenu);
-    // });
+    if (context.read<FriendCubit>().state.friendsData.isNotEmpty) {
+      context
+          .pushNamed(
+            AppRoutesName.addExpense,
+            extra: {
+              'friendsList': context.read<FriendCubit>().state.friendsData,
+            },
+          )
+          .then((_) {
+            context.read<MenuCubit>().updateMenu(previousMenu);
+            context.read<FriendCubit>().updateSearchText('');
+            context.read<FriendCubit>().clearSelectedFriends();
+          });
+    } else {
+      CustomError(
+        code: "no_friends_found",
+        plugin: "MainPage",
+        message: "No friends found",
+      ).showErrorDialog(context);
+      context.read<MenuCubit>().updateMenu(previousMenu);
+    }
+   
   }
 }

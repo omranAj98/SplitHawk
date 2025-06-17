@@ -33,10 +33,9 @@ class FriendItem extends StatelessWidget {
                 ],
               ),
 
-              if (friend.friendBalances != null &&
-                  friend.friendBalances.isNotEmpty)
+              if (friend.friendBalances.isNotEmpty)
                 Text(
-                  '${friend.friendBalances.first.netAmount} ${friend.friendBalances!.first.currency}',
+                  '${friend.friendBalances.first.netAmount} ${friend.friendBalances.first.currency}',
                   style: TextStyle(
                     color:
                         double.parse(
@@ -49,9 +48,6 @@ class FriendItem extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-
-              if (friend.friendBalances == null)
-                Text(AppLocalizations.of(context)!.settled),
             ],
           ),
           Padding(
@@ -60,9 +56,8 @@ class FriendItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                if (friend.friendBalances != null &&
-                    friend.friendBalances!.isNotEmpty)
-                  ...friend.friendBalances!.map(
+                if (friend.friendBalances.isNotEmpty)
+                  ...friend.friendBalances.map(
                     (balance) => Row(
                       children: [
                         DecoratedBox(
