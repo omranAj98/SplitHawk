@@ -564,21 +564,21 @@
   "@equalSplit": {
     "description": "Equal split"
   },
-  "theyPaidFullYouOweHalf": "Ils ont payé la totalité, vous devez la moitié",
-  "@theyPaidFullYouOweHalf": {
-    "description": "They paid full, you owe half"
+  "theyPaidFullSplitEqual": "{name} a payé la totalité, partagé également",
+  "@theyPaidFullSplitEqual": {
+    "description": "{name} paid full, split equally"
   },
-  "theyPaidFullYouOweFull": "Ils ont payé la totalité, vous devez la totalité",
+  "theyPaidFullYouOweFull": "{name} a payé la totalité, vous devez la totalité",
   "@theyPaidFullYouOweFull": {
-    "description": "They paid full, you owe full"
+    "description": "{name} paid full, you owe full"
   },
-  "youPaidFullTheyOweHalf": "Vous avez payé la totalité, ils doivent la moitié",
-  "@youPaidFullTheyOweHalf": {
-    "description": "You paid full, they owe half"
+  "youPaidSplitEqual": "Vous avez payé, partagé également",
+  "@youPaidSplitEqual": {
+    "description": "You paid, split equally"
   },
-  "youPaidFullTheyOweFull": "Vous avez payé la totalité, ils doivent la totalité",
-  "@youPaidFullTheyOweFull": {
-    "description": "You paid full, they owe full"
+  "youOwedFullAmount": "Vous deviez le montant total",
+  "@youOwedFullAmount": {
+    "description": "You owed full amount"
   },
   "youPaid": "Vous avez payé",
   "@youPaid": {
@@ -588,16 +588,20 @@
   "@eachFriendOwesYou": {
     "description": "Each friend owes you"
   },
-  "theyPaid": "Ils ont payé",
-  "@theyPaid": {
-    "description": "They paid"
+  "userOwesYou": "{name} vous doit",
+  "@userOwesYou": {
+    "description": "{name} owes you"
   },
-  "youOweEachFriend": "Vous devez à chaque ami",
-  "@youOweEachFriend": {
-    "description": "You owe each friend"
+  "youOweUser": "Vous devez à {name}",
+  "@youOweUser": {
+    "description": "You owe {name}"
   },
   "noFriendsFoundAddSome": "Aucun ami trouvé, veuillez en ajouter",
   "@noFriendsFoundAddSome": {
     "description": "No friends found please add some friends"
+  },
+  "moreOptions": "Plus d'options",
+  "@moreOptions": {
+    "description": "More options"
   }
 }

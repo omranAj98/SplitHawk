@@ -1,34 +1,37 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
+import 'package:uuid/uuid.dart';
 
+
+Uuid uuid = const Uuid();
 class SplitModel extends Equatable {
-  final String? id;
-  final DocumentReference friendRef;
-  final double amount;
+  final String id;
+  final DocumentReference userRef;
   final double? paidAmount;
-  final double? owedAmount;
+  final double owedAmount;
+  final DocumentReference owedToUserRef;
   final bool isSettled;
   final DateTime? settledAt;
   final DateTime? createdAt;
 
-  const SplitModel({
-    this.id,
-    required this.friendRef,
-    required this.amount,
+   SplitModel({
+    String? id,
+    required this.userRef,
     this.paidAmount = 0,
-    this.owedAmount,
+    required this.owedAmount,
+    required this.owedToUserRef,
     this.isSettled = false,
     this.settledAt,
     this.createdAt,
-  });
+  }) : id = id ?? uuid.v4();
 
   @override
   List<Object?> get props => [
     id,
-    friendRef,
-    amount,
+    userRef,
     paidAmount,
     owedAmount,
+    owedToUserRef,
     isSettled,
     settledAt,
     createdAt,
@@ -38,10 +41,10 @@ class SplitModel extends Equatable {
     Map data = doc.data() as Map<String, dynamic>;
     return SplitModel(
       id: doc.id,
-      friendRef: data['friendRef'],
-      amount: (data['amount'] as num).toDouble(),
+      userRef: data['userRef'],
       paidAmount: (data['paidAmount'] as num?)?.toDouble(),
-      owedAmount: (data['owedAmount'] as num?)?.toDouble(),
+      owedAmount: (data['owedAmount'] as num).toDouble(),
+      owedToUserRef: data['owedToUserRef'] as DocumentReference,
       isSettled: data['isSettled'] ?? false,
       settledAt:
           data['settledAt'] != null
@@ -56,20 +59,21 @@ class SplitModel extends Equatable {
 
   Map<String, dynamic> toFirestoreMap() {
     return {
-      'friendRef': friendRef,
-      'amount': amount,
+      'userRef': userRef,
+      'owedToUserRef': owedToUserRef,
       'paidAmount': paidAmount,
       'owedAmount': owedAmount,
       'isSettled': isSettled,
-      'settledAt': Timestamp.fromDate(settledAt!),
+      'settledAt':
+          (isSettled) ? settledAt ?? FieldValue.serverTimestamp() : null,
       'createdAt': createdAt ?? FieldValue.serverTimestamp(),
     };
   }
 
   SplitModel copyWith({
     String? id,
-    DocumentReference? friendRef,
-    double? amount,
+    DocumentReference? userRef,
+    DocumentReference? owedToUserRef,
     double? paidAmount,
     double? owedAmount,
     bool? isSettled,
@@ -78,8 +82,8 @@ class SplitModel extends Equatable {
   }) {
     return SplitModel(
       id: id ?? this.id,
-      friendRef: friendRef ?? this.friendRef,
-      amount: amount ?? this.amount,
+      userRef: userRef ?? this.userRef,
+      owedToUserRef: owedToUserRef ?? this.owedToUserRef,
       paidAmount: paidAmount ?? this.paidAmount,
       owedAmount: owedAmount ?? this.owedAmount,
       isSettled: isSettled ?? this.isSettled,

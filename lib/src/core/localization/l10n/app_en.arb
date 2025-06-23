@@ -564,21 +564,21 @@
   "@equalSplit": {
     "description": "Equal split"
   },
-  "theyPaidFullYouOweHalf": "They paid full, you owe half",
-  "@theyPaidFullYouOweHalf": {
-    "description": "They paid full, you owe half"
+  "theyPaidFullSplitEqual": "{name} paid full, split equally",
+  "@theyPaidFullSplitEqual": {
+    "description": "{name} paid full, split equally"
   },
-  "theyPaidFullYouOweFull": "They paid full, you owe full",
+  "theyPaidFullYouOweFull": "{name} paid full, you owe full",
   "@theyPaidFullYouOweFull": {
-    "description": "They paid full, you owe full"
+    "description": "{name} paid full, you owe full"
   },
-  "youPaidFullTheyOweHalf": "You paid full, they owe half",
-  "@youPaidFullTheyOweHalf": {
-    "description": "You paid full, they owe half"
+  "youPaidSplitEqual": "You paid, split equally",
+  "@youPaidSplitEqual": {
+    "description": "You paid, split equally"
   },
-  "youPaidFullTheyOweFull": "You paid full, they owe full",
-  "@youPaidFullTheyOweFull": {
-    "description": "You paid full, they owe full"
+  "youOwedFullAmount": "You owed full amount",
+  "@youOwedFullAmount": {
+    "description": "You owed full amount"
   },
   "youPaid": "You paid",
   "@youPaid": {
@@ -588,16 +588,20 @@
   "@eachFriendOwesYou": {
     "description": "Each friend owes you"
   },
-  "theyPaid": "They paid",
-  "@theyPaid": {
-    "description": "They paid"
+  "userOwesYou": "{name} owes you",
+  "@userOwesYou": {
+    "description": "{name} owes you"
   },
-  "youOweEachFriend": "You owe each friend",
-  "@youOweEachFriend": {
-    "description": "You owe each friend"
+  "youOweUser": "You owe {name}",
+  "@youOweUser": {
+    "description": "You owe {name}"
   },
   "noFriendsFoundAddSome": "No friends found, please add some friends",
   "@noFriendsFoundAddSome": {
     "description": "No friends found please add some friends"
+  },
+  "moreOptions": "More options",
+  "@moreOptions": {
+    "description": "More options"
   }
 }

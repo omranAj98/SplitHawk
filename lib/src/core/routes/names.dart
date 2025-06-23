@@ -20,4 +20,8 @@ class AppRoutesName {
 
   static const String addExpense = 'main/home/add_expense';
   static const String splitOptions = 'main/home/add_expense/split_options';
+  static const String splitOptionsEqual =
+      'main/home/add_expense/split_options/equal';
+  static const String splitOptionsUnequal =
+      'main/home/add_expense/split_options/unequal';
 }

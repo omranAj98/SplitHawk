@@ -447,20 +447,20 @@ class AppLocalizationsFr extends AppLocalizations {
   String get equalSplit => 'Partage égal';
 
   @override
-  String get theyPaidFullYouOweHalf =>
-      'Ils ont payé la totalité, vous devez la moitié';
+  String theyPaidFullSplitEqual(Object name) {
+    return '$name a payé la totalité, partagé également';
+  }
 
   @override
-  String get theyPaidFullYouOweFull =>
-      'Ils ont payé la totalité, vous devez la totalité';
+  String theyPaidFullYouOweFull(Object name) {
+    return '$name a payé la totalité, vous devez la totalité';
+  }
 
   @override
-  String get youPaidFullTheyOweHalf =>
-      'Vous avez payé la totalité, ils doivent la moitié';
+  String get youPaidSplitEqual => 'Vous avez payé, partagé également';
 
   @override
-  String get youPaidFullTheyOweFull =>
-      'Vous avez payé la totalité, ils doivent la totalité';
+  String get youOwedFullAmount => 'Vous deviez le montant total';
 
   @override
   String get youPaid => 'Vous avez payé';
@@ -469,11 +469,18 @@ class AppLocalizationsFr extends AppLocalizations {
   String get eachFriendOwesYou => 'Chaque ami vous doit';
 
   @override
-  String get theyPaid => 'Ils ont payé';
+  String userOwesYou(Object name) {
+    return '$name vous doit';
+  }
 
   @override
-  String get youOweEachFriend => 'Vous devez à chaque ami';
+  String youOweUser(Object name) {
+    return 'Vous devez à $name';
+  }
 
   @override
   String get noFriendsFoundAddSome => 'Aucun ami trouvé, veuillez en ajouter';
+
+  @override
+  String get moreOptions => 'Plus d\'options';
 }

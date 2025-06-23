@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart' as fbAuth;
+import 'package:firebase_core/firebase_core.dart';
 import 'package:splithawk/src/core/error/custom_error.dart';
 import 'package:splithawk/src/models/user_model.dart';
 import 'package:splithawk/src/repositories/auth_repository.dart';
@@ -67,6 +69,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             UserModel userModel = UserModel(
               id: existedUserModel?.id,
               fullName: event.name,
+              userRef: FirebaseFirestore.instance
+                  .collection('users')
+                  .doc(existedUserModel?.id),
               email: event.email,
               phoneNo: '',
               signupMethod: 'email and password',
@@ -151,8 +156,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             await authRepository.signInWithGoogle();
         if (userCredential!.user != null) {
           final user = userCredential.user!;
-          final userModel = UserModel(
+          var userModel = UserModel(
             email: user.email!,
+            userRef: FirebaseFirestore.instance
+                .collection('users')
+                .doc("thisWillReplacedById"),
             fullName: user.displayName ?? user.email!,
             phoneNo: user.phoneNumber ?? '',
             signupMethod: 'google',
@@ -165,6 +173,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             isEmailVerified: true,
             lastActivity: DateTime(1970, 1, 1),
             totalTransactions: 0,
+          );
+          userModel = userModel.copyWith(
+            userRef: FirebaseFirestore.instance
+                .collection('users')
+                .doc(userModel.id),
           );
           UserModel? existingUserModel = await userRepository.checkExistingUser(
             user.email!,

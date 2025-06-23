@@ -9,7 +9,7 @@ Uuid uuid = Uuid();
 
 class UserModel extends Equatable {
   final String id;
-  final DocumentReference? userRef;
+  final DocumentReference userRef;
   final String email;
   final String fullName;
   final String? phoneNo;
@@ -30,7 +30,7 @@ class UserModel extends Equatable {
 
   UserModel({
     String? id,
-    this.userRef,
+    required this.userRef,
     required this.email,
     required this.fullName,
     this.phoneNo = '',

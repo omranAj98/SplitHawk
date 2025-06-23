@@ -4,19 +4,24 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:splithawk/src/core/enums/request_status.dart';
+import 'package:splithawk/src/core/enums/split_options.dart';
 import 'package:splithawk/src/core/error/custom_error.dart';
 import 'package:splithawk/src/models/expense/expense_data_model.dart';
 import 'package:splithawk/src/models/expense/expense_model.dart';
 import 'package:splithawk/src/models/expense/expense_ref_model.dart';
 import 'package:splithawk/src/models/expense/split_model.dart';
+import 'package:splithawk/src/models/friend_data_model.dart';
 import 'package:splithawk/src/repositories/expense_repository.dart';
 import 'package:splithawk/src/repositories/split_repository.dart';
+import 'package:splithawk/src/usecases/new_expense/split_bill_usecase.dart';
 
 part 'expense_state.dart';
 
 class ExpenseCubit extends Cubit<ExpenseState> {
   final ExpenseRepository expenseRepository;
   final SplitRepository splitRepository;
+  final SplitEquallyBillUseCase splitEquallyBillUseCase =
+      SplitEquallyBillUseCase();
 
   ExpenseCubit({required this.expenseRepository, required this.splitRepository})
     : super(ExpenseState.initial());
@@ -92,8 +97,11 @@ class ExpenseCubit extends Cubit<ExpenseState> {
     }
   }
 
-  
-  Future<void> addExpense(ExpenseModel expense, List<SplitModel> splits) async {
+  Future<void> addExpense(
+    ExpenseModel expense,
+    FriendDataModel friendDataModel,
+    SplitOptions splitOption,
+  ) async {
     emit(
       state.copyWith(
         requestStatus: RequestStatus.loading,
@@ -102,6 +110,13 @@ class ExpenseCubit extends Cubit<ExpenseState> {
     );
     try {
       final expenseWithRef = await expenseRepository.addExpense(expense);
+
+      final splits = splitEquallyBillUseCase.execute(
+        amount: expense.amount,
+        selectedFriend: friendDataModel,
+        selfUserRef: expense.createdBy,
+        splitOption: splitOption,
+      );
 
       await splitRepository.addSplits(expense.id, splits);
 
@@ -115,6 +130,7 @@ class ExpenseCubit extends Cubit<ExpenseState> {
                 ExpenseDataModel(
                   expense: expenseWithRef,
                   splits: splits,
+
                   expenseRef: ExpenseRefModel(
                     id: expense.id,
                     expenseRef: expenseWithRef.expenseRef!,

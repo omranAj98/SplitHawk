@@ -63,7 +63,7 @@ class ExpenseRepository {
           .collection('expenses')
           .doc(expense.id);
 
-      await expenseRef.set(expense.toFirestoreMap());
+      await expenseRef.set(expense.toFirestoreMap());      
 
       final expenseRefModel = ExpenseRefModel(
         id: expense.id,

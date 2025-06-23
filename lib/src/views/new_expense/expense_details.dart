@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:splithawk/src/blocs/expense/expense_cubit.dart';
 import 'package:splithawk/src/blocs/friend/friend_cubit.dart';
 import 'package:splithawk/src/blocs/user/user_cubit.dart';
+import 'package:splithawk/src/core/enums/split_options.dart';
 import 'package:splithawk/src/core/routes/names.dart';
 import 'package:splithawk/src/core/validators/app_text_validators.dart';
 import 'package:splithawk/src/models/expense/expense_model.dart';
@@ -29,6 +30,7 @@ class _AddExpenseModelState extends State<ExpenseDetails> {
   final TextEditingController _amountController = TextEditingController();
   final FocusNode _expenseNameFocusNode = FocusNode();
   final FocusNode _amountFocusNode = FocusNode(canRequestFocus: true);
+  SplitOptions _splitOption = SplitOptions.youPaidFullSplitEqual;
 
   final bool _isEqualSplit = true;
 
@@ -44,7 +46,7 @@ class _AddExpenseModelState extends State<ExpenseDetails> {
     List<SplitModel>? splits = [];
     GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-    void splittingOptions() async {
+    void splittingOptionsFor1FriendOnly() async {
       var validate = formKey.currentState?.validate();
       if (validate == false) return;
       final double? amount = double.tryParse(_amountController.text);
@@ -55,11 +57,16 @@ class _AddExpenseModelState extends State<ExpenseDetails> {
         ).showSnackBar(SnackBar(content: Text('Please enter a valid amount')));
         return;
       }
+      final selectedFriendsList =
+          context.read<FriendCubit>().state.selectedFriends;
 
-      splits = await context.pushNamed(
+      SplitOptions? Option = await context.pushNamed(
         AppRoutesName.splitOptions,
-        extra: {'amount': amount},
+        extra: {'amount': amount, 'selectedFriends': selectedFriendsList},
       );
+      if (Option == null) return;
+      _splitOption = Option;
+      setState(() {});
     }
 
     return Container(
@@ -138,7 +145,7 @@ class _AddExpenseModelState extends State<ExpenseDetails> {
                                 _expenseNameController.text.isEmpty ||
                                 _amountController.text.isEmpty
                             ? null
-                            : splittingOptions,
+                            : splittingOptionsFor1FriendOnly,
                     child: Text(
                       "Select Split Options",
                       style: Theme.of(context).textTheme.bodyLarge,
@@ -166,7 +173,7 @@ class _AddExpenseModelState extends State<ExpenseDetails> {
                                 _expenseNameController.text.isEmpty ||
                                 _amountController.text.isEmpty
                             ? null
-                            : _createExpense,
+                            : _createEqualExpenseFor1FriendOnly,
                     child: Text('Create Expense'),
                   ),
                 );
@@ -178,7 +185,7 @@ class _AddExpenseModelState extends State<ExpenseDetails> {
     );
   }
 
-  void _createExpense() async {
+  void _createEqualExpenseFor1FriendOnly() async {
     // Get the entered amount
     final double? amount = double.tryParse(_amountController.text);
     if (amount == null) {
@@ -189,35 +196,10 @@ class _AddExpenseModelState extends State<ExpenseDetails> {
     }
 
     final userRef = context.read<UserCubit>().state.user!.userRef;
+    final selectedFriends = context.read<FriendCubit>().state.selectedFriends;
 
     // Navigate to split options screen
     if (userRef != null) {
-      final List<SplitModel>? splits = await Navigator.push<List<SplitModel>>(
-        context,
-        MaterialPageRoute(
-          builder:
-              (context) =>
-                  BlocSelector<FriendCubit, FriendState, List<FriendDataModel>>(
-                    bloc: context.read<FriendCubit>(),
-                    selector: (state) {
-                      return state.selectedFriends ?? [];
-                    },
-                    builder: (context, state) {
-                      return ExpenseSplitOptionsScreen(
-                        amount: amount,
-                        selectedFriends: state,
-                        userRef: userRef,
-                      );
-                    },
-                  ),
-        ),
-      );
-
-      // If user cancelled selection, return
-      if (splits == null) return;
-
-      final selectedFriends = context.read<FriendCubit>().state.selectedFriends;
-
       // Create expense object
       final newExpense = ExpenseModel(
         expenseName: _expenseNameController.text,
@@ -225,6 +207,7 @@ class _AddExpenseModelState extends State<ExpenseDetails> {
         currency: "USD",
         createdBy: userRef,
         participantsRef:
+            [userRef] +
             selectedFriends!
                 .map((p) => p.userRef)
                 .where((ref) => ref != null)
@@ -233,12 +216,16 @@ class _AddExpenseModelState extends State<ExpenseDetails> {
       );
 
       // Uncomment and use this line to save the expense with splits
-      await context.read<ExpenseCubit>().addExpense(newExpense, splits);
+      await context.read<ExpenseCubit>().addExpense(
+        newExpense,
+        selectedFriends.first,
+        _splitOption,
+      );
 
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text('Expense created successfully')));
-      Navigator.pop(context);
+      context.replaceNamed(AppRoutesName.main);
     }
   }
 }

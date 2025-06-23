@@ -11,27 +11,27 @@ class ExpenseModel extends Equatable {
   final String? description;
   final double amount;
   final String currency;
-  final DocumentReference? createdBy;
+  final DocumentReference createdBy;
   final DateTime? createdAt;
   final DateTime? expenseDate;
   final bool? isDeleted;
   final String? category;
-  final List<DocumentReference>? participantsRef;
+  final List<DocumentReference> participantsRef;
 
   ExpenseModel({
-    id,
+    String? id,
     this.expenseRef,
     required this.expenseName,
     this.description,
     required this.amount,
     required this.currency,
-    this.createdBy,
+    required this.createdBy,
     this.createdAt,
     this.expenseDate,
     this.isDeleted = false,
     this.category,
-    this.participantsRef,
-  }) : id = id ?? uuid.v4;
+    required this.participantsRef,
+  }) : id = id ?? uuid.v4();
 
   @override
   List<Object?> get props => [

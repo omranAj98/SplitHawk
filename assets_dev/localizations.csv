@@ -142,13 +142,14 @@ expenseAmount/Expense amount/Expense Amount/Montant de la dépense/مبلغ ال
 friendsSelected/Friends selected/friends selected/Amis sélectionnés/الأصدقاء المحددون
 splitMethod/Split method/Split Method/Méthode de partage/طريقة التقسيم
 equalSplit/Equal split/Equal Split/Partage égal/تقسيم متساوي
-theyPaidFullYouOweHalf/They paid full, you owe half/They paid full, you owe half/Ils ont payé la totalité, vous devez la moitié/لقد دفعوا بالكامل، أنت مدين بنصف
-theyPaidFullYouOweFull/They paid full, you owe full/They paid full, you owe full/Ils ont payé la totalité, vous devez la totalité/لقد دفعوا بالكامل، أنت مدين بالكامل
-youPaidFullTheyOweHalf/You paid full, they owe half/You paid full, they owe half/Vous avez payé la totalité, ils doivent la moitié/لقد دفعت بالكامل، هم مدينون بنصف
-youPaidFullTheyOweFull/You paid full, they owe full/You paid full, they owe full/Vous avez payé la totalité, ils doivent la totalité/لقد دفعت بالكامل، هم مدينون بالكامل
+theyPaidFullSplitEqual/{name} paid full, split equally/{name} paid full, split equally/{name} a payé la totalité, partagé également/{name} دفع بالكامل، تم تقسيمها بالتساوي
+theyPaidFullYouOweFull/{name} paid full, you owe full/{name} paid full, you owe full/{name} a payé la totalité, vous devez la totalité/{name} دفع بالكامل، أنت مدين بالكامل
+youPaidSplitEqual/You paid, split equally/You paid, split equally/Vous avez payé, partagé également/لقد دفعت، تم تقسيمها بالتساوي
+youOwedFullAmount/You owed full amount/You owed full amount/Vous deviez le montant total/أنت مدين بالمبلغ بالكامل
 youPaid/You paid/You paid/Vous avez payé/لقد دفعت
 youOwe/You owe/You owe/Vous devez/أنت مدين
 eachFriendOwesYou/Each friend owes you/Each friend owes you/Chaque ami vous doit/كل صديق مدين لك
-theyPaid/They paid/They paid/Ils ont payé/Iلقد دفعوا
-youOweEachFriend/You owe each friend/You owe each friend/Vous devez à chaque ami/أنت مدين لكل صديق
+userOwesYou/{name} owes you/{name} owes you/{name} vous doit/{name} مدين لك
+youOweUser/You owe {name}/You owe {name}/Vous devez à {name}/أنت مدين لـ{name}
 noFriendsFoundAddSome/No friends found please add some friends/No friends found, please add some friends/Aucun ami trouvé, veuillez en ajouter/لم يتم العثور على أصدقاء، يرجى إضافة بعض الأصدقاء
+moreOptions/More options/More options/Plus d'options/المزيد من الخيارات

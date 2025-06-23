@@ -151,7 +151,6 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                               setState(() {
                                 _showFriendsList = true;
                               });
-
                               context.read<FriendCubit>().selectFriendToExpense(
                                 friend,
                               );

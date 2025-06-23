@@ -439,16 +439,20 @@ class AppLocalizationsAr extends AppLocalizations {
   String get equalSplit => 'تقسيم متساوي';
 
   @override
-  String get theyPaidFullYouOweHalf => 'لقد دفعوا بالكامل، أنت مدين بنصف';
+  String theyPaidFullSplitEqual(Object name) {
+    return '$name دفع بالكامل، تم تقسيمها بالتساوي';
+  }
 
   @override
-  String get theyPaidFullYouOweFull => 'لقد دفعوا بالكامل، أنت مدين بالكامل';
+  String theyPaidFullYouOweFull(Object name) {
+    return '$name دفع بالكامل، أنت مدين بالكامل';
+  }
 
   @override
-  String get youPaidFullTheyOweHalf => 'لقد دفعت بالكامل، هم مدينون بنصف';
+  String get youPaidSplitEqual => 'لقد دفعت، تم تقسيمها بالتساوي';
 
   @override
-  String get youPaidFullTheyOweFull => 'لقد دفعت بالكامل، هم مدينون بالكامل';
+  String get youOwedFullAmount => 'أنت مدين بالمبلغ بالكامل';
 
   @override
   String get youPaid => 'لقد دفعت';
@@ -457,12 +461,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get eachFriendOwesYou => 'كل صديق مدين لك';
 
   @override
-  String get theyPaid => 'Iلقد دفعوا';
+  String userOwesYou(Object name) {
+    return '$name مدين لك';
+  }
 
   @override
-  String get youOweEachFriend => 'أنت مدين لكل صديق';
+  String youOweUser(Object name) {
+    return 'أنت مدين لـ$name';
+  }
 
   @override
   String get noFriendsFoundAddSome =>
       'لم يتم العثور على أصدقاء، يرجى إضافة بعض الأصدقاء';
+
+  @override
+  String get moreOptions => 'المزيد من الخيارات';
 }

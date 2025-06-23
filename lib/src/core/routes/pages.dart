@@ -95,10 +95,7 @@ final GoRouter appRouter = GoRouter(
                   routes: [
                     ShellRoute(
                       builder: (context, state, child) {
-                        return BlocProvider<ContactCubit>(
-                          create: (_) => locator<ContactCubit>(),
-                          child: child,
-                        );
+                        return child;
                       },
                       routes: [
                         GoRoute(
@@ -119,19 +116,9 @@ final GoRouter appRouter = GoRouter(
                           name: AppRoutesName.splitOptions,
                           builder: (context, state) {
                             final extra = state.extra as Map<String, dynamic>?;
-                            final userRef =
-                                context.read<UserCubit>().state.user?.userRef;
-                            if (userRef == null) {
-                              return const Center(
-                                child: Text(
-                                  'No friends selected or user found. Please select friends to split with.',
-                                ),
-                              );
-                            }
                             return ExpenseSplitOptionsScreen(
                               amount: extra?['amount'] ?? '',
                               selectedFriends: extra?['selectedFriends'] ?? '',
-                              userRef: userRef,
                             );
                           },
                         ),

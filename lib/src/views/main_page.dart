@@ -24,8 +24,6 @@ class _MainPageState extends State<MainPage> {
       listener: (context, currentMenu) {
         if (currentMenu == Menus.add) {
           _showAddExpenseScreen(context, previousMenu);
-        } else {
-          previousMenu = currentMenu;
         }
       },
       builder: (context, currentMenu) {
@@ -57,6 +55,7 @@ class _MainPageState extends State<MainPage> {
   }
 
   void _showAddExpenseScreen(BuildContext context, Menus previousMenu) {
+    context.read<MenuCubit>().updateMenu(previousMenu);
     if (context.read<FriendCubit>().state.friendsData.isNotEmpty) {
       context
           .pushNamed(
@@ -66,7 +65,7 @@ class _MainPageState extends State<MainPage> {
             },
           )
           .then((_) {
-            context.read<MenuCubit>().updateMenu(previousMenu);
+            // context.read<MenuCubit>().updateMenu(previousMenu);
             context.read<FriendCubit>().updateSearchText('');
             context.read<FriendCubit>().clearSelectedFriends();
           });
@@ -78,6 +77,5 @@ class _MainPageState extends State<MainPage> {
       ).showErrorDialog(context);
       context.read<MenuCubit>().updateMenu(previousMenu);
     }
-   
   }
 }

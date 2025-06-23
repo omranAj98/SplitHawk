@@ -946,29 +946,29 @@ abstract class AppLocalizations {
   /// **'Equal Split'**
   String get equalSplit;
 
-  /// They paid full, you owe half
+  /// {name} paid full, split equally
   ///
   /// In en, this message translates to:
-  /// **'They paid full, you owe half'**
-  String get theyPaidFullYouOweHalf;
+  /// **'{name} paid full, split equally'**
+  String theyPaidFullSplitEqual(Object name);
 
-  /// They paid full, you owe full
+  /// {name} paid full, you owe full
   ///
   /// In en, this message translates to:
-  /// **'They paid full, you owe full'**
-  String get theyPaidFullYouOweFull;
+  /// **'{name} paid full, you owe full'**
+  String theyPaidFullYouOweFull(Object name);
 
-  /// You paid full, they owe half
+  /// You paid, split equally
   ///
   /// In en, this message translates to:
-  /// **'You paid full, they owe half'**
-  String get youPaidFullTheyOweHalf;
+  /// **'You paid, split equally'**
+  String get youPaidSplitEqual;
 
-  /// You paid full, they owe full
+  /// You owed full amount
   ///
   /// In en, this message translates to:
-  /// **'You paid full, they owe full'**
-  String get youPaidFullTheyOweFull;
+  /// **'You owed full amount'**
+  String get youOwedFullAmount;
 
   /// You paid
   ///
@@ -982,23 +982,29 @@ abstract class AppLocalizations {
   /// **'Each friend owes you'**
   String get eachFriendOwesYou;
 
-  /// They paid
+  /// {name} owes you
   ///
   /// In en, this message translates to:
-  /// **'They paid'**
-  String get theyPaid;
+  /// **'{name} owes you'**
+  String userOwesYou(Object name);
 
-  /// You owe each friend
+  /// You owe {name}
   ///
   /// In en, this message translates to:
-  /// **'You owe each friend'**
-  String get youOweEachFriend;
+  /// **'You owe {name}'**
+  String youOweUser(Object name);
 
   /// No friends found please add some friends
   ///
   /// In en, this message translates to:
   /// **'No friends found, please add some friends'**
   String get noFriendsFoundAddSome;
+
+  /// More options
+  ///
+  /// In en, this message translates to:
+  /// **'More options'**
+  String get moreOptions;
 }
 
 class _AppLocalizationsDelegate

@@ -9,7 +9,7 @@ import 'package:splithawk/src/models/user_model.dart';
 class FriendDataModel extends Equatable {
   // Relationship properties (from FriendModel)
   final String friendId;
-  final DocumentReference? userRef;
+  final DocumentReference userRef;
   final String friendName;
   final String status;
   final DateTime? friendedAt;
@@ -26,7 +26,7 @@ class FriendDataModel extends Equatable {
 
   const FriendDataModel({
     required this.friendId,
-    this.userRef,
+    required this.userRef,
     required this.friendName,
     required this.status,
     this.friendedAt,

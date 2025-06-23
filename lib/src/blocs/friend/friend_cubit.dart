@@ -127,7 +127,7 @@ class FriendCubit extends Cubit<FriendState> {
       );
       if (friendUserModel != null) {
         bool isFriend = await friendRepository.isFriend(
-          selfUserModel.userRef!,
+          selfUserModel.userRef,
           friendUserModel.id,
         );
         debugPrint("isFriend: $isFriend");
@@ -154,11 +154,16 @@ class FriendCubit extends Cubit<FriendState> {
         isFavorite: false,
         isBlocked: false,
       );
-      FriendModel friend = FriendModel(nickname: name);
+      FriendModel friend = FriendModel(
+        nickname: name,
+        userRef: FirebaseFirestore.instance.doc('users/${selfUserModel.id}'),
+      );
 
       if (friendUserModel == null) {
+        // FriendModel friend = FriendModel(nickname: name);
         UserModel newUserModel = UserModel(
           id: friend.friendId,
+          userRef: friend.userRef,
           email: email,
           fullName: name,
           createdAt: DateTime.now(),

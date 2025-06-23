@@ -34,7 +34,7 @@ class FriendExpensesScreen extends StatelessWidget {
                 state.expenseData!.where((expenseData) {
                   // Filter by friendUserRef in splits
                   return expenseData.splits.any(
-                    (split) => split.friendRef == friendUserRef,
+                    (split) => split.userRef == friendUserRef,
                   );
                 }).toList();
             if (friendExpenses.isEmpty) {

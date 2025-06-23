@@ -8,7 +8,7 @@ import 'package:uuid/uuid.dart';
 Uuid uuid = Uuid();
 
 class FriendModel extends Equatable {
-  final DocumentReference? userRef;
+  final DocumentReference userRef;
   final String friendId;
   final String? nickname;
   final String? status;
@@ -21,7 +21,7 @@ class FriendModel extends Equatable {
 
   FriendModel({
     String? friendId,
-    this.userRef,
+    required this.userRef,
     this.nickname,
     this.status = "friends",
     this.friendedAt,

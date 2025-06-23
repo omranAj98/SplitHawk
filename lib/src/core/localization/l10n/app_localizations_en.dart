@@ -439,16 +439,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get equalSplit => 'Equal Split';
 
   @override
-  String get theyPaidFullYouOweHalf => 'They paid full, you owe half';
+  String theyPaidFullSplitEqual(Object name) {
+    return '$name paid full, split equally';
+  }
 
   @override
-  String get theyPaidFullYouOweFull => 'They paid full, you owe full';
+  String theyPaidFullYouOweFull(Object name) {
+    return '$name paid full, you owe full';
+  }
 
   @override
-  String get youPaidFullTheyOweHalf => 'You paid full, they owe half';
+  String get youPaidSplitEqual => 'You paid, split equally';
 
   @override
-  String get youPaidFullTheyOweFull => 'You paid full, they owe full';
+  String get youOwedFullAmount => 'You owed full amount';
 
   @override
   String get youPaid => 'You paid';
@@ -457,12 +461,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get eachFriendOwesYou => 'Each friend owes you';
 
   @override
-  String get theyPaid => 'They paid';
+  String userOwesYou(Object name) {
+    return '$name owes you';
+  }
 
   @override
-  String get youOweEachFriend => 'You owe each friend';
+  String youOweUser(Object name) {
+    return 'You owe $name';
+  }
 
   @override
   String get noFriendsFoundAddSome =>
       'No friends found, please add some friends';
+
+  @override
+  String get moreOptions => 'More options';
 }
