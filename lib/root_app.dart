@@ -6,7 +6,6 @@ import 'package:splithawk/src/core/services/service_locator.dart';
 import 'package:splithawk/src/core/theme/app_theme.dart';
 import 'package:splithawk/src/core/theme/cubit/theme_cubit.dart';
 
-import 'src/core/config/config.dart';
 import 'package:flutter/material.dart';
 import 'src/core/routes/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

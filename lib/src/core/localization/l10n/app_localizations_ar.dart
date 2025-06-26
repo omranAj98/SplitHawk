@@ -476,4 +476,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get moreOptions => 'المزيد من الخيارات';
+
+  @override
+  String get noSearchResults => 'لم يتم العثور على نتائج البحث';
+
+  @override
+  String get selectSplitOption => 'تحديد خيار التقسيم';
 }

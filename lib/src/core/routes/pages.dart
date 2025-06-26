@@ -95,7 +95,10 @@ final GoRouter appRouter = GoRouter(
                   routes: [
                     ShellRoute(
                       builder: (context, state, child) {
-                        return child;
+                        return BlocProvider(
+                          create: (context) => locator<ContactCubit>(),
+                          child: child,
+                        );
                       },
                       routes: [
                         GoRoute(
@@ -122,36 +125,45 @@ final GoRouter appRouter = GoRouter(
                             );
                           },
                         ),
-                        GoRoute(
-                          path: 'add_friend',
-                          name: AppRoutesName.addFriend,
-                          builder: (context, state) {
-                            return AddFriendScreen();
+                        ShellRoute(
+                          builder: (context, state, child) {
+                            child;
+                            return child;
                           },
                           routes: [
                             GoRoute(
-                              path: 'add_new_friend',
-                              name: AppRoutesName.addNewFriend,
+                              path: 'add_friend',
+                              name: AppRoutesName.addFriend,
                               builder: (context, state) {
-                                return AddNewFriendScreen();
-                              },
-                            ),
-                            GoRoute(
-                              path: 'verify_friend_info',
-                              name: AppRoutesName.verifyFriendInfo,
-                              builder: (context, state) {
-                                return VerifyContactInfoScreen();
+                                return AddFriendScreen();
                               },
                               routes: [
                                 GoRoute(
-                                  path: "edit_contact_info",
-                                  name: AppRoutesName.editContactInfo,
+                                  path: 'add_new_friend',
+                                  name: AppRoutesName.addNewFriend,
                                   builder: (context, state) {
-                                    final contact = state.extra as ContactModel;
-                                    return EditContactInfoScreen(
-                                      contact: contact,
-                                    );
+                                    return AddNewFriendScreen();
                                   },
+                                ),
+                                GoRoute(
+                                  path: 'verify_friend_info',
+                                  name: AppRoutesName.verifyFriendInfo,
+                                  builder: (context, state) {
+                                    return VerifyContactInfoScreen();
+                                  },
+                                  routes: [
+                                    GoRoute(
+                                      path: "edit_contact_info",
+                                      name: AppRoutesName.editContactInfo,
+                                      builder: (context, state) {
+                                        final contact =
+                                            state.extra as ContactModel;
+                                        return EditContactInfoScreen(
+                                          contact: contact,
+                                        );
+                                      },
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),

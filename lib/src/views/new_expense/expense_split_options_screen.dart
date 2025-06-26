@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:go_router/go_router.dart';
 import 'package:splithawk/src/core/enums/split_options.dart';
 import 'package:splithawk/src/core/localization/l10n/app_localizations.dart';
 import 'package:splithawk/src/core/routes/names.dart';
 import 'package:splithawk/src/models/friend_data_model.dart';
-import 'package:splithawk/src/models/expense/split_model.dart';
 
 class ExpenseSplitOptionsScreen extends StatelessWidget {
   final double amount;

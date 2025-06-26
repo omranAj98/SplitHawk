@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/flutter_localization-Swift.h</key>
 		<data>
-		/c6kxmy8e6ziq6nnq/3WD2q0vLg=
+		PbOVpooQac6pzXKWqWyy0U0U+eA=
 		</data>
 		<key>Headers/flutter_localization-umbrella.h</key>
 		<data>
@@ -18,15 +18,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		HpBr5TKI6yfFrhp47GAUu6uOz4E=
+		fI3mg9bY+Jxj3gDS3yKB9JCXLB8=
 		</data>
 		<key>Modules/flutter_localization.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		k762FVT+YPrtFWN41PijNtKxm9E=
+		f2EkDbWbiJljjHEVWUHPSkftlrY=
 		</data>
 		<key>Modules/flutter_localization.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		/TaUskIwC+liupW5Rdxv/2rG2kM=
+		k4s7YJ4Q5blQliOgvASlP7Yg/JM=
 		</data>
 		<key>Modules/flutter_localization.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/flutter_localization.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		mrYXxpmKBtcdE29s7G7Uq9nOG6Q=
+		7sNoUwjhjcg4PIspDNwB2JpA9Js=
 		</data>
 		<key>Modules/flutter_localization.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		UExNABi6bOlAUA4RHzlboEQAXFM=
+		ehJxz/AVtrOBQs27t4Y6fiys8qU=
 		</data>
 		<key>Modules/flutter_localization.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -46,11 +46,11 @@
 		</data>
 		<key>Modules/flutter_localization.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		mWcobkJfJdpycXCIyfQ2kM7IDRk=
+		H7l7y9AKM0TPg4P1zz9lgvPhdoc=
 		</data>
 		<key>Modules/flutter_localization.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		zOpOVndvLJWr8PIL4xIFumkvlr8=
+		jg76mR/HJxiqqOZ21QoyPnBeOoo=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -70,7 +70,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			GTsvdl6CdRx0iFjDxqq2imU1uowH6OLC35GWBTmAN+A=
+			8TODCUSpWjzl811JZ4bwBmUP6A6+3tqwbEKU1N/jA70=
 			</data>
 		</dict>
 		<key>Headers/flutter_localization-umbrella.h</key>
@@ -84,14 +84,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			jugkA/wGhqricL6jJoX0pXV3JgUwmsgcsSnQp6DXAbs=
+			zjcQf0ZJJ8FA2vdalLCIeSfeSmWz8fYCL47QKa1XPho=
 			</data>
 		</dict>
 		<key>Modules/flutter_localization.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			n3GyfOxPaiFGYf9I6acpcsP0yFdg86UpXA7zL0JJhK0=
+			GbMWo6qrLPzJSWaOgGDeoPDeKunerjef618CbH0JiJ4=
 			</data>
 		</dict>
 		<key>Modules/flutter_localization.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -105,14 +105,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			LDn/ezPs0odvN5ceLP51qZ17lEJ2/k1jySXVUfRtUBg=
+			JpM2aoRLWcE4dLmEBAfGz/V7342Br/6S4hao3/HmETE=
 			</data>
 		</dict>
 		<key>Modules/flutter_localization.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			U7T2NDX+1vvxUi0mlo3GYYkprmI9DckWU5OWo7qR3II=
+			6R/+5RLZ8mehFPZzb1/AuUT3Xe3WWjYO6XGKMW+wHzY=
 			</data>
 		</dict>
 		<key>Modules/flutter_localization.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -126,14 +126,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			I2+HexPoyURvbAPSaJZoXikrnFf2lQaCznhTF+/hS8c=
+			sf6w/u/8AeTRzGAtp50splmppjGEjWZV8513hFsDllU=
 			</data>
 		</dict>
 		<key>Modules/flutter_localization.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			BA67SLBDUcKsDavcrihyc0d8CBp58nqKoXJdcYauM0g=
+			xI4FvHh9h8W/Du++OAqLxDuLjjPp6kM/tMY9/Y1EWKo=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

@@ -476,4 +476,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get moreOptions => 'More options';
+
+  @override
+  String get noSearchResults => 'No search results found';
+
+  @override
+  String get selectSplitOption => 'Select split option';
 }

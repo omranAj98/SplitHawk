@@ -1005,6 +1005,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'More options'**
   String get moreOptions;
+
+  /// No search results found
+  ///
+  /// In en, this message translates to:
+  /// **'No search results found'**
+  String get noSearchResults;
+
+  /// Select split option
+  ///
+  /// In en, this message translates to:
+  /// **'Select split option'**
+  String get selectSplitOption;
 }
 
 class _AppLocalizationsDelegate

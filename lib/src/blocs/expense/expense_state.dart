@@ -8,6 +8,7 @@ class ExpenseState extends Equatable {
   final ExpenseActionType? actionType;
 
   final ExpenseDataModel? newExpenseData;
+  final TempExpenseDetails? tempExpenseDetails;
 
   final List<ExpenseDataModel>? expenseData;
   final CustomError error;
@@ -17,6 +18,7 @@ class ExpenseState extends Equatable {
     this.actionType,
     this.expenseData,
     this.newExpenseData,
+    this.tempExpenseDetails,
     required this.error,
   });
 
@@ -24,6 +26,7 @@ class ExpenseState extends Equatable {
     return ExpenseState(
       requestStatus: RequestStatus.initial,
       error: CustomError(),
+      tempExpenseDetails: TempExpenseDetails(),
       newExpenseData: null,
       expenseData: [],
     );
@@ -33,6 +36,7 @@ class ExpenseState extends Equatable {
     requestStatus,
     actionType,
     error,
+    tempExpenseDetails,
     newExpenseData,
     expenseData,
   ];
@@ -40,8 +44,10 @@ class ExpenseState extends Equatable {
   ExpenseState copyWith({
     RequestStatus? requestStatus,
     ExpenseActionType? actionType,
+
     List<ExpenseDataModel>? expenseData,
     ExpenseDataModel? newExpenseData,
+    TempExpenseDetails? tempExpenseDetails,
     CustomError? error,
   }) {
     return ExpenseState(
@@ -49,6 +55,7 @@ class ExpenseState extends Equatable {
       actionType: actionType ?? this.actionType,
       expenseData: expenseData ?? this.expenseData,
       newExpenseData: newExpenseData ?? this.newExpenseData,
+      tempExpenseDetails: tempExpenseDetails ?? this.tempExpenseDetails,
       error: error ?? this.error,
     );
   }

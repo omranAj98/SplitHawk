@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
   Future<void> _refreshUserData(BuildContext context) async {
     await context.read<UserCubit>().getSelfUser();
     final userRef = context.read<UserCubit>().state.user!.userRef;
-    await context.read<FriendCubit>().getFriendsWithBalances(userRef!);
+    await context.read<FriendCubit>().getFriendsWithBalances(userRef);
   }
 
   Widget _buildLoadingState(BuildContext context) {

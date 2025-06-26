@@ -24,6 +24,9 @@ class _MainPageState extends State<MainPage> {
       listener: (context, currentMenu) {
         if (currentMenu == Menus.add) {
           _showAddExpenseScreen(context, previousMenu);
+        } else {
+          // Update the previous menu whenever we navigate to a non-add menu
+          previousMenu = currentMenu;
         }
       },
       builder: (context, currentMenu) {

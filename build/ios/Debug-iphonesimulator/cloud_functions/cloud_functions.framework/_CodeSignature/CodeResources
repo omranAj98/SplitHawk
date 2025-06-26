@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/cloud_functions-Swift.h</key>
 		<data>
-		qjqtLcHiAVoNOKEBFP8NYPIdjfw=
+		fhYzZqkzavXd5/6UtPEMJjGxulo=
 		</data>
 		<key>Headers/cloud_functions-umbrella.h</key>
 		<data>
@@ -14,15 +14,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		x6XSP0yE+6VsN6xmOslOnvB54is=
+		ZwHABcnyMcRGON7KFf3iZY85ypk=
 		</data>
 		<key>Modules/cloud_functions.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		O7PwkK1hX7jk7C/xd+r/PPjFbC8=
+		6D09oFD+ZjR7w5/SAGyeWGmKc8w=
 		</data>
 		<key>Modules/cloud_functions.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		TqDsC5W0j4t5RYAHuSiM4iT5Tm0=
+		w7Xw6iWV2O4YDf9jQu41jnK0Qb4=
 		</data>
 		<key>Modules/cloud_functions.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -30,11 +30,11 @@
 		</data>
 		<key>Modules/cloud_functions.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		aaKWJ/l9bElUSJIDVv72helMq1k=
+		CYJPdsBcB7N0Y2MySaS21zr848w=
 		</data>
 		<key>Modules/cloud_functions.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		5fIha43djujmGDqXfGHGGTJtQv0=
+		KtxSKupSiCJL0lRb0y/XeLWy9PU=
 		</data>
 		<key>Modules/cloud_functions.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -42,11 +42,11 @@
 		</data>
 		<key>Modules/cloud_functions.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		xIchy0E6Au5Df0ZZKXSRWgyPTX4=
+		FqdllyDAN53n37wy/B2W5FX0yZA=
 		</data>
 		<key>Modules/cloud_functions.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		RMkK6PM23k0qgxmGDVlJ2pdU7WA=
+		8AKirvAeNEhXubW3xBrz0BM5GKs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -59,11 +59,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			qjqtLcHiAVoNOKEBFP8NYPIdjfw=
+			fhYzZqkzavXd5/6UtPEMJjGxulo=
 			</data>
 			<key>hash2</key>
 			<data>
-			8VMT2Z50lkdKuFf1909UHgPveQgI8+IJGvHrc3taVnQ=
+			6ycHzJhMkwcVH8QgcE/+oF80IqE33SQruJuto7PRfkw=
 			</data>
 		</dict>
 		<key>Headers/cloud_functions-umbrella.h</key>
@@ -81,22 +81,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			O7PwkK1hX7jk7C/xd+r/PPjFbC8=
+			6D09oFD+ZjR7w5/SAGyeWGmKc8w=
 			</data>
 			<key>hash2</key>
 			<data>
-			6WpSeCTnw0GoOvKJlcOxo4KLaqbBsaJdTuqc5gh3rws=
+			eYFtc/2IxfLDUSg1ihRSvUFQTnxPTGr0cbn+Ff1WCPA=
 			</data>
 		</dict>
 		<key>Modules/cloud_functions.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			TqDsC5W0j4t5RYAHuSiM4iT5Tm0=
+			w7Xw6iWV2O4YDf9jQu41jnK0Qb4=
 			</data>
 			<key>hash2</key>
 			<data>
-			8wO1j+FQcvJ3nP0h5W5s42JTOzU0Am2I8or2YJ8pqCM=
+			wmA4AIYxq1cme4HtQU5mlJbcLIKL8sSxgCpxK62Ie6E=
 			</data>
 		</dict>
 		<key>Modules/cloud_functions.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -114,22 +114,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			aaKWJ/l9bElUSJIDVv72helMq1k=
+			CYJPdsBcB7N0Y2MySaS21zr848w=
 			</data>
 			<key>hash2</key>
 			<data>
-			CvtJIbPLPg+mrjHEwoeedT9D6Ey8tpBfRwPc5GxIw9A=
+			Kd84rJJIf2R9gQC1FmiKdtthYtyvSt8nTmdFphIHWto=
 			</data>
 		</dict>
 		<key>Modules/cloud_functions.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			5fIha43djujmGDqXfGHGGTJtQv0=
+			KtxSKupSiCJL0lRb0y/XeLWy9PU=
 			</data>
 			<key>hash2</key>
 			<data>
-			JMDBtYWb3o3U+YbHZGhPTCNGG9q9u1gk3TvZfrCRZvQ=
+			+SdIPkFps2AsfAYwzrVL9ZKqCVDZpMgsZnsFVMTpGGA=
 			</data>
 		</dict>
 		<key>Modules/cloud_functions.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -147,22 +147,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xIchy0E6Au5Df0ZZKXSRWgyPTX4=
+			FqdllyDAN53n37wy/B2W5FX0yZA=
 			</data>
 			<key>hash2</key>
 			<data>
-			iPjnj+bWiTHdax8++0Ateef026ADUNuh9tFubKVEfPo=
+			x641qImn+il38MrerRliVjUmURATjthzTrNoBftct9g=
 			</data>
 		</dict>
 		<key>Modules/cloud_functions.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			RMkK6PM23k0qgxmGDVlJ2pdU7WA=
+			8AKirvAeNEhXubW3xBrz0BM5GKs=
 			</data>
 			<key>hash2</key>
 			<data>
-			jgi/nnqabnPkO1hfv7o7NzPvqmrdQiDtoXcMAC2wtzk=
+			/5vGqSd/uXW3oiBJ3ewYNdzN8IcEQJEgXAtPnyVFRM8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

@@ -603,5 +603,13 @@
   "moreOptions": "More options",
   "@moreOptions": {
     "description": "More options"
+  },
+  "noSearchResults": "No search results found",
+  "@noSearchResults": {
+    "description": "No search results found"
+  },
+  "selectSplitOption": "Select split option",
+  "@selectSplitOption": {
+    "description": "Select split option"
   }
 }

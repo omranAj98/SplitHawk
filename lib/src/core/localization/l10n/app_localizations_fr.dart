@@ -483,4 +483,10 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get moreOptions => 'Plus d\'options';
+
+  @override
+  String get noSearchResults => 'Aucun résultat de recherche trouvé';
+
+  @override
+  String get selectSplitOption => 'Sélectionner l\'option de partage';
 }

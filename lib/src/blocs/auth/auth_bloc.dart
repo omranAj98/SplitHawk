@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart' as fbAuth;
-import 'package:firebase_core/firebase_core.dart';
 import 'package:splithawk/src/core/error/custom_error.dart';
 import 'package:splithawk/src/models/user_model.dart';
 import 'package:splithawk/src/repositories/auth_repository.dart';

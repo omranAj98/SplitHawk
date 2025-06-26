@@ -9,7 +9,7 @@ import 'package:splithawk/src/core/error/custom_error.dart';
 import 'package:splithawk/src/models/expense/expense_data_model.dart';
 import 'package:splithawk/src/models/expense/expense_model.dart';
 import 'package:splithawk/src/models/expense/expense_ref_model.dart';
-import 'package:splithawk/src/models/expense/split_model.dart';
+import 'package:splithawk/src/models/expense/temp_expense_details.dart';
 import 'package:splithawk/src/models/friend_data_model.dart';
 import 'package:splithawk/src/repositories/expense_repository.dart';
 import 'package:splithawk/src/repositories/split_repository.dart';
@@ -160,5 +160,39 @@ class ExpenseCubit extends Cubit<ExpenseState> {
         ),
       );
     }
+  }
+
+  void updateExpenseName(String name) {
+    emit(
+      state.copyWith(
+        tempExpenseDetails: state.tempExpenseDetails?.copyWith(name: name),
+      ),
+    );
+  }
+
+  void updateExpenseSplitOption(SplitOptions splitOption) {
+    emit(
+      state.copyWith(
+        tempExpenseDetails: state.tempExpenseDetails?.copyWith(
+          splitOption: splitOption,
+        ),
+      ),
+    );
+  }
+
+  void updateExpenseAmount(double amount) {
+    emit(
+      state.copyWith(
+        tempExpenseDetails: state.tempExpenseDetails?.copyWith(amount: amount),
+      ),
+    );
+  }
+
+  void resetTempExpenseDetails() {
+    emit(
+      state.copyWith(
+        tempExpenseDetails: TempExpenseDetails(), // Create a new empty instance
+      ),
+    );
   }
 }

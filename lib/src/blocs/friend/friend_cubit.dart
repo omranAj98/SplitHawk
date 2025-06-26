@@ -365,6 +365,10 @@ class FriendCubit extends Cubit<FriendState> {
     }
   }
 
+  void resetSelectedFriends() {
+    emit(state.copyWith(selectedFriends: []));
+  }
+
   // void removeFriend(FriendModel friend) async {
   //   emit(state.copyWith(requestStatus: RequestStatus.loading));
   //   try {

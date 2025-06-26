@@ -39,7 +39,7 @@ class SwipeableFriendsList extends StatelessWidget {
           },
           onTap: () async {
             await context.read<ExpenseCubit>().fetchUserExpenses(
-              friend.userRef!,
+              friend.userRef,
             );
 
             context.pushNamed(
