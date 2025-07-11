@@ -584,6 +584,10 @@
   "@youPaid": {
     "description": "You paid"
   },
+  "paidBy": "دفع بواسطة",
+  "@paidBy": {
+    "description": "paid by"
+  },
   "eachFriendOwesYou": "كل صديق مدين لك",
   "@eachFriendOwesYou": {
     "description": "Each friend owes you"
@@ -611,5 +615,45 @@
   "selectSplitOption": "تحديد خيار التقسيم",
   "@selectSplitOption": {
     "description": "Select split option"
+  },
+  "unknownDate": "تاريخ غير معروف",
+  "@unknownDate": {
+    "description": "Unknown date"
+  },
+  "date": "تاريخ",
+  "@date": {
+    "description": "Date"
+  },
+  "balanceSummary": "ملخص الرصيد",
+  "@balanceSummary": {
+    "description": "Balance summary"
+  },
+  "noActiveBalancesFound": "لم يتم العثور على أرصدة نشطة",
+  "@noActiveBalancesFound": {
+    "description": "No active balances found"
+  },
+  "noExpensesFound": "لم يتم العثور على مصاريف",
+  "@noExpensesFound": {
+    "description": "No expenses found"
+  },
+  "expenses": "المصاريف",
+  "@expenses": {
+    "description": "Expenses"
+  },
+  "you": "أنت",
+  "@you": {
+    "description": "You"
+  },
+  "unknown": "غير معروف",
+  "@unknown": {
+    "description": "Unknown"
+  },
+  "people": "الأشخاص",
+  "@people": {
+    "description": "People"
+  },
+  "owes": "مدين",
+  "@owes": {
+    "description": "Owes"
   }
 }

@@ -147,6 +147,7 @@ theyPaidFullYouOweFull/{name} paid full, you owe full/{name} paid full, you owe 
 youPaidSplitEqual/You paid, split equally/You paid, split equally/Vous avez payé, partagé également/لقد دفعت، تم تقسيمها بالتساوي
 youOwedFullAmount/You owed full amount/You owed full amount/Vous deviez le montant total/أنت مدين بالمبلغ بالكامل
 youPaid/You paid/You paid/Vous avez payé/لقد دفعت
+paidBy/paid by/paid by/payé par/دفع بواسطة
 youOwe/You owe/You owe/Vous devez/أنت مدين
 eachFriendOwesYou/Each friend owes you/Each friend owes you/Chaque ami vous doit/كل صديق مدين لك
 userOwesYou/{name} owes you/{name} owes you/{name} vous doit/{name} مدين لك
@@ -155,3 +156,13 @@ noFriendsFoundAddSome/No friends found please add some friends/No friends found,
 moreOptions/More options/More options/Plus d'options/المزيد من الخيارات
 noSearchResults/No search results found/No search results found/Aucun résultat de recherche trouvé/لم يتم العثور على نتائج البحث
 selectSplitOption/Select split option/Select split option/Sélectionner l'option de partage/تحديد خيار التقسيم
+unknownDate/Unknown date/Unknown date/Date inconnue/تاريخ غير معروف
+date/Date/Date/Date/تاريخ
+balanceSummary/Balance summary/Balance Summary/Résumé du solde/ملخص الرصيد
+noActiveBalancesFound/No active balances found/No active balances found/Aucun solde actif trouvé/لم يتم العثور على أرصدة نشطة
+noExpensesFound/No expenses found/No expenses found/Aucune dépense trouvée/لم يتم العثور على مصاريف
+expenses/Expenses/Expenses/Dépenses/المصاريف
+you/You/You/Vous/أنت
+unknown/Unknown/Unknown/Inconnu/غير معروف
+people/People/People/Personnes/الأشخاص
+owes/Owes/Owes/Doit/مدين

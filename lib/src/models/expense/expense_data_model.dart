@@ -4,6 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:splithawk/src/models/expense/expense_model.dart';
 import 'package:splithawk/src/models/expense/expense_ref_model.dart';
 import 'package:splithawk/src/models/expense/split_model.dart';
+import 'package:splithawk/src/models/friend_model.dart';
 
 class ExpenseDataModel extends Equatable {
   final ExpenseRefModel expenseRef;
@@ -30,12 +31,12 @@ class ExpenseDataModel extends Equatable {
 
   factory ExpenseDataModel.fromFirestoreDoc({
     required DocumentSnapshot expenseDoc,
-    required List<DocumentSnapshot> splitsDoc,
+    required List<SplitModel> splits,
     required ExpenseRefModel expenseRef,
   }) {
     return ExpenseDataModel(
       expense: ExpenseModel.fromFirestoreDoc(expenseDoc),
-      splits: splitsDoc.map((doc) => SplitModel.fromFirestoreDoc(doc)).toList(),
+      splits: splits,
       expenseRef: expenseRef,
     );
   }

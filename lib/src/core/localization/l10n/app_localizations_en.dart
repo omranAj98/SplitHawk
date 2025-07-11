@@ -458,6 +458,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get youPaid => 'You paid';
 
   @override
+  String get paidBy => 'paid by';
+
+  @override
   String get eachFriendOwesYou => 'Each friend owes you';
 
   @override
@@ -482,4 +485,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get selectSplitOption => 'Select split option';
+
+  @override
+  String get unknownDate => 'Unknown date';
+
+  @override
+  String get date => 'Date';
+
+  @override
+  String get balanceSummary => 'Balance Summary';
+
+  @override
+  String get noActiveBalancesFound => 'No active balances found';
+
+  @override
+  String get noExpensesFound => 'No expenses found';
+
+  @override
+  String get expenses => 'Expenses';
+
+  @override
+  String get you => 'You';
+
+  @override
+  String get unknown => 'Unknown';
+
+  @override
+  String get people => 'People';
+
+  @override
+  String get owes => 'Owes';
 }

@@ -63,6 +63,8 @@ class SplitEquallyBillUseCase {
           owedToUserRef: selfUserRef,
           paidAmount: friendPaidAmount,
           owedAmount: friendOwedAmount,
+          userName: friend.friendName,
+          owedToName: "you"
         ),
       );
 
@@ -73,6 +75,8 @@ class SplitEquallyBillUseCase {
           owedToUserRef: friend.userRef,
           paidAmount: selfPaidAmount,
           owedAmount: selfOwedAmount,
+          userName: "you",
+          owedToName: friend.friendName,
         ),
       );
 

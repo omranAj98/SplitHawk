@@ -466,6 +466,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get youPaid => 'Vous avez payé';
 
   @override
+  String get paidBy => 'payé par';
+
+  @override
   String get eachFriendOwesYou => 'Chaque ami vous doit';
 
   @override
@@ -489,4 +492,34 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get selectSplitOption => 'Sélectionner l\'option de partage';
+
+  @override
+  String get unknownDate => 'Date inconnue';
+
+  @override
+  String get date => 'Date';
+
+  @override
+  String get balanceSummary => 'Résumé du solde';
+
+  @override
+  String get noActiveBalancesFound => 'Aucun solde actif trouvé';
+
+  @override
+  String get noExpensesFound => 'Aucune dépense trouvée';
+
+  @override
+  String get expenses => 'Dépenses';
+
+  @override
+  String get you => 'Vous';
+
+  @override
+  String get unknown => 'Inconnu';
+
+  @override
+  String get people => 'Personnes';
+
+  @override
+  String get owes => 'Doit';
 }

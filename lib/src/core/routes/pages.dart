@@ -175,9 +175,8 @@ final GoRouter appRouter = GoRouter(
                           builder: (context, state) {
                             final extra = state.extra as Map<String, dynamic>?;
                             return FriendExpensesScreen(
-                              friendName: extra?['friendName'] ?? '',
-                              friendId: extra?['friendId'] ?? '',
-                              friendUserRef: extra?['friendUserRef'],
+                              friend: extra?['friend'] ?? '',
+                              selfUserRef: extra?['selfUserRef'] ?? '',
                             );
                           },
                         ),

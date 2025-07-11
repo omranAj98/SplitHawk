@@ -976,6 +976,12 @@ abstract class AppLocalizations {
   /// **'You paid'**
   String get youPaid;
 
+  /// paid by
+  ///
+  /// In en, this message translates to:
+  /// **'paid by'**
+  String get paidBy;
+
   /// Each friend owes you
   ///
   /// In en, this message translates to:
@@ -1017,6 +1023,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Select split option'**
   String get selectSplitOption;
+
+  /// Unknown date
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown date'**
+  String get unknownDate;
+
+  /// Date
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get date;
+
+  /// Balance summary
+  ///
+  /// In en, this message translates to:
+  /// **'Balance Summary'**
+  String get balanceSummary;
+
+  /// No active balances found
+  ///
+  /// In en, this message translates to:
+  /// **'No active balances found'**
+  String get noActiveBalancesFound;
+
+  /// No expenses found
+  ///
+  /// In en, this message translates to:
+  /// **'No expenses found'**
+  String get noExpensesFound;
+
+  /// Expenses
+  ///
+  /// In en, this message translates to:
+  /// **'Expenses'**
+  String get expenses;
+
+  /// You
+  ///
+  /// In en, this message translates to:
+  /// **'You'**
+  String get you;
+
+  /// Unknown
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown'**
+  String get unknown;
+
+  /// People
+  ///
+  /// In en, this message translates to:
+  /// **'People'**
+  String get people;
+
+  /// Owes
+  ///
+  /// In en, this message translates to:
+  /// **'Owes'**
+  String get owes;
 }
 
 class _AppLocalizationsDelegate

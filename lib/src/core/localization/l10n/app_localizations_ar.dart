@@ -458,6 +458,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get youPaid => 'لقد دفعت';
 
   @override
+  String get paidBy => 'دفع بواسطة';
+
+  @override
   String get eachFriendOwesYou => 'كل صديق مدين لك';
 
   @override
@@ -482,4 +485,34 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get selectSplitOption => 'تحديد خيار التقسيم';
+
+  @override
+  String get unknownDate => 'تاريخ غير معروف';
+
+  @override
+  String get date => 'تاريخ';
+
+  @override
+  String get balanceSummary => 'ملخص الرصيد';
+
+  @override
+  String get noActiveBalancesFound => 'لم يتم العثور على أرصدة نشطة';
+
+  @override
+  String get noExpensesFound => 'لم يتم العثور على مصاريف';
+
+  @override
+  String get expenses => 'المصاريف';
+
+  @override
+  String get you => 'أنت';
+
+  @override
+  String get unknown => 'غير معروف';
+
+  @override
+  String get people => 'الأشخاص';
+
+  @override
+  String get owes => 'مدين';
 }

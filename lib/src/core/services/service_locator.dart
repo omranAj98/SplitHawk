@@ -169,6 +169,7 @@ void setupLocator() {
     () => ExpenseCubit(
       splitRepository: locator<SplitRepository>(),
       expenseRepository: locator<ExpenseRepository>(),
+      balanceRepository: locator<BalanceRepository>(),
     ),
   );
 }

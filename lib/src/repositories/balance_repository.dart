@@ -69,18 +69,16 @@ class BalanceRepository {
     }
   }
 
-  Future<void> updateBalanceBetwseenFriend(
-    BalanceModel userBalance,
-    BalanceModel friendBalance,
-  ) async {
+  Future<void> updateBalanceBetwseenFriend(List<BalanceModel> balances) async {
     try {
       await firebaseFirestore.runTransaction((transaction) async {
-        transaction.set(userBalance.docRef!, {
-          userBalance.toFirebaseMap(),
-        }, SetOptions(merge: true));
-        transaction.set(friendBalance.docRef!, {
-          friendBalance.toFirebaseMap(),
-        }, SetOptions(merge: true));
+        for (final balance in balances) {
+          transaction.set(
+            balance.docRef,
+            balance.toFirebaseMap(),
+            SetOptions(merge: true),
+          );
+        }
       });
     } on FirebaseException catch (e) {
       throw CustomError(

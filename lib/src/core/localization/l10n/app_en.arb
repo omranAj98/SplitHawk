@@ -584,6 +584,10 @@
   "@youPaid": {
     "description": "You paid"
   },
+  "paidBy": "paid by",
+  "@paidBy": {
+    "description": "paid by"
+  },
   "eachFriendOwesYou": "Each friend owes you",
   "@eachFriendOwesYou": {
     "description": "Each friend owes you"
@@ -611,5 +615,45 @@
   "selectSplitOption": "Select split option",
   "@selectSplitOption": {
     "description": "Select split option"
+  },
+  "unknownDate": "Unknown date",
+  "@unknownDate": {
+    "description": "Unknown date"
+  },
+  "date": "Date",
+  "@date": {
+    "description": "Date"
+  },
+  "balanceSummary": "Balance Summary",
+  "@balanceSummary": {
+    "description": "Balance summary"
+  },
+  "noActiveBalancesFound": "No active balances found",
+  "@noActiveBalancesFound": {
+    "description": "No active balances found"
+  },
+  "noExpensesFound": "No expenses found",
+  "@noExpensesFound": {
+    "description": "No expenses found"
+  },
+  "expenses": "Expenses",
+  "@expenses": {
+    "description": "Expenses"
+  },
+  "you": "You",
+  "@you": {
+    "description": "You"
+  },
+  "unknown": "Unknown",
+  "@unknown": {
+    "description": "Unknown"
+  },
+  "people": "People",
+  "@people": {
+    "description": "People"
+  },
+  "owes": "Owes",
+  "@owes": {
+    "description": "Owes"
   }
 }

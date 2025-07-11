@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:splithawk/src/blocs/friend/friend_cubit.dart';
+import 'package:splithawk/src/blocs/user/user_cubit.dart';
+import 'package:splithawk/src/core/cubit/menu_cubit.dart';
+import 'package:splithawk/src/core/enums/menus.dart';
 import 'package:splithawk/src/core/routes/names.dart';
 import 'package:splithawk/src/models/friend_data_model.dart';
 import 'package:splithawk/src/blocs/expense/expense_cubit.dart';
@@ -24,14 +28,8 @@ class SwipeableFriendsList extends StatelessWidget {
         final friend = friendsList[index];
         return SwipeableCard(
           addExpenseCallback: () {
-            // Navigate to add expense page
-            // context.pushNamed(
-            //   AppRoutesName.addExpense,
-            //   extra: {
-            //     'friendId': friend.friendId,
-            //     'friendName': friend.friendName,
-            //   },
-            // );
+            context.read<MenuCubit>().updateMenu(Menus.add);
+            context.read<FriendCubit>().selectFriendToExpense(friend);
           },
           editCallback: () {
             // Handle edit action
@@ -40,14 +38,13 @@ class SwipeableFriendsList extends StatelessWidget {
           onTap: () async {
             await context.read<ExpenseCubit>().fetchUserExpenses(
               friend.userRef,
+              friendsList,
             );
-
             context.pushNamed(
               AppRoutesName.friendExpenses,
               extra: {
-                'friendName': friend.friendName,
-                'friendId': friend.friendId,
-                'friendUserRef': friend.userRef,
+                'friend': friend,
+                'selfUserRef': context.read<UserCubit>().state.user!.userRef,
               },
             );
           },

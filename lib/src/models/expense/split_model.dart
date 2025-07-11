@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:splithawk/src/models/friend_model.dart';
 import 'package:uuid/uuid.dart';
 
-
 Uuid uuid = const Uuid();
+
 class SplitModel extends Equatable {
   final String id;
   final DocumentReference userRef;
@@ -14,7 +16,10 @@ class SplitModel extends Equatable {
   final DateTime? settledAt;
   final DateTime? createdAt;
 
-   SplitModel({
+  final String userName;
+  final String owedToName;
+
+  SplitModel({
     String? id,
     required this.userRef,
     this.paidAmount = 0,
@@ -23,6 +28,9 @@ class SplitModel extends Equatable {
     this.isSettled = false,
     this.settledAt,
     this.createdAt,
+
+    required this.userName,
+    required this.owedToName,
   }) : id = id ?? uuid.v4();
 
   @override
@@ -35,13 +43,15 @@ class SplitModel extends Equatable {
     isSettled,
     settledAt,
     createdAt,
+    userName,
+    owedToName,
   ];
 
-  factory SplitModel.fromFirestoreDoc(DocumentSnapshot doc) {
+  factory SplitModel.fromFirestoreDoc({required DocumentSnapshot doc}) {
     Map data = doc.data() as Map<String, dynamic>;
     return SplitModel(
       id: doc.id,
-      userRef: data['userRef'],
+      userRef: data['userRef'] as DocumentReference,
       paidAmount: (data['paidAmount'] as num?)?.toDouble(),
       owedAmount: (data['owedAmount'] as num).toDouble(),
       owedToUserRef: data['owedToUserRef'] as DocumentReference,
@@ -54,6 +64,9 @@ class SplitModel extends Equatable {
           (data['createdAt'] is Timestamp)
               ? (data['createdAt'] as Timestamp).toDate()
               : DateTime.parse(data['createdAt']),
+
+      userName: '',
+      owedToName: '',
     );
   }
 
@@ -79,6 +92,9 @@ class SplitModel extends Equatable {
     bool? isSettled,
     DateTime? settledAt,
     DateTime? createdAt,
+
+    String? userName,
+    String? owedToName,
   }) {
     return SplitModel(
       id: id ?? this.id,
@@ -89,6 +105,9 @@ class SplitModel extends Equatable {
       isSettled: isSettled ?? this.isSettled,
       settledAt: settledAt ?? this.settledAt,
       createdAt: createdAt ?? this.createdAt,
+
+      userName: userName ?? this.userName,
+      owedToName: owedToName ?? this.owedToName,
     );
   }
 }

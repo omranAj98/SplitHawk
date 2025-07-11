@@ -220,4 +220,26 @@ class UserRepository {
       );
     }
   }
+
+  Future<DocumentSnapshot> getUserDocByRef(DocumentReference userRef) async {
+    try {
+      final userSnapshot = await userRef.get();
+      if (userSnapshot.exists) {
+        return userSnapshot;
+      } else {
+        throw CustomError(
+          message: 'User document does not exist',
+          code: 'user_doc_not_found',
+          plugin: 'firebase_firestore',
+        );
+      }
+    } on FirebaseException catch (e) {
+      throw CustomError(
+        message:
+            e.message ?? 'An error occurred during getting user doc by ref',
+        code: e.code,
+        plugin: e.plugin,
+      );
+    }
+  }
 }

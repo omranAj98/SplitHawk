@@ -6,13 +6,18 @@ import 'package:flutter/material.dart';
 import 'package:splithawk/src/core/enums/request_status.dart';
 import 'package:splithawk/src/core/enums/split_options.dart';
 import 'package:splithawk/src/core/error/custom_error.dart';
+import 'package:splithawk/src/models/balance_model.dart';
 import 'package:splithawk/src/models/expense/expense_data_model.dart';
 import 'package:splithawk/src/models/expense/expense_model.dart';
 import 'package:splithawk/src/models/expense/expense_ref_model.dart';
+import 'package:splithawk/src/models/expense/split_model.dart';
 import 'package:splithawk/src/models/expense/temp_expense_details.dart';
 import 'package:splithawk/src/models/friend_data_model.dart';
+import 'package:splithawk/src/models/friend_model.dart';
+import 'package:splithawk/src/repositories/balance_repository.dart';
 import 'package:splithawk/src/repositories/expense_repository.dart';
 import 'package:splithawk/src/repositories/split_repository.dart';
+import 'package:splithawk/src/usecases/new_expense/create_balances_usecase.dart';
 import 'package:splithawk/src/usecases/new_expense/split_bill_usecase.dart';
 
 part 'expense_state.dart';
@@ -20,13 +25,21 @@ part 'expense_state.dart';
 class ExpenseCubit extends Cubit<ExpenseState> {
   final ExpenseRepository expenseRepository;
   final SplitRepository splitRepository;
+  final BalanceRepository balanceRepository;
   final SplitEquallyBillUseCase splitEquallyBillUseCase =
       SplitEquallyBillUseCase();
+  final CreateBalancesUseCase createBalancesUseCase = CreateBalancesUseCase();
 
-  ExpenseCubit({required this.expenseRepository, required this.splitRepository})
-    : super(ExpenseState.initial());
+  ExpenseCubit({
+    required this.expenseRepository,
+    required this.splitRepository,
+    required this.balanceRepository,
+  }) : super(ExpenseState.initial());
 
-  Future<void> fetchUserExpenses(DocumentReference userRef) async {
+  Future<void> fetchUserExpenses(
+    DocumentReference userRef,
+    List<FriendDataModel> friends,
+  ) async {
     emit(
       state.copyWith(
         requestStatus: RequestStatus.loading,
@@ -53,7 +66,10 @@ class ExpenseCubit extends Cubit<ExpenseState> {
       for (final expenseRef in expensesRef) {
         final expense = await expenseRepository.getExpenseById(expenseRef.id);
         if (expense == null) continue;
-        final splits = await splitRepository.getSplitsByExpenseId(expense.id);
+        final splits = await splitRepository.getSplitsByExpenseId(
+          expense.id,
+          friends,
+        );
 
         final newExpenseData = ExpenseDataModel(
           expense: expense,
@@ -63,7 +79,6 @@ class ExpenseCubit extends Cubit<ExpenseState> {
             expenseRef: expense.expenseRef!,
           ),
         );
-
         expensesData.add(newExpenseData);
       }
 
@@ -119,6 +134,13 @@ class ExpenseCubit extends Cubit<ExpenseState> {
       );
 
       await splitRepository.addSplits(expense.id, splits);
+
+      final balances = createBalancesUseCase.execute(
+        expense: expenseWithRef,
+        splits: splits,
+      );
+
+      await balanceRepository.updateBalanceBetwseenFriend(balances);
 
       emit(
         state.copyWith(
@@ -184,6 +206,14 @@ class ExpenseCubit extends Cubit<ExpenseState> {
     emit(
       state.copyWith(
         tempExpenseDetails: state.tempExpenseDetails?.copyWith(amount: amount),
+      ),
+    );
+  }
+
+  void updateExpenseDate(DateTime date) {
+    emit(
+      state.copyWith(
+        tempExpenseDetails: state.tempExpenseDetails?.copyWith(date: date),
       ),
     );
   }

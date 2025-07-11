@@ -1,5 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
@@ -325,68 +323,40 @@ class FriendCubit extends Cubit<FriendState> {
     emit(state.copyWith(filteredFriends: filteredFriends));
   }
 
-  void updateBalances(String userId, List<FriendDataModel> friendsData) async {
-    emit(
-      state.copyWith(
-        requestStatus: RequestStatus.loading,
-        actionType: FriendActionType.update,
-      ),
-    );
-    try {
-      // List<FriendDataModel> updatedFriendsData =
-      // await balanceRepository.updateBalanceBetwseenFriend(userId, friendsData);
-      emit(
-        state.copyWith(
-          requestStatus: RequestStatus.success,
-          actionType: FriendActionType.update,
-          // friendsData: updatedFriendsData,
-        ),
-      );
-    } on CustomError catch (e) {
-      emit(
-        state.copyWith(
-          requestStatus: RequestStatus.error,
-          actionType: FriendActionType.update,
-          error: e,
-        ),
-      );
-    } on Exception catch (e) {
-      emit(
-        state.copyWith(
-          requestStatus: RequestStatus.error,
-          actionType: FriendActionType.update,
-          error: CustomError(
-            message: e.toString(),
-            code: "unknown",
-            plugin: "friend_cubit",
-          ),
-        ),
-      );
-    }
-  }
-
   void resetSelectedFriends() {
     emit(state.copyWith(selectedFriends: []));
   }
 
-  // void removeFriend(FriendModel friend) async {
-  //   emit(state.copyWith(requestStatus: RequestStatus.loading));
+  //  void updateBalances(String userId, List<FriendDataModel> friendsData) async {
+  //   emit(
+  //     state.copyWith(
+  //       requestStatus: RequestStatus.loading,
+  //       actionType: FriendActionType.update,
+  //     ),
+  //   );
   //   try {
-  //     await friendRepository.removeFriend(friend);
-  //     List<FriendModel> updatedFriends = List.from(state.friends);
-  //     updatedFriends.remove(friend);
+  //     // List<FriendDataModel> updatedFriendsData =
+  //     // await balanceRepository.updateBalanceBetwseenFriend(userId, friendsData);
   //     emit(
   //       state.copyWith(
   //         requestStatus: RequestStatus.success,
-  //         friends: updatedFriends,
+  //         actionType: FriendActionType.update,
+  //         // friendsData: updatedFriendsData,
   //       ),
   //     );
   //   } on CustomError catch (e) {
-  //     emit(state.copyWith(requestStatus: RequestStatus.error, error: e));
+  //     emit(
+  //       state.copyWith(
+  //         requestStatus: RequestStatus.error,
+  //         actionType: FriendActionType.update,
+  //         error: e,
+  //       ),
+  //     );
   //   } on Exception catch (e) {
   //     emit(
   //       state.copyWith(
   //         requestStatus: RequestStatus.error,
+  //         actionType: FriendActionType.update,
   //         error: CustomError(
   //           message: e.toString(),
   //           code: "unknown",
@@ -397,29 +367,9 @@ class FriendCubit extends Cubit<FriendState> {
   //   }
   // }
 
-  // void blockFriend(FriendModel friend) async {
-  //   emit(state.copyWith(requestStatus: RequestStatus.loading));
-  //   try {
-  //     await friendRepository.blockFriend(friend);
-  //     List<FriendModel> updatedFriends = List.from(state.friends);
-  //     updatedFriends.remove(friend);
-  //     emit(
-  //       state.copyWith(
-  //         requestStatus: RequestStatus.success,
-  //         friends: updatedFriends,
-  //       ),
-  //     );
-  //   } on CustomError catch (e) {
-  //     emit(state.copyWith(requestStatus: RequestStatus.error, error: e));
-  //   } on Exception catch (e) {
-  //     emit(
-  //       state.copyWith(
-  //         requestStatus: RequestStatus.error,
-  //         error: CustomError(
-  //           message: e.toString(),
-  //           code: "unknown",
-  //           plugin: "friend_cubit",
-  //         ),
+  /// Add a friend from a user reference
+  /// This is used when a participant in an expense is not in the friends list
+}
   //       ),
   //     );
   //   }
@@ -452,4 +402,4 @@ class FriendCubit extends Cubit<FriendState> {
   //     );
   //   }
   // }
-}
+

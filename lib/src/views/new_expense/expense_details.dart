@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,12 +7,14 @@ import 'package:go_router/go_router.dart';
 import 'package:splithawk/src/blocs/expense/expense_cubit.dart';
 import 'package:splithawk/src/blocs/friend/friend_cubit.dart';
 import 'package:splithawk/src/blocs/user/user_cubit.dart';
+import 'package:splithawk/src/core/cubit/menu_cubit.dart';
 import 'package:splithawk/src/core/enums/split_options.dart';
 import 'package:splithawk/src/core/localization/l10n/app_localizations.dart';
 import 'package:splithawk/src/core/routes/names.dart';
 import 'package:splithawk/src/core/validators/app_text_validators.dart';
 import 'package:splithawk/src/core/widgets/app_snack_bar.dart';
 import 'package:splithawk/src/models/expense/expense_model.dart';
+import 'package:splithawk/src/widgets/collapsible_date_picker.dart';
 
 class ExpenseDetails extends StatefulWidget {
   const ExpenseDetails({Key? key}) : super(key: key);
@@ -27,15 +30,16 @@ class ExpenseDetailsState extends State<ExpenseDetails> {
   late FocusNode expenseNameFocusNode;
   late FocusNode amountFocusNode;
 
+  bool isDatePickerExpanded = false;
+
   @override
   void initState() {
     super.initState();
-    expenseNameController = TextEditingController(
-      text: context.read<ExpenseCubit>().state.tempExpenseDetails?.name ?? '',
-    );
+    expenseNameController = TextEditingController();
     amountController = TextEditingController();
     expenseNameFocusNode = FocusNode();
     amountFocusNode = FocusNode(canRequestFocus: true);
+    // Initialize the ExpenseCubit with today's date
   }
 
   @override
@@ -193,6 +197,17 @@ class ExpenseDetailsState extends State<ExpenseDetails> {
 
             // Friends Selection
             const SizedBox(height: 24),
+            // Date Picker with label
+            CollapsibleDatePicker(
+              onDateChanged: (value) {
+                context.read<ExpenseCubit>().updateExpenseDate(value);
+              },
+            ),
+
+            const SizedBox(height: 8),
+
+            // Collapsible Date Picker
+            const SizedBox(height: 24),
 
             // Create Expense Button
             BlocBuilder<FriendCubit, FriendState>(
@@ -244,9 +259,12 @@ class ExpenseDetailsState extends State<ExpenseDetails> {
 
     final double? amount = double.tryParse(amountController.text);
     if (amount == null) {
-      ScaffoldMessenger.of(
+      AppSnackBar.show(
         context,
-      ).showSnackBar(SnackBar(content: Text('Please enter a valid amount')));
+        type: SnackBarType.error,
+        message: AppLocalizations.of(context)!.addExpenseAmount,
+      );
+
       return;
     }
 
@@ -263,15 +281,15 @@ class ExpenseDetailsState extends State<ExpenseDetails> {
   }
 
   void _createEqualExpenseFor1FriendOnly(BuildContext context) async {
-    // Since we don't have direct access to the amount controller now,
-    // we'll get the amount from the Cubit
     final amount =
         context.read<ExpenseCubit>().state.tempExpenseDetails?.amount;
 
     if (amount == null || amount <= 0) {
-      ScaffoldMessenger.of(
+      AppSnackBar.show(
         context,
-      ).showSnackBar(SnackBar(content: Text('Please enter a valid amount')));
+        type: SnackBarType.error,
+        message: AppLocalizations.of(context)!.invalidAmount,
+      );
       return;
     }
 
@@ -283,7 +301,6 @@ class ExpenseDetailsState extends State<ExpenseDetails> {
         context.read<ExpenseCubit>().state.tempExpenseDetails?.splitOption ??
         SplitOptions.youPaidFullSplitEqual;
 
-    // Create expense object
     final newExpense = ExpenseModel(
       expenseName: expenseName,
       amount: amount,
@@ -298,14 +315,12 @@ class ExpenseDetailsState extends State<ExpenseDetails> {
               .toList(),
     );
 
-    // Save the expense with splits
     context.read<ExpenseCubit>().addExpense(
       newExpense,
       selectedFriends.first,
       splitOption,
     );
 
-    // Reset all relevant state
     _resetFormFields(context);
     context.read<FriendCubit>().resetSelectedFriends();
     context.read<ExpenseCubit>().resetTempExpenseDetails();
@@ -316,15 +331,13 @@ class ExpenseDetailsState extends State<ExpenseDetails> {
       message: AppLocalizations.of(context)!.addExpenseSuccess,
       duration: const Duration(seconds: 2),
     );
-    context.replaceNamed(AppRoutesName.main);
+
+    context.goNamed(AppRoutesName.main);
   }
 
-  // Reset method now only resets Cubit state, not local controllers
   void _resetFormFields(BuildContext context) {
     context.read<ExpenseCubit>().resetTempExpenseDetails();
     expenseNameController.clear();
     amountController.clear();
   }
-
-  // Add a new method to reset the form fields
 }

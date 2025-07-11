@@ -1,16 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class BalanceModel {
-  final DocumentReference? docRef;
+  final DocumentReference docRef;
   final String currency;
   final double netAmount;
-  final DateTime updatedAt;
+  final DateTime? updatedAt;
 
   BalanceModel({
-    this.docRef,
+    required this.docRef,
     required this.currency,
     required this.netAmount,
-    required this.updatedAt,
+     this.updatedAt,
   });
 
   factory BalanceModel.fromFirebaseDocument(DocumentSnapshot map) {
