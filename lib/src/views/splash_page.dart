@@ -1,8 +1,9 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:splithawk/src/blocs/auth/auth_bloc.dart';
+import 'package:splithawk/src/blocs/friend/friend_cubit.dart';
+import 'package:splithawk/src/blocs/user/user_cubit.dart';
 import 'package:splithawk/src/core/constants/app_icons.dart';
 import 'package:splithawk/src/core/routes/routes.dart';
 import 'package:splithawk/src/core/localization/l10n/app_localizations.dart';
@@ -16,14 +17,6 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   bool hasNavigated = false; // Flag to prevent redundant navigation
-  Timer? _navigationTimer;
-
-  @override
-  void dispose() {
-    // Cancel the timer when the widget is disposed
-    _navigationTimer?.cancel();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,30 +24,33 @@ class _SplashPageState extends State<SplashPage> {
     final colorScheme = Theme.of(context).colorScheme;
 
     return BlocListener<AuthBloc, AuthState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         debugPrint("Splash screen Listener called");
-        _navigationTimer?.cancel(); // Cancel any existing timer
-        _navigationTimer = Timer(const Duration(seconds: 2), () {
-          if (!hasNavigated) {
-            hasNavigated = true;
 
-            if (state.authStatus == AuthStatus.authenticated) {
-              debugPrint("Navigating to the home screen from splash screen");
-              context.goNamed(AppRoutesName.main);
-            } else if (state.authStatus == AuthStatus.initial ||
-                state.authStatus == AuthStatus.unauthenticated) {
-              debugPrint("Navigating to the signin screen from splash screen");
-              context.goNamed(AppRoutesName.signin);
-            }
+        if (!hasNavigated) {
+          hasNavigated = true;
 
-            return;
-          }
-          if (state.authStatus == AuthStatus.unauthenticated) {
+          if (state.authStatus == AuthStatus.authenticated) {
+            await context.read<UserCubit>().getSelfUser();
+            if (!mounted) return;
+            final userRef = context.read<UserCubit>().state.user!.userRef;
+            await context.read<FriendCubit>().getFriendsWithBalances(userRef);
+            if (!mounted) return;
+            debugPrint("Navigating to the home screen from splash screen");
+            context.goNamed(AppRoutesName.main);
+          } else if (state.authStatus == AuthStatus.initial ||
+              state.authStatus == AuthStatus.unauthenticated) {
             debugPrint("Navigating to the signin screen from splash screen");
             context.goNamed(AppRoutesName.signin);
-            return;
           }
-        });
+
+          return;
+        }
+        if (state.authStatus == AuthStatus.unauthenticated) {
+          debugPrint("Navigating to the signin screen from splash screen");
+          context.goNamed(AppRoutesName.signin);
+          return;
+        }
       },
       child: Scaffold(
         body: SafeArea(

@@ -1,26 +1,71 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:splithawk/src/blocs/expense/expense_cubit.dart';
 import 'package:splithawk/src/blocs/friend/friend_cubit.dart';
 import 'package:splithawk/src/blocs/user/user_cubit.dart';
-import 'package:splithawk/src/core/cubit/menu_cubit.dart';
 import 'package:splithawk/src/core/enums/split_options.dart';
 import 'package:splithawk/src/core/localization/l10n/app_localizations.dart';
 import 'package:splithawk/src/core/routes/names.dart';
 import 'package:splithawk/src/core/validators/app_text_validators.dart';
 import 'package:splithawk/src/core/widgets/app_snack_bar.dart';
 import 'package:splithawk/src/models/expense/expense_model.dart';
+import 'package:splithawk/src/views/new_expense/currency_search_dialog.dart';
 import 'package:splithawk/src/widgets/collapsible_date_picker.dart';
 
 class ExpenseDetails extends StatefulWidget {
-  const ExpenseDetails({Key? key}) : super(key: key);
+  const ExpenseDetails({super.key});
 
   @override
   State<ExpenseDetails> createState() => ExpenseDetailsState();
+}
+
+String _getCurrencySymbol(String currency) {
+  switch (currency) {
+    case "USD":
+      return "\$ ";
+    case "EUR":
+      return "€ ";
+    case "GBP":
+      return "£ ";
+    case "JPY":
+      return "¥ ";
+    case "CAD":
+      return "C\$ ";
+    case "AUD":
+      return "A\$ ";
+    case "CNY":
+      return "¥ ";
+    case "HKD":
+      return "HK\$ ";
+    case "NZD":
+      return "NZ\$ ";
+    case "CHF":
+      return "CHF ";
+    case "SEK":
+      return "kr ";
+    case "NOK":
+      return "kr ";
+    case "DKK":
+      return "kr ";
+    case "SGD":
+      return "S\$ ";
+    case "INR":
+      return "₹ ";
+    case "BRL":
+      return "R\$ ";
+    case "ZAR":
+      return "R ";
+    case "RUB":
+      return "₽ ";
+    case "MXN":
+      return "MX\$ ";
+    case "AED":
+      return "AED ";
+    default:
+      return "";
+  }
 }
 
 class ExpenseDetailsState extends State<ExpenseDetails> {
@@ -29,6 +74,59 @@ class ExpenseDetailsState extends State<ExpenseDetails> {
   late TextEditingController amountController;
   late FocusNode expenseNameFocusNode;
   late FocusNode amountFocusNode;
+  String selectedCurrency = "USD";
+
+  // Expanded list of available currencies
+  final List<String> currencies = [
+    "USD",
+    "SYP"
+        "TRY",
+    "QAR",
+    "SAR",
+    "KWD",
+    "OMR",
+    "BHD",
+    "YER",
+    "JOD",
+    "LBP",
+    "EGP",
+    "TND",
+    "MAD",
+    "DZD",
+    "LYD",
+    "IQD",
+    "SDG",
+    "AFN",
+    "PKR",
+    "BDT",
+    "LKR",
+    "MMK",
+    "THB",
+    "VND",
+    "MYR",
+    "IDR",
+    "PHP",
+    "SGD",
+    "EUR",
+    "GBP",
+    "JPY",
+    "CAD",
+    "AUD",
+    "CNY",
+    "HKD",
+    "NZD",
+    "CHF",
+    "SEK",
+    "NOK",
+    "DKK",
+    "SGD",
+    "INR",
+    "BRL",
+    "ZAR",
+    "RUB",
+    "MXN",
+    "AED",
+  ];
 
   bool isDatePickerExpanded = false;
 
@@ -39,7 +137,8 @@ class ExpenseDetailsState extends State<ExpenseDetails> {
     amountController = TextEditingController();
     expenseNameFocusNode = FocusNode();
     amountFocusNode = FocusNode(canRequestFocus: true);
-    // Initialize the ExpenseCubit with today's date
+    // Initialize the ExpenseCubit with today's date and default currency
+    context.read<ExpenseCubit>().updateExpenseCurrency(selectedCurrency);
   }
 
   @override
@@ -54,6 +153,25 @@ class ExpenseDetailsState extends State<ExpenseDetails> {
   // Method to submit expense from outside
   void submitExpense() {
     _createEqualExpenseFor1FriendOnly(context);
+  }
+
+  // Show currency search dialog
+  void _showCurrencySearchDialog() {
+    showDialog(
+      context: context,
+      builder:
+          (context) => CurrencySearchDialog(
+            currencies: currencies,
+            selectedCurrency: selectedCurrency,
+            onCurrencySelected: (currency) {
+              setState(() {
+                selectedCurrency = currency;
+              });
+              context.pop();
+              context.read<ExpenseCubit>().updateExpenseCurrency(currency);
+            },
+          ),
+    );
   }
 
   @override
@@ -99,28 +217,24 @@ class ExpenseDetailsState extends State<ExpenseDetails> {
             ),
             const SizedBox(height: 16),
 
-            // Amount Field
-            TextFormField(
-              validator:
-                  (value) => AppTextValidators.validateAmount(context, value),
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.none,
-              autocorrect: false,
-              focusNode: amountFocusNode,
-              controller: amountController,
-              onChanged:
-                  (value) => context.read<ExpenseCubit>().updateExpenseAmount(
-                    double.tryParse(value) ?? 0.0,
+            // Amount Field with Currency Dropdown
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Currency Selector with Search
+                SizedBox(
+                  width: 100,
+                  child: InkWell(
+                    onTap: _showCurrencySearchDialog,
+                    child: InputDecorator(
+                      decoration: InputDecoration(
+                        prefixText: _getCurrencySymbol(selectedCurrency),
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
                   ),
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
-              inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}')),
+                ),
               ],
-              decoration: InputDecoration(
-                labelText: "Amount",
-                prefixText: "\$ ",
-                border: OutlineInputBorder(),
-              ),
             ),
             const SizedBox(height: 16),
 
@@ -304,7 +418,7 @@ class ExpenseDetailsState extends State<ExpenseDetails> {
     final newExpense = ExpenseModel(
       expenseName: expenseName,
       amount: amount,
-      currency: "USD",
+      currency: selectedCurrency, // Use the selected currency
       createdBy: userRef,
       participantsRef:
           [userRef] +
@@ -339,5 +453,9 @@ class ExpenseDetailsState extends State<ExpenseDetails> {
     context.read<ExpenseCubit>().resetTempExpenseDetails();
     expenseNameController.clear();
     amountController.clear();
+    setState(() {
+      selectedCurrency = "USD";
+    });
+    context.read<ExpenseCubit>().updateExpenseCurrency("USD");
   }
 }

@@ -515,4 +515,47 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get owes => 'مدين';
+
+  @override
+  String get settleUp => 'تسوية';
+
+  @override
+  String settleUpWith(Object name) {
+    return 'Régler avec $name';
+  }
+
+  @override
+  String get amount => 'مبلغ';
+
+  @override
+  String get paymentMethod => 'طريقة الدفع';
+
+  @override
+  String settledUpWith(Object name) {
+    return '$name تسوية مع';
+  }
+
+  @override
+  String get noActiveBalances => 'لم يتم العثور على أرصدة نشطة';
+
+  @override
+  String get currency => 'العملة';
+
+  @override
+  String get searchCurrency => 'البحث عن عملة...';
+
+  @override
+  String get expenseDetails => 'تفاصيل المصاريف';
+
+  @override
+  String get paymentDetails => 'تفاصيل الدفع';
+
+  @override
+  String get paid => 'Paid';
+
+  @override
+  String get splitDetails => 'تفاصيل التقسيم';
+
+  @override
+  String get lent => 'مقترض';
 }

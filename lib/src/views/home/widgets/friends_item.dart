@@ -10,10 +10,10 @@ class FriendItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      final colorScheme = Theme.of(context).colorScheme;
-      final BorderSide border = BorderSide(
-      width: 2,
-      color: colorScheme.onTertiary.withAlpha(100),
+    final colorScheme = Theme.of(context).colorScheme;
+    final BorderSide border = BorderSide(
+      width: 2.5,
+      color: colorScheme.onTertiary.withAlpha(200),
     );
     return Padding(
       padding: const EdgeInsets.all(AppSize.paddingSizeL1),
@@ -22,30 +22,42 @@ class FriendItem extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                children: [
-                  CircleAvatar(child: Icon(AppIcons.contactIcon)),
-                  const SizedBox(width: 12),
-                  Text(
-                    friend.friendName.toString(),
-                    style: Theme.of(context).textTheme.titleMedium,
+              Hero(
+                tag: 'friend-${friend.friendId}',
+                child: Material(
+                  color: Colors.transparent,
+                  child: Row(
+                    children: [
+                      CircleAvatar(child: Icon(AppIcons.contactIcon)),
+                      const SizedBox(width: 12),
+                      Text(
+                        friend.friendName.toString(),
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
 
               if (friend.friendBalances.isNotEmpty)
-                Text(
-                  '${friend.friendBalances.first.netAmount} ${friend.friendBalances.first.currency}',
-                  style: TextStyle(
-                    color:
-                        double.parse(
-                                  friend.friendBalances.first.netAmount
-                                      .toString(),
-                                ) >=
-                                0
-                            ? colorScheme.primary.withAlpha(200)
-                            : colorScheme.error.withAlpha(200),
-                    fontWeight: FontWeight.bold,
+                Hero(
+                  tag: 'balance-${friend.friendBalances.first}',
+                  child: Material(
+                    color: Colors.transparent,
+                    child: Text(
+                      '${friend.friendBalances.first.netAmount} ${friend.friendBalances.first.currency}',
+                      style: TextStyle(
+                        color:
+                            double.parse(
+                                      friend.friendBalances.first.netAmount
+                                          .toString(),
+                                    ) >=
+                                    0
+                                ? colorScheme.primary.withAlpha(200)
+                                : colorScheme.error.withAlpha(200),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
             ],
@@ -58,33 +70,65 @@ class FriendItem extends StatelessWidget {
               children: [
                 if (friend.friendBalances.isNotEmpty)
                   ...friend.friendBalances.map(
-                    (balance) => Row(
-                      children: [
-                        DecoratedBox(
-                          decoration: BoxDecoration(
-                            border: BorderDirectional(
-                              bottom: border,
-                              start: border,
-                            ),
+                    (balance) => Hero(
+                      tag: 'balance-${balance.docRef.id}',
+                      flightShuttleBuilder: (
+                        BuildContext flightContext,
+                        Animation<double> animation,
+                        HeroFlightDirection flightDirection,
+                        BuildContext fromHeroContext,
+                        BuildContext toHeroContext,
+                      ) {
+                        return Material(
+                          color: Colors.transparent,
+                          child: DefaultTextStyle(
+                            style: DefaultTextStyle.of(toHeroContext).style,
+                            child: toHeroContext.widget,
                           ),
-                          child: const SizedBox(height: 19.0, width: 20.0),
+                        );
+                      },
+                      child: Material(
+                        color: Colors.transparent,
+                        child: Row(
+                          children: [
+                            DecoratedBox(
+                              decoration: BoxDecoration(
+                                border: BorderDirectional(
+                                  bottom: border,
+                                  start: border,
+                                ),
+                              ),
+                              child: const SizedBox(height: 20.0, width: 21.0),
+                            ),
+                            Expanded(
+                              child:
+                                  (balance.netAmount > 0)
+                                      ? Text(
+                                        '${friend.friendName} ${AppLocalizations.of(context)!.owesYou} ${balance.netAmount} ${balance.currency}',
+                                        style: Theme.of(
+                                          context,
+                                        ).textTheme.bodyMedium?.copyWith(
+                                          fontWeight: FontWeight.w500,
+                                          color: colorScheme.primary,
+                                        ),
+                                        overflow: TextOverflow.ellipsis,
+                                      )
+                                      : (balance.netAmount < 0)
+                                      ? Text(
+                                        '${AppLocalizations.of(context)!.youOwe} ${friend.friendName} ${balance.netAmount.abs()} ${balance.currency}',
+                                        style: Theme.of(
+                                          context,
+                                        ).textTheme.bodyMedium?.copyWith(
+                                          fontWeight: FontWeight.w400,
+                                          color: colorScheme.error,
+                                        ),
+                                        overflow: TextOverflow.ellipsis,
+                                      )
+                                      : SizedBox.shrink(),
+                            ),
+                          ],
                         ),
-                        (balance.netAmount > 0)
-                            ? Text(
-                              '${friend.friendName} ${AppLocalizations.of(context)!.owesYou} ${balance.netAmount} ${balance.currency}',
-                              style: TextStyle(
-                                color: colorScheme.primary.withAlpha(200),
-                              ),
-                            )
-                            : (balance.netAmount < 0)
-                            ? Text(
-                              '${AppLocalizations.of(context)!.youOwe} ${friend.friendName} ${balance.netAmount.abs()} ${balance.currency}',
-                              style: TextStyle(
-                                color: colorScheme.error.withAlpha(200),
-                              ),
-                            )
-                            : SizedBox.shrink(),
-                      ],
+                      ),
                     ),
                   ),
               ],

@@ -6,14 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:splithawk/src/core/enums/request_status.dart';
 import 'package:splithawk/src/core/enums/split_options.dart';
 import 'package:splithawk/src/core/error/custom_error.dart';
-import 'package:splithawk/src/models/balance_model.dart';
 import 'package:splithawk/src/models/expense/expense_data_model.dart';
 import 'package:splithawk/src/models/expense/expense_model.dart';
 import 'package:splithawk/src/models/expense/expense_ref_model.dart';
-import 'package:splithawk/src/models/expense/split_model.dart';
 import 'package:splithawk/src/models/expense/temp_expense_details.dart';
 import 'package:splithawk/src/models/friend_data_model.dart';
-import 'package:splithawk/src/models/friend_model.dart';
 import 'package:splithawk/src/repositories/balance_repository.dart';
 import 'package:splithawk/src/repositories/expense_repository.dart';
 import 'package:splithawk/src/repositories/split_repository.dart';
@@ -216,6 +213,13 @@ class ExpenseCubit extends Cubit<ExpenseState> {
         tempExpenseDetails: state.tempExpenseDetails?.copyWith(date: date),
       ),
     );
+  }
+
+  void updateExpenseCurrency(String currency) {
+    final currentDetails = state.tempExpenseDetails ?? TempExpenseDetails();
+    emit(state.copyWith(
+      tempExpenseDetails: currentDetails.copyWith(currency: currency),
+    ));
   }
 
   void resetTempExpenseDetails() {

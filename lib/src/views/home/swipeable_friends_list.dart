@@ -35,8 +35,8 @@ class SwipeableFriendsList extends StatelessWidget {
             // Handle edit action
             // Example: Show edit dialog or navigate to edit screen
           },
-          onTap: () async {
-            await context.read<ExpenseCubit>().fetchUserExpenses(
+          onTap: () {
+            context.read<ExpenseCubit>().fetchUserExpenses(
               friend.userRef,
               friendsList,
             );

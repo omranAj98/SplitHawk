@@ -166,3 +166,16 @@ you/You/You/Vous/أنت
 unknown/Unknown/Unknown/Inconnu/غير معروف
 people/People/People/Personnes/الأشخاص
 owes/Owes/Owes/Doit/مدين
+settleUp/Settle up/Settle Up/Régler/تسوية
+settleUpWith/{name}/Settle up with {name}/Settle up with {name}/Régler avec {name}/تسوية مع {name}
+amount/Amount/Amount/Montant/مبلغ
+paymentMethod/Payment method/Payment Method/Méthode de paiement/طريقة الدفع
+settledUpWith/{name} settled up with you/{name} settled up with you/{name} a réglé avec vous/{name} تسوية مع
+noActiveBalances/No active balances found/No active balances found/Aucun solde actif trouvé/لم يتم العثور على أرصدة نشطة
+currency/Currency/Currency/Monnaie/العملة
+searchCurrency/Search currency.../Search currency.../Rechercher une monnaie.../البحث عن عملة...
+expenseDetails/Expense details/Expense Details/Détails de la dépense/تفاصيل المصاريف
+paymentDetails/Payment details/Payment Details/Détails du paiement/تفاصيل الدفع
+paid/Paid/Paid/Paid/Paid/مدفوع
+splitDetails/Split details/Split Details/Détails du partage/تفاصيل التقسيم
+lent/Lent/Lent/Prêt/مقترض

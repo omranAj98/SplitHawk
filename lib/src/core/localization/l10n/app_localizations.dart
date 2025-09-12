@@ -1083,6 +1083,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Owes'**
   String get owes;
+
+  /// Settle up
+  ///
+  /// In en, this message translates to:
+  /// **'Settle Up'**
+  String get settleUp;
+
+  /// {name}
+  ///
+  /// In en, this message translates to:
+  /// **'Settle up with {name}'**
+  String settleUpWith(Object name);
+
+  /// Amount
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get amount;
+
+  /// Payment method
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Method'**
+  String get paymentMethod;
+
+  /// {name} settled up with you
+  ///
+  /// In en, this message translates to:
+  /// **'{name} settled up with you'**
+  String settledUpWith(Object name);
+
+  /// No active balances found
+  ///
+  /// In en, this message translates to:
+  /// **'No active balances found'**
+  String get noActiveBalances;
+
+  /// Currency
+  ///
+  /// In en, this message translates to:
+  /// **'Currency'**
+  String get currency;
+
+  /// Search currency...
+  ///
+  /// In en, this message translates to:
+  /// **'Search currency...'**
+  String get searchCurrency;
+
+  /// Expense details
+  ///
+  /// In en, this message translates to:
+  /// **'Expense Details'**
+  String get expenseDetails;
+
+  /// Payment details
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Details'**
+  String get paymentDetails;
+
+  /// Paid
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get paid;
+
+  /// Split details
+  ///
+  /// In en, this message translates to:
+  /// **'Split Details'**
+  String get splitDetails;
+
+  /// Lent
+  ///
+  /// In en, this message translates to:
+  /// **'Lent'**
+  String get lent;
 }
 
 class _AppLocalizationsDelegate

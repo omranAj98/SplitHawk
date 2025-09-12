@@ -8,11 +8,11 @@ class CollapsibleDatePicker extends StatefulWidget {
   final String? label;
 
   CollapsibleDatePicker({
-    Key? key,
+    super.key,
     initialDate,
     required this.onDateChanged,
     this.label,
-  }) : super(key: key);
+  });
 
   @override
   State<CollapsibleDatePicker> createState() => _CollapsibleDatePickerState();

@@ -655,5 +655,57 @@
   "owes": "Doit",
   "@owes": {
     "description": "Owes"
+  },
+  "settleUp": "Régler",
+  "@settleUp": {
+    "description": "Settle up"
+  },
+  "settleUpWith": "Settle up with {name}",
+  "@settleUpWith": {
+    "description": "{name}"
+  },
+  "amount": "Montant",
+  "@amount": {
+    "description": "Amount"
+  },
+  "paymentMethod": "Méthode de paiement",
+  "@paymentMethod": {
+    "description": "Payment method"
+  },
+  "settledUpWith": "{name} a réglé avec vous",
+  "@settledUpWith": {
+    "description": "{name} settled up with you"
+  },
+  "noActiveBalances": "Aucun solde actif trouvé",
+  "@noActiveBalances": {
+    "description": "No active balances found"
+  },
+  "currency": "Monnaie",
+  "@currency": {
+    "description": "Currency"
+  },
+  "searchCurrency": "Rechercher une monnaie...",
+  "@searchCurrency": {
+    "description": "Search currency..."
+  },
+  "expenseDetails": "Détails de la dépense",
+  "@expenseDetails": {
+    "description": "Expense details"
+  },
+  "paymentDetails": "Détails du paiement",
+  "@paymentDetails": {
+    "description": "Payment details"
+  },
+  "paid": "Paid",
+  "@paid": {
+    "description": "Paid"
+  },
+  "splitDetails": "Détails du partage",
+  "@splitDetails": {
+    "description": "Split details"
+  },
+  "lent": "Prêt",
+  "@lent": {
+    "description": "Lent"
   }
 }

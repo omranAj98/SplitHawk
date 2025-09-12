@@ -4,7 +4,6 @@ import 'package:equatable/equatable.dart';
 import 'package:splithawk/src/models/expense/expense_model.dart';
 import 'package:splithawk/src/models/expense/expense_ref_model.dart';
 import 'package:splithawk/src/models/expense/split_model.dart';
-import 'package:splithawk/src/models/friend_model.dart';
 
 class ExpenseDataModel extends Equatable {
   final ExpenseRefModel expenseRef;

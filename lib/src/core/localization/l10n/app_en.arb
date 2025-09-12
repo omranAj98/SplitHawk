@@ -655,5 +655,57 @@
   "owes": "Owes",
   "@owes": {
     "description": "Owes"
+  },
+  "settleUp": "Settle Up",
+  "@settleUp": {
+    "description": "Settle up"
+  },
+  "settleUpWith": "Settle up with {name}",
+  "@settleUpWith": {
+    "description": "{name}"
+  },
+  "amount": "Amount",
+  "@amount": {
+    "description": "Amount"
+  },
+  "paymentMethod": "Payment Method",
+  "@paymentMethod": {
+    "description": "Payment method"
+  },
+  "settledUpWith": "{name} settled up with you",
+  "@settledUpWith": {
+    "description": "{name} settled up with you"
+  },
+  "noActiveBalances": "No active balances found",
+  "@noActiveBalances": {
+    "description": "No active balances found"
+  },
+  "currency": "Currency",
+  "@currency": {
+    "description": "Currency"
+  },
+  "searchCurrency": "Search currency...",
+  "@searchCurrency": {
+    "description": "Search currency..."
+  },
+  "expenseDetails": "Expense Details",
+  "@expenseDetails": {
+    "description": "Expense details"
+  },
+  "paymentDetails": "Payment Details",
+  "@paymentDetails": {
+    "description": "Payment details"
+  },
+  "paid": "Paid",
+  "@paid": {
+    "description": "Paid"
+  },
+  "splitDetails": "Split Details",
+  "@splitDetails": {
+    "description": "Split details"
+  },
+  "lent": "Lent",
+  "@lent": {
+    "description": "Lent"
   }
 }

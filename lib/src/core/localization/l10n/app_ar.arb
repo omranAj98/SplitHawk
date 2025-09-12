@@ -655,5 +655,57 @@
   "owes": "مدين",
   "@owes": {
     "description": "Owes"
+  },
+  "settleUp": "تسوية",
+  "@settleUp": {
+    "description": "Settle up"
+  },
+  "settleUpWith": "Régler avec {name}",
+  "@settleUpWith": {
+    "description": "{name}"
+  },
+  "amount": "مبلغ",
+  "@amount": {
+    "description": "Amount"
+  },
+  "paymentMethod": "طريقة الدفع",
+  "@paymentMethod": {
+    "description": "Payment method"
+  },
+  "settledUpWith": "{name} تسوية مع",
+  "@settledUpWith": {
+    "description": "{name} settled up with you"
+  },
+  "noActiveBalances": "لم يتم العثور على أرصدة نشطة",
+  "@noActiveBalances": {
+    "description": "No active balances found"
+  },
+  "currency": "العملة",
+  "@currency": {
+    "description": "Currency"
+  },
+  "searchCurrency": "البحث عن عملة...",
+  "@searchCurrency": {
+    "description": "Search currency..."
+  },
+  "expenseDetails": "تفاصيل المصاريف",
+  "@expenseDetails": {
+    "description": "Expense details"
+  },
+  "paymentDetails": "تفاصيل الدفع",
+  "@paymentDetails": {
+    "description": "Payment details"
+  },
+  "paid": "Paid",
+  "@paid": {
+    "description": "Paid"
+  },
+  "splitDetails": "تفاصيل التقسيم",
+  "@splitDetails": {
+    "description": "Split details"
+  },
+  "lent": "مقترض",
+  "@lent": {
+    "description": "Lent"
   }
 }

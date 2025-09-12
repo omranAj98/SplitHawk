@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:splithawk/src/models/balance_model.dart';
 import 'package:splithawk/src/models/expense/expense_model.dart';
 import 'package:splithawk/src/models/expense/split_model.dart';

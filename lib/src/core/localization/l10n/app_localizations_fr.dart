@@ -522,4 +522,47 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get owes => 'Doit';
+
+  @override
+  String get settleUp => 'Régler';
+
+  @override
+  String settleUpWith(Object name) {
+    return 'Settle up with $name';
+  }
+
+  @override
+  String get amount => 'Montant';
+
+  @override
+  String get paymentMethod => 'Méthode de paiement';
+
+  @override
+  String settledUpWith(Object name) {
+    return '$name a réglé avec vous';
+  }
+
+  @override
+  String get noActiveBalances => 'Aucun solde actif trouvé';
+
+  @override
+  String get currency => 'Monnaie';
+
+  @override
+  String get searchCurrency => 'Rechercher une monnaie...';
+
+  @override
+  String get expenseDetails => 'Détails de la dépense';
+
+  @override
+  String get paymentDetails => 'Détails du paiement';
+
+  @override
+  String get paid => 'Paid';
+
+  @override
+  String get splitDetails => 'Détails du partage';
+
+  @override
+  String get lent => 'Prêt';
 }
