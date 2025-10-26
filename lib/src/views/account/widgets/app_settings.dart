@@ -30,7 +30,9 @@ class AppSettings extends StatelessWidget {
               leading: const Icon(Icons.language),
               title: Text(AppLocalizations.of(context)!.language),
               trailing: DropdownButton<Locale>(
-                value: context.watch<LocalizationCubit>().state,
+                value: Locale(
+                  context.watch<LocalizationCubit>().state.languageCode,
+                ),
                 borderRadius: BorderRadius.all(Radius.circular(12)),
                 items: [
                   const DropdownMenuItem(

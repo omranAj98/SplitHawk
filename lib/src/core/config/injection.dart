@@ -10,6 +10,7 @@ import 'package:splithawk/src/core/observers/global_observer.dart';
 class DependencyInjection {
   static Future<void> init() async {
     WidgetsFlutterBinding.ensureInitialized();
+
     HydratedBloc.storage = await HydratedStorage.build(
       storageDirectory: HydratedStorageDirectory(
         (await getApplicationDocumentsDirectory()).path,
@@ -17,9 +18,7 @@ class DependencyInjection {
     );
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
-
     );
-
 
     Bloc.observer = GlobalObserver();
   }

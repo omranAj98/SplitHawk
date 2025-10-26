@@ -5,6 +5,7 @@ import 'package:splithawk/src/blocs/auth/auth_bloc.dart';
 import 'package:splithawk/src/core/localization/l10n/app_localizations.dart';
 import 'package:splithawk/src/core/routes/routes.dart';
 import 'package:splithawk/src/core/validators/app_text_validators.dart';
+import 'package:splithawk/src/core/widgets/app_safe_area.dart';
 import 'package:splithawk/src/core/widgets/app_snack_bar.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
@@ -27,7 +28,7 @@ class ResetPasswordScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(AppLocalizations.of(context)!.resetPassword)),
-      body: SafeArea(
+      body: AppSafeArea(
         child: BlocConsumer<AuthBloc, AuthState>(
           listener: (context, state) {
             switch (state.authStatus) {
@@ -57,6 +58,8 @@ class ResetPasswordScreen extends StatelessWidget {
               child: Column(
                 children: [
                   TextFormField(
+                    // focusNode: FocusNode(),
+                    autofocus: true,
                     readOnly: state.authStatus == AuthStatus.loading,
                     // onSaved: (value) => email = value,
                     onChanged: (value) => email = value,

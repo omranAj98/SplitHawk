@@ -246,7 +246,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get networkError => 'خطأ في الشبكة';
 
   @override
-  String get tooManyRequests => 'تكررت الطلبات. يرجى المحاولة مرة أخرى لاحقًا';
+  String get tooManyRequests =>
+      'عدد كبير جدًا من المحاولات. يرجى المحاولة مرة أخرى لاحقًا';
 
   @override
   String get notFound => 'السجل غير موجود';

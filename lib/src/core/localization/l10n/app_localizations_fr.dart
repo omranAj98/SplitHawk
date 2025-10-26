@@ -252,7 +252,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get tooManyRequests =>
-      'Trop de demandes. Veuillez réessayer plus tard';
+      'Trop de tentatives. Veuillez réessayer plus tard';
 
   @override
   String get notFound => 'Enregistrement non trouvé';

@@ -6,33 +6,50 @@ import 'package:splithawk/src/blocs/user/user_cubit.dart';
 import 'package:splithawk/src/core/routes/names.dart';
 import 'package:splithawk/src/core/validators/app_text_validators.dart';
 import 'package:splithawk/src/core/localization/l10n/app_localizations.dart';
+import 'package:splithawk/src/core/widgets/app_safe_area.dart';
 
-class SigninPage extends StatelessWidget {
+class SigninPage extends StatefulWidget {
   final String? initEmail;
   const SigninPage({super.key, this.initEmail});
 
   @override
-  Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
+  State<SigninPage> createState() => _SigninPageState();
+}
 
-    // Initialize email with initEmail if available
-    String? email = initEmail;
-    String? password;
+class _SigninPageState extends State<SigninPage> {
+  final _formKey = GlobalKey<FormState>();
+  late final TextEditingController _emailController;
+  final _passwordController = TextEditingController();
 
-    void submit() {
-      final form = formKey.currentState;
-      if (form!.validate()) {
-        form.save();
+  @override
+  void initState() {
+    super.initState();
+    _emailController = TextEditingController(text: widget.initEmail);
+  }
 
-        context.read<AuthBloc>().add(
-          AuthSignInWithEmailEvent(email: email!, password: password!),
-        );
-        context.read<UserCubit>().getSelfUser();
-      }
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  void _submit() {
+    final form = _formKey.currentState;
+    if (form!.validate()) {
+      context.read<AuthBloc>().add(
+        AuthSignInWithEmailEvent(
+          email: _emailController.text,
+          password: _passwordController.text,
+        ),
+      );
     }
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         switch (state.authStatus) {
           case AuthStatus.initial:
             print("initial");
@@ -41,7 +58,14 @@ class SigninPage extends StatelessWidget {
             print("loading");
             break;
           case AuthStatus.authenticated:
-            context.goNamed(AppRoutesName.home);
+            // After successful authentication, fetch the user's data.
+            await context.read<UserCubit>().getSelfUser();
+            // Ensure the widget is still mounted before navigating.
+            if (!mounted) return;
+            // Check if the user data was fetched successfully before navigating.
+            if (context.read<UserCubit>().state.user != null) {
+              context.goNamed(AppRoutesName.home);
+            }
             print("authenticated");
             break;
           case AuthStatus.error:
@@ -56,9 +80,10 @@ class SigninPage extends StatelessWidget {
             onTap: () => FocusScope.of(context).unfocus(),
             child: Scaffold(
               // backgroundColor: Colors.blue[100],
-              body: SafeArea(
+              body: AppSafeArea(
                 child: Center(
                   child: ListView(
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     children: [
                       ElevatedButton(
@@ -78,9 +103,10 @@ class SigninPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Form(
-                          key: formKey,
+                          key: _formKey,
                           child: ListView(
                             shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
                             children: [
                               Align(
                                 alignment: Alignment.bottomLeft,
@@ -90,10 +116,7 @@ class SigninPage extends StatelessWidget {
                               TextFormField(
                                 readOnly:
                                     state.authStatus == AuthStatus.loading,
-                                // Use both onSaved and onChanged
-                                onSaved: (value) => email = value,
-                                onChanged: (value) => email = value,
-
+                                controller: _emailController,
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
                                   labelText:
@@ -101,8 +124,6 @@ class SigninPage extends StatelessWidget {
                                   filled: true,
                                   prefixIcon: Icon(Icons.email),
                                 ),
-                                initialValue: initEmail,
-
                                 autocorrect: false,
                                 validator:
                                     (value) => AppTextValidators.validateEmail(
@@ -115,9 +136,9 @@ class SigninPage extends StatelessWidget {
                               TextFormField(
                                 readOnly:
                                     state.authStatus == AuthStatus.loading,
-                                onSaved: (value) => password = value,
+                                controller: _passwordController,
                                 obscureText: true,
-                                onFieldSubmitted: (value) => submit(),
+                                onFieldSubmitted: (value) => _submit(),
 
                                 decoration: InputDecoration(
                                   labelText:
@@ -140,7 +161,9 @@ class SigninPage extends StatelessWidget {
                                       ? null
                                       : context.pushNamed(
                                         AppRoutesName.resetPassword,
-                                        queryParameters: {'email': email},
+                                        queryParameters: {
+                                          'email': _emailController.text,
+                                        },
                                       );
                                 },
                                 child: Text(
@@ -157,7 +180,7 @@ class SigninPage extends StatelessWidget {
                                 onPressed: () async {
                                   state.authStatus == AuthStatus.loading
                                       ? null
-                                      : submit();
+                                      : _submit();
                                 },
                                 child: Text(
                                   state.authStatus == AuthStatus.loading

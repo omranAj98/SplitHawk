@@ -308,7 +308,7 @@
   "@networkError": {
     "description": "Network error message"
   },
-  "tooManyRequests": "Trop de demandes. Veuillez réessayer plus tard",
+  "tooManyRequests": "Trop de tentatives. Veuillez réessayer plus tard",
   "@tooManyRequests": {
     "description": "Too many requests message"
   },

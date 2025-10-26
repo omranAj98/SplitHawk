@@ -5,9 +5,9 @@ import 'package:splithawk/src/blocs/friend/friend_cubit.dart';
 import 'package:splithawk/src/core/localization/l10n/app_localizations.dart';
 import 'package:splithawk/src/core/widgets/app_safe_area.dart';
 import 'package:splithawk/src/models/friend_data_model.dart';
-import 'package:splithawk/src/views/new_expense/expense_details.dart';
+import 'package:splithawk/src/views/new_expense/widgets/expense_details.dart';
 import 'package:splithawk/src/views/home/widgets/friends_item.dart';
-import 'package:splithawk/src/views/new_expense/selected_friends_list.dart';
+import 'package:splithawk/src/views/new_expense/widgets/selected_friends_list.dart';
 
 class AddExpenseScreen extends StatefulWidget {
   final List<FriendDataModel> friendsList;

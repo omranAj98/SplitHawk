@@ -18,7 +18,7 @@ class ErrorMessages {
             return AppLocalizations.of(context)!.networkError;
           case 'too-many-requests':
             return AppLocalizations.of(context)!.tooManyRequests;
-          case 'invalid-credentials':
+          case 'invalid-credential':
           case 'wrong-password':
             return AppLocalizations.of(context)!.invalidCredentials;
           default:

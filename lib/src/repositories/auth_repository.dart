@@ -156,6 +156,12 @@ class AuthRepository {
         code: e.code,
         plugin: e.plugin,
       );
+    } on Error catch (e) {
+      throw CustomError(
+        message: 'An unexpected error occurred: ${e.toString()}',
+        code: 'unknown',
+        plugin: 'firebase_auth',
+      );
     }
   }
 

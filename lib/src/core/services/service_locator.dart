@@ -1,5 +1,5 @@
 import 'package:cloud_functions/cloud_functions.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,18 +18,16 @@ import 'package:splithawk/src/repositories/split_repository.dart';
 import 'package:splithawk/src/repositories/user_repository.dart';
 
 final GetIt locator = GetIt.instance;
-// Flag to track if emulators are connected
+
 bool _emulatorsConnected = false;
 
 void setupLocator() {
-  // Check if running in test mode - this checks Flutter's debug mode
-  // You can also use a dedicated flag for tests if preferred
-  final isTesting = bool.fromEnvironment('dart.vm.product') == false;
 
-  if (isTesting) {
-    // Set this environment variable to make sure Firebase SDK knows we're using emulators
-    // This is a belt-and-suspenders approach to ensure emulator usage
-    const String useEmulator = 'true';
+  // --- TEMPORARY CHANGE FOR PRODUCTION TESTING ---
+  // To test production Firebase on a simulator, temporarily set this to `false`.
+  // IMPORTANT: Remember to change it back to `kDebugMode` for normal development.
+  // if (false) {
+     if (kDebugMode){
     try {
       debugPrint("Attempting to connect to Firebase emulators...");
 
@@ -98,6 +96,7 @@ void setupLocator() {
     }
   } else {
     debugPrint("Running Firebase instances in production mode");
+    // Register production Firebase services
     locator.registerLazySingleton<FirebaseAuth>(() {
       final firebaseAuth = FirebaseAuth.instance;
       return firebaseAuth;

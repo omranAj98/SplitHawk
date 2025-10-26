@@ -77,7 +77,7 @@ defaultErrorMessage/Default error message/An error occurred. Please try again/Un
 emailAlreadyInUse/Email in use message/Email already in use try to login or reset your password/E-mail déjà utilisé essayez de vous connecter ou de réinitialiser votre mot de passe/البريد الإلكتروني مستخدم بالفعل حاول تسجيل الدخول أو إعادة تعيين كلمة المرور الخاصة بك
 userNotFound/User not found message/User not found/Votre compte n'existe pas/لم يتم العثور على حسابك
 networkError/Network error message/Network error/Erreur réseau/خطأ في الشبكة
-tooManyRequests/Too many requests message/Too many requests. Please try again later/Trop de demandes. Veuillez réessayer plus tard/تكررت الطلبات. يرجى المحاولة مرة أخرى لاحقًا
+tooManyRequests/Too many requests message/Too many attempts. Please try again later/Trop de tentatives. Veuillez réessayer plus tard/عدد كبير جدًا من المحاولات. يرجى المحاولة مرة أخرى لاحقًا
 notFound/Record not found message/Record not found/Enregistrement non trouvé/السجل غير موجود
 contactsPermissionDenied/Permission denied message/Contacts permission denied/Autorisation des contacts refusée/تم رفض إذن جهات الاتصال
 permissionDenied/Permission denied message/Permission denied/Autorisation refusée/تم رفض الإذن

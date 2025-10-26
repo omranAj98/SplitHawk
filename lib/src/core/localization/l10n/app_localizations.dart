@@ -565,7 +565,7 @@ abstract class AppLocalizations {
   /// Too many requests message
   ///
   /// In en, this message translates to:
-  /// **'Too many requests. Please try again later'**
+  /// **'Too many attempts. Please try again later'**
   String get tooManyRequests;
 
   /// Record not found message

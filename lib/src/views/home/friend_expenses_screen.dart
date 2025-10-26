@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:splithawk/src/blocs/expense/expense_cubit.dart';
@@ -420,8 +421,8 @@ class FriendExpensesScreen extends StatelessWidget {
                 children: [
                   // Date circle
                   Container(
-                    width: 55,
-                    height: 55,
+                    width: 45.w,
+                    height: 45.w,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: Theme.of(context).primaryColor.withAlpha(10),
@@ -483,7 +484,7 @@ class FriendExpensesScreen extends StatelessWidget {
                                         : isPaidByFriend
                                         ? Icons.person_outline
                                         : Icons.group,
-                                    size: 14,
+                                    size: 14.w,
                                     color:
                                         isPaidByYou
                                             ? Colors.blue
@@ -495,7 +496,7 @@ class FriendExpensesScreen extends StatelessWidget {
                                   Text(
                                     '${AppLocalizations.of(context)!.paidBy}: $payerInfo',
                                     style: TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 12.sp,
                                       color:
                                           isPaidByYou
                                               ? Colors.blue
@@ -544,7 +545,7 @@ class FriendExpensesScreen extends StatelessWidget {
                                       ? Colors.red
                                       : Colors.green)
                                   .withValues(alpha: 30),
-                              width: 1,
+                              width: 1.w,
                             ),
                           ),
                           child: Text(
@@ -552,7 +553,7 @@ class FriendExpensesScreen extends StatelessWidget {
                                 ? '${AppLocalizations.of(context)!.youOwe}: ${expense.currency} ${selfOwesTotal.toStringAsFixed(2)}'
                                 : '${friend.friendName} ${AppLocalizations.of(context)!.owes}: ${expense.currency} ${friendOwes.abs().toStringAsFixed(2)}',
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 12.sp,
                               color:
                                   selfOwesTotal > 0 ? Colors.red : Colors.green,
                               fontWeight: FontWeight.w500,
@@ -573,7 +574,7 @@ class FriendExpensesScreen extends StatelessWidget {
   Widget _buildExpandedSummary(BuildContext context, ColorScheme colorScheme) {
     final textTheme = Theme.of(context).textTheme;
     final BorderSide border = BorderSide(
-      width: 2.5,
+      width: 2.5.w,
       color: colorScheme.onTertiary.withAlpha(200),
     );
 
@@ -600,7 +601,7 @@ class FriendExpensesScreen extends StatelessWidget {
               child: Row(
                 children: [
                   CircleAvatar(
-                    radius: 20,
+                    radius: 20.w,
 
                     child: Icon(AppIcons.contactIcon, size: 20),
                   ),
@@ -789,7 +790,7 @@ class FriendExpensesScreen extends StatelessWidget {
                   friend,
                   Theme.of(context).textTheme,
                 ),
-            icon: const Icon(Icons.handshake, size: 16),
+            icon: Icon(Icons.handshake, size: 18.w),
             label: Text(
               AppLocalizations.of(context)!.settleUp,
               style: textTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold),
@@ -802,7 +803,7 @@ class FriendExpensesScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
               elevation: 2,
-              minimumSize: const Size(80, 36),
+              minimumSize: Size(80.w, 36.h),
             ),
           ),
         ],

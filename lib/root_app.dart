@@ -18,7 +18,7 @@ class RootApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final systemLocale = WidgetsBinding.instance.platformDispatcher.locale;
     return ScreenUtilInit(
-      designSize: const Size(360, 690),
+      designSize: const Size(460, 874),
       minTextAdapt: true,
       splitScreenMode: true,
       builder:

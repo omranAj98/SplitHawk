@@ -245,7 +245,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get networkError => 'Network error';
 
   @override
-  String get tooManyRequests => 'Too many requests. Please try again later';
+  String get tooManyRequests => 'Too many attempts. Please try again later';
 
   @override
   String get notFound => 'Record not found';

@@ -36,7 +36,7 @@ final _addFriendNavigatorKey = GlobalKey<NavigatorState>();
 final _friendNavigatorKey = GlobalKey<NavigatorState>();
 
 final GoRouter appRouter = GoRouter(
-  debugLogDiagnostics: true,
+  // debugLogDiagnostics: true,
   initialLocation: '/',
 
   routes: [
