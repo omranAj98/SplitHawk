@@ -14,14 +14,13 @@ A mobile application built from scratch to help users split bills and track grou
 
 ## App Screenshots:
 
-![Login Page](./assets/images/screenshots/login%20Page.png)
-![Sign in with Google](./assets/images/screenshots/Signin%20using%20Google.png)
-![](./assets/images/screenshots/home%20page%20light%20mode.png)
-![](./assets/images/screenshots/home%20page%20loading%20light%20mode.png)
-![](./assets/images/screenshots/choosing%20friends.png)
-![](./assets/images/screenshots/adding%20expense.png)
-![](./assets/images/screenshots/splitting%20options.png)
-![](./assets/images/screenshots/setting%20screen%20light%20mode.png)
-![](./assets/images/screenshots/setting%20screen%20dark%20mode.png)
-![](./assets/images/screenshots/loading%20in%20dark%20them.png)
-
+<img src="./assets/images/screenshots/login%20Page.png" alt="Login Page" height="400">
+<img src="./assets/images/screenshots/Signin%20using%20Google.png" alt="Sign in with Google" height="400">
+<img src="./assets/images/screenshots/home%20page%20light%20mode.png" alt="Home page light mode" height="400">
+<img src="./assets/images/screenshots/home%20page%20loading%20light%20mode.png" alt="Home page loading light mode" height="400">
+<img src="./assets/images/screenshots/choosing%20friends.png" alt="Choosing friends" height="400">
+<img src="./assets/images/screenshots/adding%20expense.png" alt="Adding expense" height="400">
+<img src="./assets/images/screenshots/splitting%20options.png" alt="Splitting options" height="400">
+<img src="./assets/images/screenshots/setting%20screen%20light%20mode.png" alt="Setting screen light mode" height="400">
+<img src="./assets/images/screenshots/setting%20screen%20dark%20mode.png" alt="Setting screen dark mode" height="400">
+<img src="./assets/images/screenshots/loading%20in%20dark%20them.png" alt="Loading in dark theme" height="400">
